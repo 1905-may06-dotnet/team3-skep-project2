@@ -11,7 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  pathtoproject: 'Web/'
+  pathtoproject: 'web/'
   pathtosolution: '/'
 
 steps:
