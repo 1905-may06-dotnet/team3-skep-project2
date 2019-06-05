@@ -24,10 +24,3 @@ steps:
   inputs:
     command: 'publish'
     projects: '$(pathtoproject)/*.csproj'
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial(f76f9b2a-8aaa-49c1-b980-cd3c8191f17a)'
-    appType: 'webApp'
-    WebAppName: 'team3-skep'
-    packageForLinux: '$**/**/*.zip'
