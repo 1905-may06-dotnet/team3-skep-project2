@@ -19,9 +19,7 @@ steps:
   inputs:
     azureSubscription: 'team3-skep-project'
     appType: 'webAppLinux'
-    appName:  'team3-skep-project'
-    deployToSlotOrASE: true
-    slotName: 'production'
+    appName: 'team3-skep'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
     runtimeStack: 'DOTNETCORE|2.2'
     startUpCommand: 'dotnet run web/'
