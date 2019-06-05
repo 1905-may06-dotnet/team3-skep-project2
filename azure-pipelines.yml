@@ -14,7 +14,7 @@ variables:
 
 steps:
 # - script: hello world!
-- script: dotnet publish web/  --configuration $(buildConfiguration)
+- script: dotnet build web/  --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: $(pathtosolution)
 
