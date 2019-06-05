@@ -13,7 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script:  dotnet build web/ --configuration $(buildConfiguration)
+- script:  dotnet publish web/ --configuration $(buildConfiguration)
   displayName: 'dotnet publish $(buildConfiguration)'
 - task: AzureRmWebAppDeployment@4
   inputs:
