@@ -17,7 +17,7 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'team3-skep-project'
+    azureSubscription: 'team3-skep'
     appType: 'webAppLinux'
     appName: 'team3-skep'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
