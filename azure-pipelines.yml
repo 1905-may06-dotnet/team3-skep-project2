@@ -15,3 +15,13 @@ variables:
 steps:
 - script:  dotnet build web/ --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'team3-skep-project'
+    appType: 'webAppLinux'
+    appName:  'team3-skep-project'
+    deployToSlotOrASE: true
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'DOTNETCORE|2.2'
+    startUpCommand: 'dotnet run web/'
