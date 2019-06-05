@@ -12,7 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   pathtoproject: 'team3-skep-project2/web/'
-  pathtosolution: 'team3-skep-project2'
+
 
 
 steps:
