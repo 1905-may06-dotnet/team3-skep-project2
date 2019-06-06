@@ -29,11 +29,8 @@ steps:
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Free Trial(f76f9b2a-8aaa-49c1-b980-cd3c8191f17a)'
-    appType: 'webAppLinux'
+    appType: 'webApp'
     WebAppName: 'team3-skep'
     #packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'DOTNETCORE|2.2'
+    #RuntimeStack: 'DOTNETCORE|2.2'
     packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
