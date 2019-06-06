@@ -35,3 +35,6 @@ steps:
     #RuntimeStack: 'DOTNETCORE|2.2'
     packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'run'
