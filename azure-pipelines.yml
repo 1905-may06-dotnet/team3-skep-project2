@@ -37,4 +37,4 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'run'
+    command: 'run web/'
