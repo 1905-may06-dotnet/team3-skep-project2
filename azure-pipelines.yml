@@ -34,3 +34,6 @@ steps:
     #packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     RuntimeStack: 'DOTNETCORE|2.2'
     packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
