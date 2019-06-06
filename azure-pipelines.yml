@@ -24,6 +24,8 @@ steps:
   inputs:
     command: 'publish'
     projects: '$(pathToProject)/*.csproj'
+- task: UseNode@1
+  inputs: 
 
 - task: AzureRmWebAppDeployment@4
   inputs:
