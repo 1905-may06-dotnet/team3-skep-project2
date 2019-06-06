@@ -17,7 +17,7 @@ variables:
 
 steps:
 # - script: hello world!
-- script: dotnet publish web/  --configuration $(buildConfiguration)
+- script: dotnet publish  --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: $(pathToSolution)
 - task: DotNetCoreCLI@2
@@ -33,5 +33,5 @@ steps:
     WebAppName: 'team3-skep'
     #packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     #WebAppName: 'skep2'
-    #RuntimeStack: 'DOTNETCORE|2.2'
+    RuntimeStack: 'DOTNETCORE|2.2'
     packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
