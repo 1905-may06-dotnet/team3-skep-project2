@@ -24,9 +24,6 @@ steps:
   inputs:
     command: 'publish'
     projects: '$(pathToProject)/*.csproj'
-- task: Npm@0
-  inputs:
-    command: 'npm install -g @angular/cli'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
