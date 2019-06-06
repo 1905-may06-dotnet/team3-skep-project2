@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace team3_skep_project2.Controllers
+namespace web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

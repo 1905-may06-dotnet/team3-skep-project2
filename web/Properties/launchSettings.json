@@ -4,8 +4,8 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:35708",
-      "sslPort": 44320
+      "applicationUrl": "http://localhost:18357",
+      "sslPort": 44372
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "team3_skep_project2": {
+    "web": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",
