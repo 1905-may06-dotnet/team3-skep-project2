@@ -1,4 +1,3 @@
-
 # ASP.NET Core
 
 # Build and test ASP.NET Core projects targeting .NET Core.
@@ -21,3 +20,12 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(f76f9b2a-8aaa-49c1-b980-cd3c8191f17a)'
+    appType: 'webAppLinux'
+    WebAppName: 'team3-skep'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'DOTNETCORE|2.2'
