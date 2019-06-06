@@ -12,11 +12,13 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  pathToProject: 'team3-skep-project2/web'
 
 steps:
 # - script: hello world!
 - script: dotnet publish web/  --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: $(pathToProject)
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
@@ -27,5 +29,6 @@ steps:
     azureSubscription: 'Free Trial(f76f9b2a-8aaa-49c1-b980-cd3c8191f17a)'
     appType: 'webAppLinux'
     WebAppName: 'team3-skep'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    #packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     RuntimeStack: 'DOTNETCORE|2.2'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
