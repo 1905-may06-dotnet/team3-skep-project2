@@ -17,7 +17,7 @@ variables:
 
 steps:
 # - script: hello world!
-- script: dotnet publish  --configuration $(buildConfiguration)
+- script: dotnet publish web/ --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: $(pathToSolution)
 - task: DotNetCoreCLI@2
