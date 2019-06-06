@@ -13,7 +13,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   pathToProject: 'web'
-  pathToSolution: '/'
+  pathToSolution: ''
 
 steps:
 # - script: hello world!
