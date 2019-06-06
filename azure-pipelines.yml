@@ -12,8 +12,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  pathToProject: 'team3-skep-project2/web'
-  pathToSolution: 'team3-skep-project2/'
+  pathToProject: 'web'
+  pathToSolution: '/'
 
 steps:
 # - script: hello world!
