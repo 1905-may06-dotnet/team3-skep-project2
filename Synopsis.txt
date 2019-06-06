@@ -8,10 +8,15 @@ and allows both email and site notifications.
 
 ###Phase 1 features (MVP)
 *Users can create accounts, log in and log out of their accounts.
+
 *Users can edit their profile.
+
 *User can create and maintain a list of board games.
-*Meeting can be created by users and allow other users to search and join the Meeting.
-*Users without certain game can search for other users that have the game and request other users create a meeting.
+
+*Meeting can be created by users and allow other 
+users to search and join the Meeting.
+*Users without certain game can search for other users that have 
+the game and request other users create a meeting.
 *users can receive notification on email and through web app.
 *implament mail gun api for email notification.
 ###phase 2 features
