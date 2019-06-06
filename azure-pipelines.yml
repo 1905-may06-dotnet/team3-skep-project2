@@ -24,7 +24,6 @@ steps:
   inputs:
     command: 'publish'
     projects: '$(pathToProject)/*.csproj'
-
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
@@ -34,3 +33,7 @@ steps:
     #packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     #RuntimeStack: 'DOTNETCORE|2.2'
     packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'run'
+    projects: 'web'
