@@ -33,4 +33,3 @@ steps:
     WebAppName: 'team3-skep'
     RuntimeStack: 'DOTNETCORE|2.2'
     packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
-- script: hello world!
