@@ -1,4 +1,5 @@
 # team3-skep-project2
+
 #Synopsis
 
 
@@ -57,6 +58,8 @@ the game and request other users create a meeting.
 
 *allow meeting to have ratings to allow age appropriate content.
 
-*implament BGG api for Board Game information. 
+*implement BGG api for Board Game information. 
+
+*Admin accounts to remove users,and update collections and locations 
 
 *TBA
