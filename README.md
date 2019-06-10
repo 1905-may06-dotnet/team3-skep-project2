@@ -1,10 +1,10 @@
-# team3-skep-project2
+# Team 3 skep project 2
 
-#Synopsis
+# Synopsis
 
 
 
-##GeoSyncoronous Board Game Matcher
+## GeoSyncoronous Board Game Matcher
 
 The GeoSyncoronous Board Game Matcher is web app that 
 
@@ -16,50 +16,50 @@ and allows both email and site notifications.
 
 
 
-###Phase 1 features (MVP)
+## Phase 1 features (MVP)
 
-*Users can create accounts, log in and log out of their accounts.
-
-
-
-*Users can edit their profile.
+* Users can create accounts, log in and log out of their accounts.
 
 
 
-*User can create and maintain a list of board games.
+* Users can edit their profile.
 
 
 
-*Meeting can be created by users and allow other 
+* User can create and maintain a list of board games.
+
+
+
+* Meeting can be created by users and allow other 
 
 users to search and join the Meeting.
 
-*Users without certain game can search for other users that have 
+* Users without certain game can search for other users that have 
 
 the game and request other users create a meeting.
 
-*users can receive notification on email and through web app.
+* users can receive notification on email and through web app.
 
-*implament mail gun api for email notification.
+* implament mail gun api for email notification.
 
-###phase 2 features
+### phase 2 features
 
-*User can create and maintain a friends list.
+* User can create and maintain a friends list.
 
-*Users can send and receive a friend request.
+* Users can send and receive a friend request.
 
-*allow users to receive text message notification.
+* allow users to receive text message notification.
 
-*allow users to notify friends when the users create a meetings.
+* allow users to notify friends when the users create a meetings.
 
-*implament twilio api for text message. 
+* implament twilio api for text message. 
 
-####Future features
+#### Future features
 
-*allow meeting to have ratings to allow age appropriate content.
+* allow meeting to have ratings to allow age appropriate content.
 
-*implement BGG api for Board Game information. 
+* implement BGG api for Board Game information. 
 
-*Admin accounts to remove users,and update collections and locations 
+* Admin accounts to remove users,and update collections and locations 
 
-*TBA
+* TBA
