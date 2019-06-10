@@ -17,7 +17,7 @@ and allows both email and site notifications.
 * Users can add games to their list on their account.
 * Users will get notifications of events nearby.
 
-#### Technology to be used on this project
+### Technology to be used on this project
 * Mailgun api
 * Twilio api
 * SQL Server
