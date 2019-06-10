@@ -1,10 +1,8 @@
 # Team 3 skep project 2
 
-# Synopsis
-
-
 
 ## GeoSyncoronous Board Game Matcher
+### Discription and objectives
 
 The GeoSyncoronous Board Game Matcher is web app that 
 
@@ -14,7 +12,9 @@ find and schedule meetings to play certain board games,
 
 and allows both email and site notifications.
 
-
+* Allow users to create accounts.
+* Users can create board game events at locations and RSP to these events.
+* Users can add games to their list on their account.
 
 ## Phase 1 features (MVP)
 
@@ -63,3 +63,15 @@ the game and request other users create a meeting.
 * Admin accounts to remove users,and update collections and locations 
 
 * TBA
+#### Technology to be used on this project
+* Mailgun api
+* Twilio api
+* SQL Server
+* Docker
+* Typescript
+* C# asp.net MVC Core
+* Azure keyvault, Pipelines, DevOps, App service
+* MS Test
+* Angular
+
+
