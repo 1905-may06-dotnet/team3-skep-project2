@@ -24,10 +24,14 @@ steps:
     projectKey: 'dee24c4e72eddf1ce7fd065355cdf2d94c369d5f'
     projectName: 'skep'
 # - script: hello world!
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: $(pathToProject)
+- task: SonarCloudAnalyze@1
 - script: dotnet publish web/ --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: $(pathToSolution)
-- task: SonarCloudAnalyze@1
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
