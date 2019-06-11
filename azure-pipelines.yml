@@ -22,16 +22,16 @@ steps:
     organization: '1905-may06-dotnet'
     scannerMode: 'MSBuild'
     projectKey: 'dee24c4e72eddf1ce7fd065355cdf2d94c369d5f'
-    projectName: 'skep'
+    projectName: 'team2-skep-project2'
 # - script: hello world!
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: $(pathToSolution)
+    projects: $(pathToProject)
 - task: SonarCloudAnalyze@1
-- script: dotnet publish web/ --configuration $(buildConfiguration)
+- script: dotnet publish  --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-  workingDirectory: $(pathToSolution)
+  workingDirectory: $(pathToProject)
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
