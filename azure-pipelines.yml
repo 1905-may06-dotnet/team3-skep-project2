@@ -23,7 +23,6 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'dee24c4e72eddf1ce7fd065355cdf2d94c369d5f'
     projectName: 'skep'
-- task: SonarCloudAnalyze@1
 # - script: hello world!
 - script: dotnet publish web/ --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
@@ -32,6 +31,7 @@ steps:
   inputs:
     command: 'publish'
     projects: '$(pathToProject)/*.csproj'
+- task: SonarCloudAnalyze@1
 
 - task: AzureRmWebAppDeployment@4
   inputs:
