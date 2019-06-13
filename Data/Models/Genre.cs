@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data.Models
 {
-    class Genre
+    public class Genre
     {
         [Key]
         public string genre { get; set; }
