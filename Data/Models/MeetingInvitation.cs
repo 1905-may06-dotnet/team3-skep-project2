@@ -5,12 +5,15 @@ using System.Text;
 
 namespace Data.Models
 {
-    class MeetingInvitation
+    public class MeetingInvitation
     {
         [Key]
         public int MIID { get; set; }
-
-
+        ///fk
+        
+        public BGUser SenderUID { get; set; }
+        public BGUser ReciverUID { get; set; }
+        public Meeting MID { get; set; }
 
     }
 }

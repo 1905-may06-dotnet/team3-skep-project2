@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data.Models
 {
-    class Meeting
+    public class Meeting
     {
         [Key]
         public int MID { get; set; }

@@ -5,10 +5,11 @@ using System.Text;
 
 namespace Data.Models
 {
-    class MeetingRequest
+    public class MeetingRequest
     {
         [Key]
         public int MRID { get; set; }
+        public int 
         public DateTime MeetingTime { get; set; }
 
     }

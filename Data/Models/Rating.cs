@@ -5,12 +5,11 @@ using System.Text;
 
 namespace Data.Models
 {
-    class Rating
+    public class Rating
     {
         [Key]
         public int RID { get; set; }
         public int UserRating { get; set; }
-
 
     }
 }
