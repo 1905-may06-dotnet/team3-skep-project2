@@ -15,7 +15,7 @@ namespace Data.Models
         public string BGName { get; set; }
         public int MaxPlayerCount { get; set; }
         public int MinPlayerCount { get; set; }
-        public IList<BGUser> UserList { get; set; }
+        public List<UserCollection> UserCollections { get; set; }
         public IList<MeetingRequest> MeetingRequestList { get; set; }
         public IList<Meeting> Meetings { get; set; }
 

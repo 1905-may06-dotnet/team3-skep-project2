@@ -20,15 +20,17 @@ namespace Data.Models
         public DateTime DateOfBirth { get; set; }
         public bool AllowPN { get; set; }
         public bool AllowEN { get; set; }
-        public Location Location { get; set; }
-        public IList<BoardGame> BoardGameList { get; set; }
+        public BGLocation Location { get; set; }
+        public List<UserCollection> UserCollections { get; set; }
         public IList<Rating> Ratings { get; set; }
-        public IList<BGUser> Friends { get; set; }
-        public IList<BGUser> FriendInvitations { get; set; }
-        public IList<Meeting> MeetingsPaticipated { get; set; }
+        public IList<Friend> Friends { get; set; }
+        public IList<FriendInvitation> FriendInvitationsAsSender { get; set; }
+        public IList<FriendInvitation> FriendInvitationsAsReceiver { get; set; }
+        public IList<UserMeeting> UserMeetings { get; set; }
         public IList<Meeting> MeetingsHost { get; set; }
-        public IList<MeetingInvitation> MeetingInvitations { get; set; }
-        public IList<MeetingRequest> MeetingRequests { get; set; }
-
+        public IList<MeetingInvitation> MeetingInvitationsAsSender { get; set; }
+        public IList<MeetingInvitation> MeetingInvitationsAsReceiver { get; set; }
+        public IList<MeetingRequest> MeetingRequestsAsSender { get; set; }
+        public IList<MeetingRequest> MeetingRequestsAsReceiver { get; set; }
     }
 }

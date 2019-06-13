@@ -10,12 +10,6 @@ namespace Data.Models
     {
         [Key]
         public int MRID { get; set; }
-        [ForeignKey("UID")]
-        public BGUser SenderUID { get; set; }
-        [ForeignKey("UID")]
-        public BGUser ReceiverUID { get; set; }
-        [ForeignKey("MID")]
-        public Meeting MID { get; set; }
         public DateTime MeetingTime { get; set; }
     }
 }

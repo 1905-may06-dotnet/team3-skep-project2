@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data.Models
 {
-    public class Location
+    public class BGLocation
     {
         [Key]
         public int LID { get; set; }
