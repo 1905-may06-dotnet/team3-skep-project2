@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
@@ -10,6 +11,9 @@ namespace Data.Models
         [Key]
         public int RID { get; set; }
         public int UserRating { get; set; }
-
+        [ForeignKey("UID")]
+        public BGUser UID { get; set; }
+        [ForeignKey("MID")]
+        public Meeting MID { get; set; }
     }
 }

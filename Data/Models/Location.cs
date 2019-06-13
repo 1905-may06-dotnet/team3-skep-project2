@@ -13,5 +13,8 @@ namespace Data.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public IList<BGUser> UserList { get; set; }
+        public IList<Meeting> MeetingList { get; set; }
+        public IList<MeetingRequest> MeetingRequestList { get; set; }
     }
 }

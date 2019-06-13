@@ -17,7 +17,8 @@ namespace Data.Models
         public DateTime MeetingTime { get; set; }
         [ForeignKey("UID")]
         public BGUser HostUID { get; set; }
-        
-
+        public IList<BGUser> UserList { get; set; }
+        public IList<MeetingInvitation> MeetingInvitation { get; set; }
+        public IList<Rating> RatingList { get; set; }
     }
 }
