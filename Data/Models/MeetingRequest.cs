@@ -3,25 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Data.Models
 {
     public class MeetingRequest
     {
         [Key]
         public int MRID { get; set; }
-        public int 
+        [ForeignKey("UID")]
+        public BGUser SenderUID { get; set; }
+        [ForeignKey("UID")]
+        public BGUser ReceiverUID { get; set; }
+        [ForeignKey("MID")]
+        public Meeting MID { get; set; }
         public DateTime MeetingTime { get; set; }
-        [ForeignKey("UID")]
-        public BGUser InitiatorUID { get; set; }
-        [ForeignKey("UID")]
-        public ICollection<BGUser> ReceiverUID { get; set; }
-        [ForeignKey("GID")]
-        public BoardGame GID { get; set; }
-        [ForeignKey("LID")]
-        public Location LID { get; set; }
-
-
-
     }
 }
