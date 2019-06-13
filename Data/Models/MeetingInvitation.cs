@@ -13,9 +13,8 @@ namespace Data.Models
         [ForeignKey("UID")]
         public BGUser SenderUID { get; set; }
         [ForeignKey("UID")]
-        public BGUser ReciverUID { get; set; }
+        public ICollection<BGUser> ReceiverUID { get; set; }
         [ForeignKey("MID")]
         public Meeting MID { get; set; }
-
     }
 }
