@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Data.Models
 {
-    class Rating
+    public class Rating
     {
         [Key]
         public int RID { get; set; }
@@ -15,7 +15,6 @@ namespace Data.Models
         public BGUser UID { get; set; }
         [ForeignKey("MID")]
         public Meeting MID { get; set; }
-
 
     }
 }

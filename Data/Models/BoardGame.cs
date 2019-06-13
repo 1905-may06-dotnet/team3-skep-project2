@@ -11,14 +11,9 @@ namespace Data.Models
         [Key]
         public int GID { get; set; }
         [ForeignKey("genre")]
-        public Genre genre { get; set; }
-
+        public Genres Genre { get; set; }
         public string BGName { get; set; }
         public int MaxPlayerCount { get; set; }
-        public int MinPlyaerCount { get; set; }
-
-
-
-
+        public int MinPlayerCount { get; set; }
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Data.Models
 {
-    public class Genre
+    public class Genres
     {
         [Key]
-        public string genre { get; set; }
+        public string Genre { get; set; }
     }
 }
