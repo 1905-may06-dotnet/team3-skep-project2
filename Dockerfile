@@ -9,7 +9,7 @@ RUN ls ../team3-skep-project2
 
 #####
 
-FROM mcr.microsoft.com/dotnet/core.sdk:2.2-bionic AS buildData
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-bionic AS buildData
 
 WORKDIR /team3-skep-project2
 
@@ -28,8 +28,8 @@ COPY web/ ../web
 COPY --from=buildDomain ./Domain/ ../Domain
 COPY --from=buildData ./Data/ ../Data
 RUN dotnet restore ../web/*.csproj --no-dependencies
-RUN dotnet publish ../web/*.csproj --no-build -c Release -o out
 RUN dotnet build ../web/web.csproj --no-restore -c Release
+RUN dotnet publish ../web/*.csproj --no-build -c Release -o out
 
 #####
 
