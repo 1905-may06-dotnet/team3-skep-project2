@@ -32,5 +32,12 @@ namespace Data.Models
         public List<MeetingInvitation> MeetingInvitationsAsReceiver { get; set; }
         public List<MeetingRequest> MeetingRequestsAsSender { get; set; }
         public List<MeetingRequest> MeetingRequestsAsReceiver { get; set; }
+
+        public BGUser()
+        { }
+        public BGUser(string un, string pw, string em, string pn, DateTime dob, bool apn, bool aen)
+        {
+        }
+
     }
 }
