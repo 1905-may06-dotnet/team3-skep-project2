@@ -11,8 +11,8 @@ namespace Data.Models
         [Key]
         public int MID { get; set; }
         public DateTime MeetingTime { get; set; }
-        public IList<UserMeeting> UserMeetings { get; set; }
-        public IList<MeetingInvitation> MeetingInvitation { get; set; }
-        public IList<Rating> RatingList { get; set; }
+        public List<UserMeeting> UserMeetings { get; set; }
+        public List<MeetingInvitation> MeetingInvitation { get; set; }
+        public List<Rating> RatingList { get; set; }
     }
 }
