@@ -14,7 +14,7 @@ namespace Data
             City = locations.City,
             LocationName = locations.LocationName,
             State=locations.State,
-            //MeetingList= locations.MeetingList.Select(x=>x),
+            MeetingList= locations.MeetingList.ToList(),
             //MeetingRequestList=locations.MeetingRequestList.ToList(),
             //UserList=locations.UserList.ToList()
             
