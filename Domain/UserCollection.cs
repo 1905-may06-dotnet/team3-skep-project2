@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    class UserCollection
+    public class UserCollection
     {
 
         public int UCID { get; set; }

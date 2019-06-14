@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    class Meeting
+    public class Meeting
     {
         public int MID { get; set; }
         public DateTime MeetingTime { get; set; }
