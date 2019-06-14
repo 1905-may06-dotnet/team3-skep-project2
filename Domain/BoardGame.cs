@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    class BoardGame
+    public class BoardGame
     {
         public int GID { get; set; }
  
