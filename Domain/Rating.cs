@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    class Rating
+    public class Rating
     {
         public int RID { get; set; }
         public int UserRating { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    class FriendInvitation
+    public class FriendInvitation
     {
 
         public int FIID { get; set; }

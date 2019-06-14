@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    class Genres
+    public class Genres
     {
 
         public string Genre { get; set; }

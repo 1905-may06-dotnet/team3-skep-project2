@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    class BGUser
+    public class BGUser
     {
 
         public int UID { get; set; }
