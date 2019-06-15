@@ -6,6 +6,37 @@ namespace Domain
 {
     public class MeetingInvitation
     {
-        public int MIID { get; set; }
+        public int mIID { get; set; }
+        private int senderUID { get; set; }
+        private int receiverUID { get; set; }
+        private int mID { get; set; }
+
+        public int SenderUID { get => mIID; set
+            {
+                if (String.IsNullOrEmpty(senderUID.ToString()))
+                    throw new ArgumentException("Sender ID # cannot be empty.");
+
+                senderUID = value;
+            }
+        }
+
+        public int ReceiverUID { get => receiverUID; set
+            {
+                if(String.IsNullOrEmpty(receiverUID.ToString()))
+                    throw new ArgumentException("Receiver ID # cannot be empty.");
+
+                receiverUID = value;
+            }
+        }
+
+        public int MID { get => mID; set
+            {
+                if(String.IsNullOrEmpty(mID.ToString()))
+                    throw new ArgumentException("Meeting ID # cannot be empty.");
+
+                mID = value;
+            }
+        }
+
     }
 }
