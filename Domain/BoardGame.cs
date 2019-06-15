@@ -6,8 +6,8 @@ namespace Domain
 {
     public class BoardGame
     {
+
         public int GID { get; set; }
- 
         public Genres Genre { get; set; }
         public string BGName { get; set; }
         public int MaxPlayerCount { get; set; }

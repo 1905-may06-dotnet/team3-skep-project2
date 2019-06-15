@@ -9,6 +9,7 @@ namespace Data.Models
     public class BoardGame
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GID { get; set; }
         [ForeignKey("genre")]
         public Genres Genre { get; set; }

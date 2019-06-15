@@ -7,7 +7,6 @@ namespace Domain
 {
     public class BGLocation
     {
-        
         public int LID { get; set; }
         public string LocationName { get; set; }
         public string Address { get; set; }

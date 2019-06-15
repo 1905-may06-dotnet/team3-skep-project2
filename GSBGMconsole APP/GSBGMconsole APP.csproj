@@ -6,4 +6,8 @@
     <RootNamespace>GSBGMconsole_APP</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
 </Project>

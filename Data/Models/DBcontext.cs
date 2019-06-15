@@ -15,6 +15,8 @@ namespace Data.Models
         public virtual DbSet<MeetingInvitation> MeetingInvitation { get; set; }
         public virtual DbSet<MeetingRequest> MeetingRequest { get; set; }
         public virtual DbSet<Rating> Rating { get; set; }
+        public virtual DbSet<Friend> Friend { get; set; }
+        public virtual DbSet<Friend> FriendInvitation { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
             optionBuilder.UseSqlServer($"Server=evanh2019dbserver.database.windows.net;Database=PizzaBoxDb;Server=evanh2019dbserver.database.windows.net;Database=PizzaBoxDb;user id=evanhuang10;Password=Password123;");
