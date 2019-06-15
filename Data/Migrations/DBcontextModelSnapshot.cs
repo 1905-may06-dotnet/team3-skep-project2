@@ -288,17 +288,12 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Models.Friend", b =>
                 {
                     b.HasOne("Data.Models.BGUser")
-<<<<<<< HEAD
                         .WithMany("HasFriends")
                         .HasForeignKey("BGUserUID");
 
                     b.HasOne("Data.Models.BGUser")
                         .WithMany("IsFriendTo")
                         .HasForeignKey("BGUserUID1");
-=======
-                        .WithMany("Friends")
-                        .HasForeignKey("BGUserUID");
->>>>>>> e4ca9b502557f2d7027b6d9215006f4b1891fef2
                 });
 
             modelBuilder.Entity("Data.Models.FriendInvitation", b =>

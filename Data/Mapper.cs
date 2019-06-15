@@ -138,12 +138,12 @@ namespace Data
         };
         public static Domain.MeetingInvitation Map(Data.Models.MeetingInvitation mi) => new Domain.MeetingInvitation
         {
-            MIID = mi.MIID,
+            MID = mi.MIID,
             
         };
         public static Data.Models.MeetingInvitation Map(Domain.MeetingInvitation mi) => new Data.Models.MeetingInvitation
         {
-            MIID = mi.MIID,
+            MIID = mi.MID,
 
         };
         public static Domain.MeetingRequest Map(Data.Models.MeetingRequest mr) => new Domain.MeetingRequest
