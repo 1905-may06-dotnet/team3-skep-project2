@@ -18,9 +18,9 @@ namespace Data
             return pw == DbInstance.Instance.BGUser.Where<BGUser>(r => r.Username == un).FirstOrDefault().Password;
         }
 
-        public void AddUser(string un, string pw, string fn, String phoneN)
+        public void AddUser(string un, string pw, string fn, string phoneN)
         {
-            BGUser user = new BGUser(un, pw, fn, phoneN);
+            BGUser user = new BGUser();
             DbInstance.Instance.BGUser.Add(user);
             DbInstance.Instance.SaveChanges();
         }
