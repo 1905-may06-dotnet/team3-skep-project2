@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Models
 {
-    class DBcontext : DbContext
+    public class DBcontext : DbContext
     {
         public virtual DbSet<BGUser> BGUser { get; set; }
         public virtual DbSet<BoardGame> BoardGame { get; set; }
