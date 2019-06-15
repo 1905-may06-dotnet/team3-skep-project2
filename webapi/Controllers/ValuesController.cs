@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Domain;
 namespace webapi.Controllers
 {
@@ -16,13 +17,17 @@ namespace webapi.Controllers
             this.db = db;
         }
         //login 
+
         [HttpPost]
-        public Action Post([FromBody] string userID,[FromBody]string password)
+        public ActionResult Post([FromBody] string userID,[FromBody]string password)
         {
             if (db.UsernameExist(userID))
             {
                 if (db.PasswordMatched(userID, password))
                 {
+                    /// can't work on API need store locally TempData["UserID"] = userID;
+                    Guid u = Guid.NewGuid();
+
                     return Accepted();
                 }
                 else
@@ -32,14 +37,14 @@ namespace webapi.Controllers
             }
             return NotFound();
         }
-
-        // GET api/values
+        //Log Out
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            //fix link and remove cookie?
+            return RedirectPermanent("/home");
         }
-
+        
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
