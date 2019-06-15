@@ -16,22 +16,22 @@ namespace webapi.Controllers
             this.db = db;
         }
         //login 
-        [HttpPost]
-        public Action Post([FromBody] string userID,[FromBody]string password)
-        {
-            if (db.UsernameExist(userID))
-            {
-                if (db.PasswordMatched(userID, password))
-                {
-                    return Accepted();
-                }
-                else
-                {
-                    return Unauthorized();
-                }
-            }
-            return NotFound();
-        }
+        //[HttpPost]
+        //public Action Post([FromBody] string userID,[FromBody]string password)
+        //{
+        //    if (db.UsernameExist(userID))
+        //    {
+        //        if (db.PasswordMatched(userID, password))
+        //        {
+        //            return Accepted();
+        //        }
+        //        else
+        //        {
+        //            return Unauthorized();
+        //        }
+        //    }
+        //    return NotFound();
+        //}
 
         // GET api/values
         [HttpGet]

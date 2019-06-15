@@ -70,8 +70,8 @@ namespace GSBGMconsole_APP
                 Console.WriteLine("allow email notification? (1)yes (2)no:");
                 int selectNum2 = inputValidation(1, 2);
                 aen = (selectNum1 == 1);
-                Data.Models.BGUser newUser = new Data.Models.BGUser(un, pw, em, pn, dob, apn, aen);
-                //r.AddUser(newUser);
+                Domain.BGUser newUser = new Domain.BGUser(un, pw, em, pn, dob, apn, aen);
+                r.AddUser(newUser);
                 Console.WriteLine("new user added successfully!");
                 LoginUser = r.GetUserByUserName(un);
             }
