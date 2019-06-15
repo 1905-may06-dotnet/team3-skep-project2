@@ -6,10 +6,14 @@ namespace Domain
 {
     public class BGUser
     {
+        public BGUser(string U,string Pass){
+            this.Username = U;
+            this.Password = Pass;
+        }
         public BGUser(string U,string Pass,string Em)
         {
-            this.Email = Em;
             this.Username = U;
+            this.Email = Em;
             this.Password = Pass;
 
         }
