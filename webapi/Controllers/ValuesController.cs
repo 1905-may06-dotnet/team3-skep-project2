@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Domain;
 namespace webapi.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -16,19 +17,50 @@ namespace webapi.Controllers
         {
             this.db = db;
         }
-        //login 
 
+        //login 
         [HttpPost]
-        public ActionResult Post([FromBody] string userID,[FromBody]string password)
+        public ActionResult LookUpUser([FromBody] string userID)
+        {
+            if (db.UsernameExist(userID))
+            {
+                return Accepted();
+
+            }
+            return Conflict();
+        }
+        public ActionResult CreateAccount ([FromBody]string userName, [FromBody]string password,[FromBody]string Email)
+        {
+            Domain.BGUser t = new Domain.BGUser(userName, password, Email);
+            try
+            {
+                
+                db.AddUser(t);
+                Guid u = Guid.NewGuid();
+                return Created(userName,u);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+        }
+
+            
+            
+            
+        [HttpPost]
+        public ActionResult UserLogin([FromBody] string userID,[FromBody]string password)
         {
             if (db.UsernameExist(userID))
             {
                 if (db.PasswordMatched(userID, password))
                 {
                     /// can't work on API need store locally TempData["UserID"] = userID;
+                    /// 
                     Guid u = Guid.NewGuid();
 
-                    return Accepted();
+                    return Accepted(u);
                 }
                 else
                 {

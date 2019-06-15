@@ -30,8 +30,9 @@ namespace Data
             UserList = locations.UserList.Select(x => Map(x)).ToList(),
             MeetingRequestList = locations.MeetingRequestList.Select(x => Map(x)).ToList()
         };
-        public static Domain.BGUser Map(Data.Models.BGUser User) => new Domain.BGUser
+        public static Domain.BGUser Map(Data.Models.BGUser User) => new Domain.BGUser()
         {
+
             UID = User.UID,
             AllowEN = User.AllowEN,
             AllowPN = User.AllowPN,
