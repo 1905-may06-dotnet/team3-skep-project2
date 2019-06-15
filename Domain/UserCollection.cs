@@ -6,8 +6,6 @@ namespace Domain
 {
     public class UserCollection
     {
-
         public int UCID { get; set; }
-
     }
 }

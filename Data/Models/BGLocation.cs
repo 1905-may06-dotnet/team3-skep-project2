@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Data.Models
@@ -8,6 +9,7 @@ namespace Data.Models
     public class BGLocation
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LID { get; set; }
         public string LocationName { get; set; }
         public string Address { get; set; }

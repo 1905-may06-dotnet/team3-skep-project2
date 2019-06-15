@@ -9,6 +9,7 @@ namespace Data.Models
     public class MeetingInvitation
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MIID { get; set; }
     }
 }

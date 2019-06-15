@@ -6,11 +6,6 @@ namespace Domain
 {
     public class UserMeeting
     {
-
-
         public int UMID { get; set; }
-
-
-
     }
 }
