@@ -4,6 +4,8 @@ using System.Text;
 using Data.Models;
 using System.Linq;
 using Domain;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace Data
 {
@@ -17,7 +19,18 @@ namespace Data
 
         public bool PasswordMatched(string un, string pw)
         {
-            return pw == DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault().Password;
+            var user = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
+            string Password =  user.Password;
+            Guid g = user.Salt;
+            string salt = g.ToString();
+            byte[] saltToBytes = Encoding.ASCII.GetBytes(salt);
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: pw,
+                salt: saltToBytes,
+                prf: KeyDerivationPrf.HMACSHA1,
+                iterationCount: 10000,
+                numBytesRequested: 256 / 8));
+            return hashed == Password;
         }
 
         public void AddUser(Domain.BGUser user)

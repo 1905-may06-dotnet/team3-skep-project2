@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GSBGMconsole_APP
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {

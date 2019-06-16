@@ -33,9 +33,10 @@ namespace webapi.Controllers
         {
             try
             {
-                db.AddUser(t);
                 Guid u = Guid.NewGuid();
-                return Created(t.Username,u);
+                t.Salt = u;
+                db.AddUser(t);
+                return Created(t.Username, u);
             }
             catch
             {
@@ -52,7 +53,6 @@ namespace webapi.Controllers
                 if (db.PasswordMatched(u.Username, u.Password))
                 {
                     /// can't work on API need store locally TempData["UserID"] = userID;
-                    /// 
                     Guid g = Guid.NewGuid();
                     return Accepted(g);
                 }
