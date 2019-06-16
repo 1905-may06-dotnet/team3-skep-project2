@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Domain;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Text;
+
 namespace webapi.Controllers
 {
 
@@ -33,10 +36,24 @@ namespace webapi.Controllers
         {
             try
             {
-                Guid u = Guid.NewGuid();
-                t.Salt = u;
+                string pw = t.Password;
+                Guid g = Guid.NewGuid();
+                string salt = g.ToString();
+                Console.WriteLine(g);
+                byte[] saltToBytes = Encoding.ASCII.GetBytes(salt);
+                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                    password: pw,
+                    salt: saltToBytes,
+                    prf: KeyDerivationPrf.HMACSHA1,
+                    iterationCount: 10000,
+                    numBytesRequested: 256 / 8));
+                t.Salt = g;
+                t.Password = hashed;
                 db.AddUser(t);
-                return Created(t.Username, u);
+                //Guid u = Guid.NewGuid();
+                //t.Salt = u;
+                //db.AddUser(t);
+                return Created(t.Username, g);
             }
             catch
             {

@@ -38,6 +38,12 @@ namespace Data
             DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
             DbInstance.Instance.SaveChanges();
         }
+        public void AddUser(Data.Models.BGUser user)
+        {
+            DbInstance.Instance.BGUser.Add(user);
+            DbInstance.Instance.SaveChanges();
+        }
+
         public Data.Models.BGUser GetUserByUserName(string un)
         {
             return DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();

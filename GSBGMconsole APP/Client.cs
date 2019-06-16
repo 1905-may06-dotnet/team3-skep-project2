@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -55,8 +56,20 @@ namespace GSBGMconsole_APP
                     }
                 }
                 while (r.UsernameExist(un));
+
                 Console.WriteLine("Enter your password angrily:");
                  pw = Console.ReadLine();
+                Guid g = Guid.NewGuid();
+                string salt = g.ToString();
+                Console.WriteLine(g);
+                byte[] saltToBytes = Encoding.ASCII.GetBytes(salt);
+                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                    password: pw,
+                    salt: saltToBytes,
+                    prf: KeyDerivationPrf.HMACSHA1,
+                    iterationCount: 10000,
+                    numBytesRequested: 256 / 8));
+                
                 Console.WriteLine("Enter your email:");
                  em = Console.ReadLine();
                 Console.WriteLine("Enter your Phone#");
@@ -70,12 +83,12 @@ namespace GSBGMconsole_APP
                 Console.WriteLine("allow email notification? (1)yes (2)no:");
                 int selectNum2 = inputValidation(1, 2);
                 aen = (selectNum1 == 1);
-                Data.Models.BGUser newUser = new Data.Models.BGUser(un, pw, em, pn, dob, apn, aen);
-                //r.AddUser(newUser);
+                Data.Models.BGUser newUser = new Data.Models.BGUser(un, hashed, g, em, pn, dob, apn, aen);
+                r.AddUser(newUser);
                 Console.WriteLine("new user added successfully!");
                 LoginUser = r.GetUserByUserName(un);
             }
-            UserActivity(LoginUser.Username);
+            //UserActivity(LoginUser.Username);
 
 
             Console.WriteLine("------------end of test-----------------");

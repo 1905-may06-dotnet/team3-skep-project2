@@ -15,7 +15,6 @@ namespace Domain
             this.Username = U;
             this.Email = Em;
             this.Password = Pass;
-
         }
         public BGUser() { }
         public int UID { get; set; }
