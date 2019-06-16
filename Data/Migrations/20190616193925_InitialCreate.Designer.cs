@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DBcontext))]
-    [Migration("20190614152955_InitialCreate")]
+    [Migration("20190616193925_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,6 +62,8 @@ namespace Data.Migrations
 
                     b.Property<string>("PhoneNumber");
 
+                    b.Property<Guid>("Salt");
+
                     b.Property<string>("Username")
                         .IsRequired();
 
@@ -99,11 +101,7 @@ namespace Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BGUserUID");
-
                     b.HasKey("FID");
-
-                    b.HasIndex("BGUserUID");
 
                     b.ToTable("Friend");
                 });
@@ -285,13 +283,6 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.Genres", "Genre")
                         .WithMany()
                         .HasForeignKey("genre");
-                });
-
-            modelBuilder.Entity("Data.Models.Friend", b =>
-                {
-                    b.HasOne("Data.Models.BGUser")
-                        .WithMany("Friends")
-                        .HasForeignKey("BGUserUID");
                 });
 
             modelBuilder.Entity("Data.Models.FriendInvitation", b =>
