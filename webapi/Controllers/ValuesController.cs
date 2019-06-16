@@ -3,13 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using Domain;
 namespace webapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IRepo db;
+        public ValuesController(IRepo db)
+        {
+            this.db = db;
+        }
+        //login 
+        [HttpPost]
+        public Action Post([FromBody] string userID,[FromBody]string password)
+        {
+            if (db.UsernameExist(userID))
+            {
+                if (db.PasswordMatched(userID, password))
+                {
+                    return Accepted();
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+            }
+            return NotFound();
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

@@ -4,13 +4,8 @@ using System.Text;
 
 namespace Domain
 {
-    class UserMeeting
+    public class UserMeeting
     {
-
-
         public int UMID { get; set; }
-
-
-
     }
 }

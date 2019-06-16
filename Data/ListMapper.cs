@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain
+namespace Data
 {
-    class Mapper
+    class ListMapper
     {
     }
 }

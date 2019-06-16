@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    class MeetingRequest
+    public class MeetingRequest
     {
         public int mRID { get; set; }
         private int initiatorUID { get; set; }
