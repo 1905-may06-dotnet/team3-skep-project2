@@ -6,5 +6,6 @@ namespace Domain
 {
     class IMeetingInvitationRepository
     {
+
     }
 }
