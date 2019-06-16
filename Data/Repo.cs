@@ -11,7 +11,7 @@ namespace Data
 {
     public class Repo:IRepo
     {
-        public bool UsernameExist(string un)
+        public virtual bool UsernameExist(string un)
         {
             bool Exist = DbInstance.Instance.BGUser.Any(r => r.Username == un);
             return Exist;

@@ -32,8 +32,17 @@ RUN dotnet build ../webapi/*.csproj --no-restore -c Release
 RUN dotnet publish ../webapi/*.csproj --no-build -c Release -o out
 
 #####
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-bionic AS test
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-bionic AS deploy
+WORKDIR /team3-skep-project2
+
+COPY Test/ ../Test
+COPY --from=buildDomain ./Domain/ ../Domain
+COPY --from=buildData ./Data/ ../Data
+COPY --from=buildWeb ./webapi/ ../webapi
+RUN dotnet test ../Test/*.csproj
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-bionic AS deploy
 
 WORKDIR /team3-skep-project2
 
