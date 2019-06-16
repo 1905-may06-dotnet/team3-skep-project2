@@ -13,9 +13,12 @@ namespace GSBGMconsole_APP
     {
         static void Main(string[] args)
         {
+            using (HttpClient client = new HttpClient())
+            {
+
+            }
             //BGGController bgg = new BGGController();
             //Console.WriteLine(bgg.GetAllGames());
-            //BGGController.RunAsync().GetAwaiter().
 
 
             //Client c = new Client();
@@ -30,12 +33,12 @@ namespace GSBGMconsole_APP
             //int countafter = r.GetUserByUserName("evanh").HasFriends.Count;
             //Console.WriteLine(countafter);
 
-            ////===================================================fetch json and convert json to objects==========
+            //===================================================fetch json and convert json to objects==========
             //Task t = new Task(DownloadPageAsync);
             //    t.Start();
-            //    Console.WriteLine("Downloading page...");
-            //    Console.ReadLine();
-            ////===================================================fetch json and convert json to objects==========
+            //   Console.WriteLine("Downloading page...");
+            //   Console.ReadLine();
+            //===================================================fetch json and convert json to objects==========
 
         }
         ////===================================================fetch json and convert json to objects==========
