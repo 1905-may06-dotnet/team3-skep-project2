@@ -39,7 +39,6 @@ namespace webapi.Controllers
                 string pw = t.Password;
                 Guid g = Guid.NewGuid();
                 string salt = g.ToString();
-                Console.WriteLine(g);
                 byte[] saltToBytes = Encoding.ASCII.GetBytes(salt);
                 string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                     password: pw,
