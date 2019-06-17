@@ -17,7 +17,7 @@ namespace Data
             return Exist;
         }
 
-        public bool PasswordMatched(string un, string pw)
+        public virtual bool PasswordMatched(string un, string pw)
         {
             var user = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
             string Password =  user.Password;
