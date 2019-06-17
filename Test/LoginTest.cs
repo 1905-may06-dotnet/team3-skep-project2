@@ -32,7 +32,7 @@ namespace Test
             LoginController loginController = new LoginController(mock.Object);
             var response = loginController.LookUpUser("fail");
             Assert.IsNotNull(response);
-            Assert.IsInstanceOfType(response, typeof(AcceptedResult));
+            Assert.IsInstanceOfType(response, typeof(ConflictResult));
         }
 
         [TestMethod]
