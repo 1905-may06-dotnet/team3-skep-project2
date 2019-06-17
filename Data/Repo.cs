@@ -33,7 +33,7 @@ namespace Data
             return hashed == Password;
         }
 
-        public void AddUser(Domain.BGUser user)
+        public virtual void AddUser(Domain.BGUser user)
         {
             DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
             DbInstance.Instance.SaveChanges();
