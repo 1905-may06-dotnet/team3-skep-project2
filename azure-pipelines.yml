@@ -21,7 +21,10 @@ steps:
     command: 'build'
     Dockerfile: 'Dockerfile'
 
-- task: Docker@2
+- task: AzureRmWebAppDeployment@4
   inputs:
-    repository: '/subscriptions/f76f9b2a-8aaa-49c1-b980-cd3c8191f17a/resourceGroups/team3-skep/providers/Microsoft.ContainerRegistry/registries/skepBuilds'
-    command: 'push'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(f76f9b2a-8aaa-49c1-b980-cd3c8191f17a)'
+    appType: 'webAppContainer'
+    WebAppName: 'skep'
+    DockerNamespace: 'skepBuilds'
