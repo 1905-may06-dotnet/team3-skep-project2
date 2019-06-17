@@ -5,9 +5,7 @@ using Domain;
 using Data;
 using System.Net.Http;
 using System.Net;
-using System.Web.Http.Results;
 using Microsoft.AspNetCore.Mvc;
-using ConflictResult = Microsoft.AspNetCore.Mvc.ConflictResult;
 
 namespace Test
 {
