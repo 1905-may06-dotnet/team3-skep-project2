@@ -21,3 +21,7 @@ steps:
     command: 'build'
     Dockerfile: 'Dockerfile'
 
+- task: Docker@2
+  inputs:
+    repository: 'skepBuilds'
+    command: 'push'
