@@ -46,7 +46,7 @@ namespace Test
             var testValue = new BGUser("Bob","fail");
 
             var response = loginController.UserLogin(testValue);
-            //var contentResponse = response as Ok;
+           
 
 
             Assert.IsNotNull(response);
@@ -65,7 +65,7 @@ namespace Test
             var testValue = new BGUser("test", "word");
 
             var response = loginController.UserLogin(testValue);
-            //var contentResponse = response as Ok;
+            
 
 
             Assert.IsNotNull(response);
@@ -84,7 +84,6 @@ namespace Test
             var testValue = new BGUser("test", "word");
 
             var response = loginController.UserLogin(testValue);
-            //var contentResponse = response as Ok;
 
 
             Assert.IsNotNull(response);
