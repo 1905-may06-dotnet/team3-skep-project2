@@ -20,3 +20,8 @@ steps:
   inputs:
     command: 'build'
     Dockerfile: 'Dockerfile'
+
+- task: Docker@2
+  inputs:
+    repository: '/subscriptions/f76f9b2a-8aaa-49c1-b980-cd3c8191f17a/resourceGroups/team3-skep/providers/Microsoft.ContainerRegistry/registries/skepBuilds'
+    command: 'push'
