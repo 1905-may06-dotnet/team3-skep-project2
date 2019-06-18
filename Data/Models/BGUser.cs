@@ -17,6 +17,8 @@ namespace Data.Models
         [Required]
         public string Password { get; set; }
         [Required]
+        public Guid Salt {get;set;}
+        [Required]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -38,10 +40,11 @@ namespace Data.Models
 
         public BGUser()
         { }
-        public BGUser(string un, string pw, string em, string pn, DateTime dob, bool apn, bool aen)
+        public BGUser(string un, string pw, Guid salt, string em, string pn, DateTime dob, bool apn, bool aen)
         {
             Username = un;
             Password = pw;
+            Salt = salt;
             Email = em;
             PhoneNumber = pn;
             DateOfBirth = dob;

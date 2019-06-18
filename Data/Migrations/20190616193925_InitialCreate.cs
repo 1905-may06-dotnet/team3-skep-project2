@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class test : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,18 @@ namespace Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BGLocation", x => x.LID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Friend",
+                columns: table => new
+                {
+                    FID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Friend", x => x.FID);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,6 +55,7 @@ namespace Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Username = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
+                    Salt = table.Column<Guid>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     PhoneNumber = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
@@ -80,25 +93,6 @@ namespace Data.Migrations
                         column: x => x.genre,
                         principalTable: "Genres",
                         principalColumn: "Genre",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Friend",
-                columns: table => new
-                {
-                    FID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BGUserUID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Friend", x => x.FID);
-                    table.ForeignKey(
-                        name: "FK_Friend_BGUser_BGUserUID",
-                        column: x => x.BGUserUID,
-                        principalTable: "BGUser",
-                        principalColumn: "UID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -324,11 +318,6 @@ namespace Data.Migrations
                 name: "IX_BoardGame_genre",
                 table: "BoardGame",
                 column: "genre");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Friend_BGUserUID",
-                table: "Friend",
-                column: "BGUserUID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FriendInvitation_BGUserUID",

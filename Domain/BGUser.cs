@@ -6,9 +6,22 @@ namespace Domain
 {
     public class BGUser
     {
+        public BGUser(string U,string Pass){
+            this.Username = U;
+            this.Password = Pass;
+        }
+        public BGUser(string U,string Pass,string Em, Guid salt)
+        {
+            this.Username = U;
+            this.Email = Em;
+            this.Password = Pass;
+            this.Salt = salt;
+        }
+        public BGUser() { }
         public int UID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public Guid Salt {get;set;}
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }

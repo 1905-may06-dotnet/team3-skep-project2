@@ -19,7 +19,7 @@ namespace Data.Models
         public virtual DbSet<Friend> FriendInvitation { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlServer($"Server=evanh2019dbserver.database.windows.net;Database=PizzaBoxDb;Server=evanh2019dbserver.database.windows.net;Database=PizzaBoxDb;user id=evanhuang10;Password=Password123;");
+            optionBuilder.UseSqlServer($"Server=skep.database.windows.net; Database=GSBGM; user id=skepadmin;Password=Password123;");
         }
     }
 }

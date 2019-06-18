@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 namespace GSBGMconsole_APP
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
-            //Client c = new Client();
-            ////c.RunAPP();
+            //Guid u = Guid.NewGuid();
+            //Console.WriteLine(u);
+            Client c = new Client();
+            c.RunAPP();
             //c.UserActivity("evanh");
 
             //Data.Repo r = new Data.Repo();
@@ -19,12 +21,12 @@ namespace GSBGMconsole_APP
             //int countafter = r.GetUserByUserName("evanh").HasFriends.Count;
             //Console.WriteLine(countafter);
 
-            if (false)
-            {
-                Console.WriteLine("some m");
-            }
+            //if (false)
+            //{
+            //    Console.WriteLine("some m");
+            //}
 
-                
+
         }
     }
 }

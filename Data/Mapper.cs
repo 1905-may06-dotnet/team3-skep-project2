@@ -32,11 +32,13 @@ namespace Data
         };
         public static Domain.BGUser Map(Data.Models.BGUser User) => new Domain.BGUser
         {
+
             UID = User.UID,
             AllowEN = User.AllowEN,
             AllowPN = User.AllowPN,
             DateOfBirth = User.DateOfBirth,
             Email = User.Email,
+            Salt = User.Salt,
             PhoneNumber = User.PhoneNumber,
             Location=Map(User.Location),
             UserCollections = User.UserCollections.Select(x => Map(x)).ToList(),
@@ -59,6 +61,7 @@ namespace Data
             AllowPN = User.AllowPN,
             DateOfBirth = User.DateOfBirth,
             Email = User.Email,
+            Salt = User.Salt,
             PhoneNumber = User.PhoneNumber,
             Location = Map(User.Location),
             UserCollections = User.UserCollections.Select(x => Map(x)).ToList(),

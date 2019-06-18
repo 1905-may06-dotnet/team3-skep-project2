@@ -4,27 +4,46 @@ using System.Text;
 using Data.Models;
 using System.Linq;
 using Domain;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace Data
 {
     public class Repo:IRepo
     {
-        public bool UsernameExist(string un)
+        public virtual bool UsernameExist(string un)
         {
             bool Exist = DbInstance.Instance.BGUser.Any(r => r.Username == un);
             return Exist;
         }
 
-        public bool PasswordMatched(string un, string pw)
+        public virtual bool PasswordMatched(string un, string pw)
         {
-            return pw == DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault().Password;
+            var user = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
+            string Password =  user.Password;
+            Guid g = user.Salt;
+            string salt = g.ToString();
+            byte[] saltToBytes = Encoding.ASCII.GetBytes(salt);
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: pw,
+                salt: saltToBytes,
+                prf: KeyDerivationPrf.HMACSHA1,
+                iterationCount: 10000,
+                numBytesRequested: 256 / 8));
+            return hashed == Password;
         }
 
-        public void AddUser(Domain.BGUser user)
+        public virtual void AddUser(Domain.BGUser user)
         {
             DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
             DbInstance.Instance.SaveChanges();
         }
+        public void AddUser(Data.Models.BGUser user)
+        {
+            DbInstance.Instance.BGUser.Add(user);
+            DbInstance.Instance.SaveChanges();
+        }
+
         public Data.Models.BGUser GetUserByUserName(string un)
         {
             return DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
