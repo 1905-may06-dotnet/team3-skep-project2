@@ -7,9 +7,9 @@ namespace Data.Models
     {
         public BGLocation()
         {
-            BGUser = new HashSet<BGUser>();
-            Meeting = new HashSet<Meeting>();
-            MeetingRequest = new HashSet<MeetingRequest>();
+            BGUser = new List<BGUser>();
+            Meeting = new List<Meeting>();
+            MeetingRequest = new List<MeetingRequest>();
         }
 
         public int Lid { get; set; }
@@ -18,8 +18,8 @@ namespace Data.Models
         public string City { get; set; }
         public string State { get; set; }
 
-        public virtual ICollection<BGUser> BGUser { get; set; }
-        public virtual ICollection<Meeting> Meeting { get; set; }
-        public virtual ICollection<MeetingRequest> MeetingRequest { get; set; }
+        public virtual List<BGUser> BGUser { get; set; }
+        public virtual List<Meeting> Meeting { get; set; }
+        public virtual List<MeetingRequest> MeetingRequest { get; set; }
     }
 }
