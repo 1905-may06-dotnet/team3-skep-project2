@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Data;
 
 namespace GSBGMconsole_APP
 {
@@ -37,7 +38,7 @@ namespace GSBGMconsole_APP
                     }
                 }
                 while (!r.UsernameExist(un)||!r.PasswordMatched(un,pw));
-                LoginUser = r.GetUserByUserName(un);
+                LoginUser = r.GetUserByUsername(un);
             }
             else if (selectNum == 2)
             {
@@ -73,7 +74,7 @@ namespace GSBGMconsole_APP
                 Domain.BGUser newUser = new Domain.BGUser(un, pw, em, pn, dob, apn, aen);
                 r.AddUser(newUser);
                 Console.WriteLine("new user added successfully!");
-                LoginUser = r.GetUserByUserName(un);
+                LoginUser = r.GetUserByUsername(un);
             }
             UserActivity(LoginUser.Username);
 
@@ -84,7 +85,7 @@ namespace GSBGMconsole_APP
         {
             Data.Repo r = new Data.Repo();
             Data.Models.BGUser LoginUser = new Data.Models.BGUser();
-            LoginUser = r.GetUserByUserName(un);
+            LoginUser = r.GetUserByUsername(un);
             Console.WriteLine($"welcome {LoginUser.Username}");
             Console.WriteLine("(1).Friends");
             Console.WriteLine("(2).Add a Friend");

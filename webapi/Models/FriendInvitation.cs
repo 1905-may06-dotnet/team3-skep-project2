@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.Models
+namespace webapi.Models
 {
     public partial class FriendInvitation
     {

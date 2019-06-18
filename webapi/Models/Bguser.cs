@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.Models
+namespace webapi.Models
 {
     public partial class BGUser
     {
@@ -19,29 +19,19 @@ namespace Data.Models
             RatingRatingU = new HashSet<Rating>();
             RatingSurveyTakerU = new HashSet<Rating>();
             UserCollection = new HashSet<UserCollection>();
-            MeetingMenber = new HashSet<MeetingMenber>();
+            UserMeeting = new HashSet<UserMeeting>();
         }
 
         public int Uid { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public Guid Salt { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public DateTime DoB { get; set; }
-        public bool AllowEN { get; set; }
-        public bool AllowPN { get; set; }
+        public string DoB { get; set; }
+        public bool AllowEn { get; set; }
+        public bool AllowPn { get; set; }
         public int? Lid { get; set; }
-        public BGUser(string un, string pw, string em, string pn, DateTime dob, bool apn, bool aen)
-        {
-            Username = un;
-            Password = pw;
-            Email = em;
-            PhoneNumber = pn;
-            DoB = dob;
-            AllowPN = apn;
-            AllowEN = aen;
-        }
+
         public virtual BGLocation L { get; set; }
         public virtual ICollection<FriendInvitation> FriendInvitationReceiverU { get; set; }
         public virtual ICollection<FriendInvitation> FriendInvitationSenderU { get; set; }
@@ -55,6 +45,6 @@ namespace Data.Models
         public virtual ICollection<Rating> RatingRatingU { get; set; }
         public virtual ICollection<Rating> RatingSurveyTakerU { get; set; }
         public virtual ICollection<UserCollection> UserCollection { get; set; }
-        public virtual ICollection<MeetingMenber> MeetingMenber { get; set; }
+        public virtual ICollection<UserMeeting> UserMeeting { get; set; }
     }
 }

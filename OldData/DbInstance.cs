@@ -7,17 +7,17 @@ namespace Data
 {
     public sealed class DbInstance
     {
-        private static Models.GSBGMFinalContext instance = null;
+        private static Models.DBcontext instance = null;
         private DbInstance()
         {
         }
-        public static Models.GSBGMFinalContext Instance
+        public static Models.DBcontext Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Models.GSBGMFinalContext();
+                    instance = new Models.DBcontext();
                     return instance;
                 }
                 else

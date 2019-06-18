@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.Models
+namespace webapi.Models
 {
     public partial class Meeting
     {
@@ -9,7 +9,7 @@ namespace Data.Models
         {
             MeetingInvitation = new HashSet<MeetingInvitation>();
             Rating = new HashSet<Rating>();
-            MeetingMenber = new HashSet<MeetingMenber>();
+            UserMeeting = new HashSet<UserMeeting>();
         }
 
         public int Mid { get; set; }
@@ -23,6 +23,6 @@ namespace Data.Models
         public virtual BGLocation L { get; set; }
         public virtual ICollection<MeetingInvitation> MeetingInvitation { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }
-        public virtual ICollection<MeetingMenber> MeetingMenber { get; set; }
+        public virtual ICollection<UserMeeting> UserMeeting { get; set; }
     }
 }
