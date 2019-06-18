@@ -72,6 +72,63 @@ namespace Data
         {
             return DbInstance.Instance.Friend.Where<Models.Friend>(r => r.FID == fid).FirstOrDefault();
         }
+        #region ProfileAPI
+        public void UpdateUserName(string newName, string oldName)
+        {
+            if (GetUserByUserName(oldName) != null)
+            {
+                var user=GetUserByUserName(oldName);
+                user.Username = newName;
+                DbInstance.Instance.BGUser.Update(user);
+             }
+        }
+
+        public void UpdatePassword(string newPassword, string User)
+        {
+            if (GetUserByUserName(User) != null)
+            {
+                var user = GetUserByUserName(User);
+                user.Password = newPassword;
+                DbInstance.Instance.BGUser.Update(user);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+        public void UpdateEmail(string newEmail, string User)
+        {
+            if (GetUserByUserName(User) != null)
+            {
+                var user = GetUserByUserName(User);
+                user.Email = newEmail;
+                DbInstance.Instance.BGUser.Update(user);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+
+        public void UpdateLoction(Domain.BGLocation newLocation, string User)
+        {
+            if (GetUserByUserName(User) != null)
+            {
+                var user = GetUserByUserName(User);
+                DbInstance.Instance.Attach(Mapper.Map(newLocation));
+                DbInstance.Instance.BGUser.Update(user);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+        public void UpdatePhoneNumber(string newNumber, string User)
+        {
+            if (GetUserByUserName(User) != null)
+            {
+                var user = GetUserByUserName(User);
+                user.PhoneNumber = newNumber;
+                DbInstance.Instance.BGUser.Update(user);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+        public void addGames(int BGGID, string User)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion ProfileAPI
         //public List<BGUser> GetFriends()
         //{
 
