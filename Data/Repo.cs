@@ -16,7 +16,6 @@ namespace Data
             bool Exist = DbInstance.Instance.BGUser.Any(r => r.Username == un);
             return Exist;
         }
-
         public virtual bool PasswordMatched(string un, string pw)
         {
             var user = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
@@ -38,21 +37,15 @@ namespace Data
             DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
             DbInstance.Instance.SaveChanges();
         }
-        public void AddUser(Data.Models.BGUser user)
-        {
-            DbInstance.Instance.BGUser.Add(user);
-            DbInstance.Instance.SaveChanges();
-        }
-
-        public Data.Models.BGUser GetUserByUserName(string un)
+        public virtual Data.Models.BGUser GetUserByUserName(string un)
         {
             return DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
         }
-        public Data.Models.BGUser GetUserFriendList(string un)
+        public virtual Data.Models.BGUser GetUserFriendList(string un)
         {
             return DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
         }
-        public void AddFriend(string un1, string un2)
+        public virtual void AddFriend(string un1, string un2)
         {
             //Data.Models.Friend friend1 = new Data.Models.Friend(GetUserByUserName(un1).UID, GetUserByUserName(un2).UID);
             //Data.Models.Friend friend2 = new Data.Models.Friend(GetUserByUserName(un2).UID, GetUserByUserName(un1).UID);
@@ -68,12 +61,12 @@ namespace Data
             GetUserByUserName(un2).IsFriendTo.Add(GetFriendByFID(fid));
             DbInstance.Instance.SaveChanges();
         }
-        public Models.Friend GetFriendByFID(int fid)
+        public virtual Models.Friend GetFriendByFID(int fid)
         {
             return DbInstance.Instance.Friend.Where<Models.Friend>(r => r.FID == fid).FirstOrDefault();
         }
         #region ProfileAPI
-        public void UpdateUserName(string newName, string oldName)
+        public virtual void UpdateUserName(string newName, string oldName)
         {
             if (GetUserByUserName(oldName) != null)
             {
@@ -83,7 +76,7 @@ namespace Data
              }
         }
 
-        public void UpdatePassword(string newPassword, string User)
+        public virtual void UpdatePassword(string newPassword, string User)
         {
             if (GetUserByUserName(User) != null)
             {
@@ -93,7 +86,7 @@ namespace Data
                 DbInstance.Instance.SaveChanges();
             }
         }
-        public void UpdateEmail(string newEmail, string User)
+        public virtual void UpdateEmail(string newEmail, string User)
         {
             if (GetUserByUserName(User) != null)
             {
@@ -104,7 +97,7 @@ namespace Data
             }
         }
 
-        public void UpdateLoction(Domain.BGLocation newLocation, string User)
+        public virtual void UpdateLoction(Domain.BGLocation newLocation, string User)
         {
             if (GetUserByUserName(User) != null)
             {
@@ -114,7 +107,7 @@ namespace Data
                 DbInstance.Instance.SaveChanges();
             }
         }
-        public void UpdatePhoneNumber(string newNumber, string User)
+        public virtual void UpdatePhoneNumber(string newNumber, string User)
         {
             if (GetUserByUserName(User) != null)
             {
@@ -124,18 +117,10 @@ namespace Data
                 DbInstance.Instance.SaveChanges();
             }
         }
-        public void AddGames(int BGGID, string User)
+        public virtual void AddGames(int BGGID, string User)
         {
             throw new NotImplementedException();
         }
         #endregion ProfileAPI
-        //public List<BGUser> GetFriends()
-        //{
-
-        //}
-
-        //void AddUser(DMAppUser r);
-        //void AddUser(string un, string pw, string fn, String phoneN);
-        //DMAppUser GetUserByUserName(string un);
     }
 }
