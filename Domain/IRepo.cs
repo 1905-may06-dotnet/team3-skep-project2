@@ -13,8 +13,9 @@ namespace Domain
         void UpdatePassword(string newPassword, string User);
         void UpdateEmail(string newEmail, string User);
         void UpdateLoction(BGLocation newLocation, string User);
-        void addGames(int BGGID, string User);
+        void AddGames(int BGGID, string User);
         void UpdatePhoneNumber(string newNumber, string User);
+        BGLocation GetLocation(string locationName);
         //void AddUser(string un, string pw, string fn, String phoneN);
         //DMAppUser GetUserByUserName(string un);
     }
