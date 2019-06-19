@@ -124,7 +124,7 @@ namespace Data
                 DbInstance.Instance.SaveChanges();
             }
         }
-        public void addGames(int BGGID, string User)
+        public void AddGames(int BGGID, string User)
         {
             throw new NotImplementedException();
         }
