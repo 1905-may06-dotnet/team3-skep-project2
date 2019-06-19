@@ -7,9 +7,9 @@ namespace Domain
     public class MeetingInvitation
     {
         public int mIID { get; set; }
-        private int senderUID { get; set; }
-        private int receiverUID { get; set; }
-        private int mID { get; set; }
+        public int senderUID { get; set; }
+        public int receiverUID { get; set; }
+        public int mID { get; set; }
 
         public int SenderUID { get => mIID; set
             {

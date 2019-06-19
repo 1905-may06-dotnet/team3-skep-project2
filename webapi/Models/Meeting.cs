@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.Models
+namespace webapi.Models
 {
     public partial class Meeting
     {
         public Meeting()
         {
-            //actually needed
-            MeetingInvitations = new List<MeetingInvitation>();
-            Ratings = new List<Rating>();
-            MeetingMenbers = new List<BGUser>();
-            //for creating database relationship
             MeetingInvitation = new HashSet<MeetingInvitation>();
             Rating = new HashSet<Rating>();
-            MeetingMenber = new HashSet<MeetingMenber>();
+            UserMeeting = new HashSet<UserMeeting>();
         }
 
         public int Mid { get; set; }
@@ -26,11 +21,8 @@ namespace Data.Models
         public virtual BoardGame G { get; set; }
         public virtual BGUser HostU { get; set; }
         public virtual BGLocation L { get; set; }
-        public List<BGUser> MeetingMenbers { get; set; }
-        public List<MeetingInvitation> MeetingInvitations { get; set; }
-        public List<Rating> Ratings { get; set; }
         public virtual ICollection<MeetingInvitation> MeetingInvitation { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }
-        public virtual ICollection<MeetingMenber> MeetingMenber { get; set; }
+        public virtual ICollection<UserMeeting> UserMeeting { get; set; }
     }
 }

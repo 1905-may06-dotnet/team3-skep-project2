@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.Models
+namespace webapi.Models
 {
     public partial class BoardGame
     {
         public BoardGame()
         {
-            //what we acatually need
-            Meetings = new List<Meeting>();
-            MeetingRequestList = new List<MeetingRequest>();
-            UserCollections = new List<UserCollection>();
-            //needed to create database relationship
             Meeting = new HashSet<Meeting>();
             MeetingRequest = new HashSet<MeetingRequest>();
             UserCollection = new HashSet<UserCollection>();
@@ -26,11 +21,7 @@ namespace Data.Models
         public string ThumbnailUrl { get; set; }
         public double? Bggrating { get; set; }
         public int? PlayTime { get; set; }
-        //what we acatually need
-        public List<Meeting> Meetings { get; set; }
-        public  List<MeetingRequest> MeetingRequestList { get; set; }
-        public  List<UserCollection> UserCollections { get; set; }
-        //needed to create database relationship
+
         public virtual ICollection<Meeting> Meeting { get; set; }
         public virtual ICollection<MeetingRequest> MeetingRequest { get; set; }
         public virtual ICollection<UserCollection> UserCollection { get; set; }
