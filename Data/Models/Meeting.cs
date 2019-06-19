@@ -7,9 +7,14 @@ namespace Data.Models
     {
         public Meeting()
         {
-            MeetingInvitation = new List<MeetingInvitation>();
-            Rating = new List<Rating>();
-            MeetingMenber = new List<MeetingMenber>();
+            //actually needed
+            MeetingInvitations = new List<MeetingInvitation>();
+            Ratings = new List<Rating>();
+            MeetingMenbers = new List<BGUser>();
+            //for creating database relationship
+            MeetingInvitation = new HashSet<MeetingInvitation>();
+            Rating = new HashSet<Rating>();
+            MeetingMenber = new HashSet<MeetingMenber>();
         }
 
         public int Mid { get; set; }
@@ -21,8 +26,11 @@ namespace Data.Models
         public virtual BoardGame G { get; set; }
         public virtual BGUser HostU { get; set; }
         public virtual BGLocation L { get; set; }
-        public virtual List<MeetingInvitation> MeetingInvitation { get; set; }
-        public virtual List<Rating> Rating { get; set; }
-        public virtual List<MeetingMenber> MeetingMenber { get; set; }
+        public List<BGUser> MeetingMenbers { get; set; }
+        public List<MeetingInvitation> MeetingInvitations { get; set; }
+        public List<Rating> Ratings { get; set; }
+        public virtual ICollection<MeetingInvitation> MeetingInvitation { get; set; }
+        public virtual ICollection<Rating> Rating { get; set; }
+        public virtual ICollection<MeetingMenber> MeetingMenber { get; set; }
     }
 }

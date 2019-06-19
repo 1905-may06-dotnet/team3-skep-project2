@@ -9,7 +9,7 @@ namespace Data.Models
         public int RatingUid { get; set; }
         public int SurveyTakerUid { get; set; }
         public int Mid { get; set; }
-        public int Rating1 { get; set; }
+        public int RatingScore { get; set; }
 
         public virtual Meeting M { get; set; }
         public virtual BGUser RatingU { get; set; }

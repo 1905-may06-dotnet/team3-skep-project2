@@ -7,9 +7,14 @@ namespace Data.Models
     {
         public BGLocation()
         {
+            //what we acatually need
             BGUser = new List<BGUser>();
             Meeting = new List<Meeting>();
             MeetingRequest = new List<MeetingRequest>();
+            //needed to create database relationship
+            BGUser = new HashSet<BGUser>();
+            Meeting = new HashSet<Meeting>();
+            MeetingRequest = new HashSet<MeetingRequest>();
         }
 
         public int Lid { get; set; }
@@ -18,8 +23,14 @@ namespace Data.Models
         public string City { get; set; }
         public string State { get; set; }
 
-        public virtual List<BGUser> BGUser { get; set; }
-        public virtual List<Meeting> Meeting { get; set; }
-        public virtual List<MeetingRequest> MeetingRequest { get; set; }
+
+        //what we acatually need
+        public  List<BGUser> UserList { get; set; }
+        public  List<Meeting> MeetingList { get; set; }
+        public  List<MeetingRequest> MeetingRequestList { get; set; }
+        //needed to create database relationship
+        public virtual ICollection<BGUser> BGUser { get; set; }
+        public virtual ICollection<Meeting> Meeting { get; set; }
+        public virtual ICollection<MeetingRequest> MeetingRequest { get; set; }
     }
 }

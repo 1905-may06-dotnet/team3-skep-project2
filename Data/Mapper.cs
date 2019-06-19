@@ -41,11 +41,11 @@ namespace Data
             Email = user.Email,
             PhoneNumber = user.PhoneNumber,
             Location = Map(user.PreferedLocation),
-            UserCollections = user.UserCollection.Select(x => Map(x)).ToList(),
-            Ratings = user.Rating.Select(x => Map(x)).ToList(),
+            UserCollections = user.UserCollections.Select(x => Map(x)).ToList(),
+            Ratings = user.Ratings.Select(x => Map(x)).ToList(),
             FriendInvitationsAsSender = user.FriendInvitationsAsSender.Select(x => Map(x)).ToList(),
             FriendInvitationsAsReceiver = user.FriendInvitationsAsReceiver.Select(x => Map(x)).ToList(),
-            UserMeetings = user.UserMeetings.Select(x => Map(x)).ToList(),
+            MeetingsJoined = user.MeetingsJoined.Select(x => Map(x)).ToList(),
             MeetingsHost = user.MeetingsHost.Select(x => Map(x)).ToList(),
             MeetingInvitationsAsSender = user.MeetingInvitationsAsSender.Select(x => Map(x)).ToList(),
             MeetingInvitationsAsReceiver = user.MeetingInvitationsAsReceiver.Select(x => Map(x)).ToList(),
@@ -66,7 +66,7 @@ namespace Data
             Ratings = user.Ratings.Select(x => Map(x)).ToList(),
             FriendInvitationsAsSender = user.FriendInvitationsAsSender.Select(x => Map(x)).ToList(),
             FriendInvitationsAsReceiver = user.FriendInvitationsAsReceiver.Select(x => Map(x)).ToList(),
-            UserMeetings = user.UserMeetings.Select(x => Map(x)).ToList(),
+            MeetingsJoined = user.MeetingsJoined.Select(x => Map(x)).ToList(),
             MeetingsHost = user.MeetingsHost.Select(x => Map(x)).ToList(),
             MeetingInvitationsAsSender = user.MeetingInvitationsAsSender.Select(x => Map(x)).ToList(),
             MeetingInvitationsAsReceiver = user.MeetingInvitationsAsReceiver.Select(x => Map(x)).ToList(),
@@ -76,23 +76,31 @@ namespace Data
 
         public static Domain.BoardGame Map(Data.Models.BoardGame board) => new Domain.BoardGame
         {
-            BGName = board.BGName,
-            Genre = Map(board.Genre),
-            GID = board.GID,
+            BGName = board.Bgname,
+            Mechanics = board.Mechanics,
+            GID = board.Gid,
             MaxPlayerCount = board.MaxPlayerCount,
             MinPlayerCount = board.MinPlayerCount,
-            UserCollections= board.UserCollections.Select(x => Map(x)).ToList(),
+            BggId=(int)board.BggId,
+            ThumbnailUrl = board.ThumbnailUrl,
+            Bggrating = (int)board.Bggrating,
+            PlayTime = (int)board.PlayTime,
+            UserCollections = board.UserCollections.Select(x => Map(x)).ToList(),
             MeetingRequestList = board.MeetingRequestList.Select(x => Map(x)).ToList(),
             Meetings = board.Meetings.Select(x => Map(x)).ToList()
         };
 
         public static Data.Models.BoardGame Map(Domain.BoardGame board) => new Data.Models.BoardGame
         {
-            BGName = board.BGName,
-            Genre = Map(board.Genre),
-            GID = board.GID,
+            Bgname = board.BGName,
+            Mechanics = board.Mechanics,
+            Gid = board.GID,
             MaxPlayerCount = board.MaxPlayerCount,
             MinPlayerCount = board.MinPlayerCount,
+            BggId = (int)board.BggId,
+            ThumbnailUrl = board.ThumbnailUrl,
+            Bggrating = (int)board.Bggrating,
+            PlayTime = (int)board.PlayTime,
             UserCollections = board.UserCollections.Select(x => Map(x)).ToList(),
             MeetingRequestList = board.MeetingRequestList.Select(x => Map(x)).ToList(),
             Meetings = board.Meetings.Select(x => Map(x)).ToList()
@@ -100,107 +108,135 @@ namespace Data
 
         public static Domain.Friend Map(Data.Models.Friend friend) => new Domain.Friend
         {
-            FID=friend.FID
+            FID=friend.Fid,
+            Uid1= friend.Uid1,
+            Uid2 = friend.Uid2
         };
 
         public static Data.Models.Friend Map(Domain.Friend friend) => new Data.Models.Friend
         {
-            FID = friend.FID           
+            Fid = friend.FID,
+            Uid1 = friend.Uid1,
+            Uid2 = friend.Uid2
         };
 
         public static Domain.FriendInvitation Map(Data.Models.FriendInvitation friend) => new Domain.FriendInvitation
         {
-            FIID = friend.FIID
+            FIID = friend.Fiid,
+            SenderUid=friend.SenderUid,
+            ReceiverUid=friend.ReceiverUid
         };
 
         public static Data.Models.FriendInvitation Map(Domain.FriendInvitation friend) => new Data.Models.FriendInvitation
         {
-            FIID = friend.FIID
+            Fiid = friend.FIID,
+            SenderUid = friend.SenderUid,
+            ReceiverUid = friend.ReceiverUid
         };
-
-        public static Domain.Genres Map(Data.Models.Genres genres) => new Domain.Genres
-        {
-            Genre = genres.Genre
-        };
-
-        public static Data.Models.Genres Map(Domain.Genres genres) => new Data.Models.Genres
-        {
-            Genre = genres.Genre
-        };
-
         public static Domain.Meeting Map(Data.Models.Meeting meeting) => new Domain.Meeting
         {
-            MID=meeting.MID,
-            MeetingTime=meeting.MeetingTime,
-            UserMeetings = meeting.UserMeetings.Select(x => Map(x)).ToList(),
-            MeetingInvitation = meeting.MeetingInvitation.Select(x => Map(x)).ToList(),
-            RatingList = meeting.RatingList.Select(x => Map(x)).ToList()
+            MID=meeting.Mid,
+            MeetingTime=meeting.DateAndTime,
+            Lid=meeting.Lid,
+            Gid= meeting.Gid,
+            HostUid = meeting.HostUid,
+            MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
+            MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
+            Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
         };
 
         public static Data.Models.Meeting Map(Domain.Meeting meeting) => new Data.Models.Meeting
         {
-            MID = meeting.MID,
-            MeetingTime = meeting.MeetingTime,
-            UserMeetings = meeting.UserMeetings.Select(x => Map(x)).ToList(),
-            MeetingInvitation = meeting.MeetingInvitation.Select(x => Map(x)).ToList(),
-            RatingList = meeting.RatingList.Select(x => Map(x)).ToList()
+            Mid = meeting.MID,
+            DateAndTime = meeting.MeetingTime,
+            Lid = meeting.Lid,
+            Gid = meeting.Gid,
+            HostUid = meeting.HostUid,
+            MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
+            MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
+            Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
         };
 
         public static Domain.MeetingInvitation Map(Data.Models.MeetingInvitation mi) => new Domain.MeetingInvitation
         {
-            MID = mi.MIID,
-            
+            MID = mi.Miid,
+            senderUID=mi.InitiatorUid,
+            receiverUID=mi.ReceiverUid,
+            mID=mi.Mid
         };
 
         public static Data.Models.MeetingInvitation Map(Domain.MeetingInvitation mi) => new Data.Models.MeetingInvitation
         {
-            MIID = mi.MID,
-
+            Miid = mi.MID,
+             InitiatorUid= mi.senderUID,
+             ReceiverUid= mi.receiverUID,
+             Mid= mi.mID
         };
 
         public static Domain.MeetingRequest Map(Data.Models.MeetingRequest mr) => new Domain.MeetingRequest
         {
-            MRID=mr.MRID,
-            MeetingTime=mr.MeetingTime
+            MRID=mr.Mrid,
+            MeetingTime=mr.DateAndTime,
+            Lid = mr.Lid,
+            Gid = mr.Gid,
+            InitiatorUid = mr.InitiatorUid,
+            ReceiverUid = mr.ReceiverUid
         };
 
         public static Data.Models.MeetingRequest Map(Domain.MeetingRequest mr) => new Data.Models.MeetingRequest
         {
-            MRID = mr.MRID,
-            MeetingTime = mr.MeetingTime
-
+            Mrid = mr.MRID,
+            DateAndTime = mr.MeetingTime,
+            Lid=mr.Lid,
+            Gid=mr.Gid,
+            InitiatorUid=mr.InitiatorUid,
+            ReceiverUid=mr.ReceiverUid
         };
 
         public static Domain.Rating Map(Data.Models.Rating r) => new Domain.Rating
         {
-            RID = r.RID,
-            UserRating=r.UserRating
+            RID = r.Rid,
+            RatingScore=r.RatingScore,
+            RatingUid=r.RatingUid,
+            SurveyTakerUid=r.SurveyTakerUid,
+            Mid=r.Mid
         };
         
         public static Data.Models.Rating Map(Domain.Rating r) => new Data.Models.Rating
         {
-            RID = r.RID,
-            UserRating = r.UserRating
+            Rid = r.RID,
+            RatingScore = r.RatingScore,
+            RatingUid = r.RatingUid,
+            SurveyTakerUid = r.SurveyTakerUid,
+            Mid = r.Mid
         };
 
         public static Domain.UserCollection Map(Data.Models.UserCollection uc) => new Domain.UserCollection
         {
-            UCID = uc.UCID
+            UCID = uc.Ucid,
+            Uid=uc.Uid,
+            Gid=uc.Gid
         };
 
         public static Data.Models.UserCollection Map(Domain.UserCollection uc) => new Data.Models.UserCollection
         {
-            UCID = uc.UCID
+            Ucid = uc.UCID,
+            Uid = uc.Uid,
+            Gid = uc.Gid
         };
 
-        public static Domain.UserMeeting Map(Data.Models.UserMeeting um) => new Domain.UserMeeting
+        public static Domain.MeetingMenber Map(Data.Models.MeetingMenber um) => new Domain.MeetingMenber
         {
-            UMID = um.UMID
+            UMID = um.Umid,
+            Uid=um.Uid,
+            Mid=um.Mid
         };
 
-        public static Data.Models.UserMeeting Map(Domain.UserMeeting um) => new Data.Models.UserMeeting
+        public static Data.Models.MeetingMenber Map(Domain.MeetingMenber um) => new Data.Models.MeetingMenber
         {
-            UMID = um.UMID
+            Umid = um.UMID,
+            Uid = um.Uid,
+            Mid = um.Mid
         };
     }
 }

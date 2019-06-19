@@ -116,7 +116,7 @@ namespace Data.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.L)
+                entity.HasOne(d => d.PreferedLocation)
                     .WithMany(p => p.BGUser)
                     .HasForeignKey(d => d.Lid)
                     .HasConstraintName("FK_PreferedLocation_ID");
@@ -314,7 +314,7 @@ namespace Data.Models
 
                 entity.Property(e => e.Mid).HasColumnName("MID");
 
-                entity.Property(e => e.Rating1).HasColumnName("Rating");
+                entity.Property(e => e.RatingScore).HasColumnName("Rating");
 
                 entity.Property(e => e.RatingUid).HasColumnName("RatingUID");
 
