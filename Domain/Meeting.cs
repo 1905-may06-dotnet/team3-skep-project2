@@ -6,6 +6,7 @@ namespace Domain
 {
     public class Meeting
     {
+        
         public int MID { get; set; }
         public DateTime MeetingTime { get; set; }
         public List<UserMeeting> UserMeetings { get; set; }

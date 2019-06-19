@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +12,21 @@ namespace webapi.Controllers
     [ApiController]
     public class MeetingController : ControllerBase
     {
-        
+        private readonly IRepo db;
+        public MeetingController(IRepo db)
+        {
+            this.db = db;
+        }
 
         // POST: api/Meeting
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void AddMeeting([FromBody] string value,[FromBody] DateTime dateTime,[FromBody] int gameID,[FromBody] int locaton)
         {
+
+            Meeting meeting = new Meeting();
+
+            var didItWork = db.CreateMeeting()
+            if ()
         }
 
         // PUT: api/Meeting/5
