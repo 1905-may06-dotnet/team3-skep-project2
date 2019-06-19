@@ -40,7 +40,7 @@ COPY Test/ ../Test
 COPY --from=buildDomain ./Domain/ ../Domain
 COPY --from=buildData ./Data/ ../Data
 COPY --from=buildWeb ./webapi/ ../webapi
-RUN dotnet test ../Test/*.csproj /p:CollectCoverage=true 
+RUN dotnet test ../Test/*.csproj --no-build /p:CollectCoverage=true 
 
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-bionic AS deploy
