@@ -7,6 +7,7 @@ using Domain;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
+
 namespace Data
 {
     public class Repo:IRepo
@@ -117,10 +118,18 @@ namespace Data
                 DbInstance.Instance.SaveChanges();
             }
         }
+
+        public virtual Domain.BGLocation GetLocation(string locationName)
+        {
+            return Mapper.Map(DbInstance.Instance.BGLocation.Where(x => x.LocationName.Contains(locationName)).FirstOrDefault());
+
+        }
         public virtual void AddGames(int BGGID, string User)
         {
             throw new NotImplementedException();
         }
+
+
         #endregion ProfileAPI
     }
 }

@@ -84,7 +84,7 @@ namespace GSBGMconsole_APP
                 int selectNum2 = inputValidation(1, 2);
                 aen = (selectNum1 == 1);
                 Data.Models.BGUser newUser = new Data.Models.BGUser(un, hashed, g, em, pn, dob, apn, aen);
-                r.AddUser(newUser);
+                //r.AddUser(newUser);
                 Console.WriteLine("new user added successfully!");
                 LoginUser = r.GetUserByUserName(un);
             }
