@@ -7,6 +7,10 @@ namespace Domain
     public class MeetingRequest
     {
         public int MRID { get; set; }
+        private int initiatorUID { get; set; }
+        private int receiverUID { get; set; }
+        private int gID {get; set;} // Game ID
+        private int lID { get; set; } // Location ID
         public DateTime MeetingTime { get; set; }
     }
 }

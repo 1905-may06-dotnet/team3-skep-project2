@@ -7,6 +7,7 @@ using Domain;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
+
 namespace Data
 {
     public class Repo:IRepo
@@ -16,7 +17,6 @@ namespace Data
             bool Exist = DbInstance.Instance.BGUser.Any(r => r.Username == un);
             return Exist;
         }
-
         public virtual bool PasswordMatched(string un, string pw)
         {
             var user = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
@@ -38,21 +38,15 @@ namespace Data
             DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
             DbInstance.Instance.SaveChanges();
         }
-        public void AddUser(Data.Models.BGUser user)
-        {
-            DbInstance.Instance.BGUser.Add(user);
-            DbInstance.Instance.SaveChanges();
-        }
-
-        public Data.Models.BGUser GetUserByUserName(string un)
+        public virtual Data.Models.BGUser GetUserByUserName(string un)
         {
             return DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
         }
-        public Data.Models.BGUser GetUserFriendList(string un)
+        public virtual Data.Models.BGUser GetUserFriendList(string un)
         {
             return DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
         }
-        public void AddFriend(string un1, string un2)
+        public virtual void AddFriend(string un1, string un2)
         {
             //Data.Models.Friend friend1 = new Data.Models.Friend(GetUserByUserName(un1).UID, GetUserByUserName(un2).UID);
             //Data.Models.Friend friend2 = new Data.Models.Friend(GetUserByUserName(un2).UID, GetUserByUserName(un1).UID);
@@ -68,17 +62,71 @@ namespace Data
             GetUserByUserName(un2).IsFriendTo.Add(GetFriendByFID(fid));
             DbInstance.Instance.SaveChanges();
         }
-        public Models.Friend GetFriendByFID(int fid)
+        public virtual Models.Friend GetFriendByFID(int fid)
         {
             return DbInstance.Instance.Friend.Where<Models.Friend>(r => r.FID == fid).FirstOrDefault();
         }
-        //public List<BGUser> GetFriends()
-        //{
+        #region ProfileAPI
+        public virtual void UpdateUserName(string newName, string oldName)
+        {
+            if (GetUserByUserName(oldName) != null)
+            {
+                var user=GetUserByUserName(oldName);
+                user.Username = newName;
+                DbInstance.Instance.BGUser.Update(user);
+             }
+        }
 
-        //}
+        public virtual void UpdatePassword(string newPassword, string User)
+        {
+            if (GetUserByUserName(User) != null)
+            {
+                var user = GetUserByUserName(User);
+                user.Password = newPassword;
+                DbInstance.Instance.BGUser.Update(user);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+        public virtual void UpdateEmail(string newEmail, string User)
+        {
+            if (GetUserByUserName(User) != null)
+            {
+                var user = GetUserByUserName(User);
+                user.Email = newEmail;
+                DbInstance.Instance.BGUser.Update(user);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
 
-        //void AddUser(DMAppUser r);
-        //void AddUser(string un, string pw, string fn, String phoneN);
-        //DMAppUser GetUserByUserName(string un);
+        public virtual void UpdateLoction(Domain.BGLocation newLocation, string User)
+        {
+            if (GetUserByUserName(User) != null)
+            {
+                var user = GetUserByUserName(User);
+                DbInstance.Instance.Attach(Mapper.Map(newLocation));
+                DbInstance.Instance.BGUser.Update(user);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+        public virtual void UpdatePhoneNumber(string newNumber, string User)
+        {
+            if (GetUserByUserName(User) != null)
+            {
+                var user = GetUserByUserName(User);
+                user.PhoneNumber = newNumber;
+                DbInstance.Instance.BGUser.Update(user);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+        public virtual void AddGames(int BGGID, string User)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual Domain.BGLocation GetLocationByName(string n){
+            return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.LocationName==n).FirstOrDefault());
+        }
+
+        #endregion ProfileAPI
     }
 }

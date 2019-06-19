@@ -4,5 +4,6 @@ namespace Domain
 {
     public class BLogic
     {
+
     }
 }

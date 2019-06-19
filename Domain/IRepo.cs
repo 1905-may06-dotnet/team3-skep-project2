@@ -9,6 +9,13 @@ namespace Domain
         bool UsernameExist(string un);
         bool PasswordMatched(string un, string pw);
         void AddUser(BGUser r);
+        void UpdateUserName(string newName, string oldName);
+        void UpdatePassword(string newPassword, string User);
+        void UpdateEmail(string newEmail, string User);
+        void UpdateLoction(BGLocation newLocation, string User);
+        void AddGames(int BGGID, string User);
+        void UpdatePhoneNumber(string newNumber, string User);
+        BGLocation GetLocationByName(string locationName);
         //void AddUser(string un, string pw, string fn, String phoneN);
         //DMAppUser GetUserByUserName(string un);
     }
