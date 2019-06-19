@@ -42,20 +42,6 @@ namespace Domain
         public List<MeetingInvitation> MeetingInvitationsAsReceiver { get; set; }
         public List<MeetingRequest> MeetingRequestsAsSender { get; set; }
         public List<MeetingRequest> MeetingRequestsAsReceiver { get; set; }
-        public BGUser()
-        {
-            UserCollections = new List<BoardGame>();
-            HasFriends = new List<Friend>();
-            FriendInvitationsAsSender = new List<FriendInvitation>();
-            FriendInvitationsAsReceiver = new List<FriendInvitation>();
-            MeetingsJoined = new List<Meeting>();
-            MeetingsHost = new List<Meeting>();
-            MeetingInvitationsAsSender = new List<MeetingInvitation>();
-            MeetingInvitationsAsReceiver = new List<MeetingInvitation>();
-            MeetingRequestsAsSender = new List<MeetingRequest>();
-            MeetingRequestsAsReceiver = new List<MeetingRequest>();
-            Ratings = new List<Rating>();
-        }
         public BGUser(string un, string pw, string em, string pn, DateTime dob, bool apn, bool aen)
         {
                 Username = un;

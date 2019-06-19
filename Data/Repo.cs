@@ -126,7 +126,7 @@ namespace Data
         }
 
         public virtual Domain.BGLocation GetLocationById(int n){
-            return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.LID==n).FirstOrDefault());
+            return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.Lid==n).FirstOrDefault());
         }
 
         #endregion ProfileAPI
