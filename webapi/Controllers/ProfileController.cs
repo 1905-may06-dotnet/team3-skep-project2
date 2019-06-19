@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace webapi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Profile/[controller]")]
     [ApiController]
     public class ProfileController : ControllerBase
     {
@@ -74,47 +74,11 @@ namespace webapi.Controllers
 
             if (db.UsernameExist(confirmUser))
             {
-                var l=db.GetLocation(location);
-                db.UpdateLoction(l, confirmUser);
+                var BGLocation = db.GetLocationByName(location);
+                db.UpdateLoction(BGLocation, confirmUser);
                 return Accepted(g);
             }
             return BadRequest();
-        }
-
-
-
-
-
-        // GET: api/Profile
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Profile/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Profile
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Profile/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
