@@ -17,8 +17,9 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               mock.Setup(x => x.UpdateUserName("newMan","test"));//forgot to add setup to UpdateUserName
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdateUserName("test", g,  "test");
+               var response = profileController.UpdateUserName("newMan", g,  "test");
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(AcceptedResult));
           }
@@ -27,8 +28,9 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               mock.Setup(x => x.UpdateUserName("newMan", "fail"));
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdateUserName("test", g,  "testing");
+               var response = profileController.UpdateUserName("test", g,  "fail");
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(BadRequestResult));
           }
@@ -77,6 +79,7 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               mock.Setup(x => x.UpdatePassword("test","test"));
                ProfileController profileController = new ProfileController(mock.Object);
                var response = profileController.UpdatePassword("test", g,  "test");
                Assert.IsNotNull(response);
@@ -87,6 +90,7 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               mock.Setup(x => x.UpdatePassword("test", "test"));
                ProfileController profileController = new ProfileController(mock.Object);
                var response = profileController.UpdatePassword("testing", g,  "testing");
                Assert.IsNotNull(response);

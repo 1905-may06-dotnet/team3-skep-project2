@@ -118,24 +118,15 @@ namespace Data
                 DbInstance.Instance.SaveChanges();
             }
         }
-
-        public virtual Domain.BGLocation GetLocation(string locationName)
-        {
-            return Mapper.Map(DbInstance.Instance.BGLocation.Where(x => x.LocationName.Contains(locationName)).FirstOrDefault());
-
-        }
         public virtual void AddGames(int BGGID, string User)
         {
             throw new NotImplementedException();
         }
-<<<<<<< Updated upstream
 
-
-=======
         public virtual Domain.BGLocation GetLocationByName(string n){
             return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.LocationName==n).FirstOrDefault());
         }
->>>>>>> Stashed changes
+
         #endregion ProfileAPI
     }
 }
