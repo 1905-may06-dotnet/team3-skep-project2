@@ -128,14 +128,9 @@ namespace Data
         {
             throw new NotImplementedException();
         }
-<<<<<<< Updated upstream
-
-
-=======
         public virtual Domain.BGLocation GetLocationByName(string n){
             return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.LocationName==n).FirstOrDefault());
         }
->>>>>>> Stashed changes
         #endregion ProfileAPI
     }
 }
