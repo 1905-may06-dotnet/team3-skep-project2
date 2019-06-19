@@ -123,8 +123,8 @@ namespace Data
             throw new NotImplementedException();
         }
 
-        public virtual Domain.BGLocation GetLocationByName(string n){
-            return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.LocationName==n).FirstOrDefault());
+        public virtual Domain.BGLocation GetLocationById(int n){
+            return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.LID==n).FirstOrDefault());
         }
 
         #endregion ProfileAPI

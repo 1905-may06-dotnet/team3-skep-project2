@@ -20,6 +20,9 @@ namespace Domain
         public BGUser() { }
         public int UID { get; set; }
         public string Username { get; set; }
+        public string New{get;set;}
+        //MAP ME Please
+        public Guid Token{get;set;}
         public string Password { get; set; }
         public Guid Salt {get;set;}
         public string Email { get; set; }
