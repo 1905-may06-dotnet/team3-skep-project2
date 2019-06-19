@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace Data
 {
-    public class Repo:IRepo
+    public class Repo : IRepo
     {
         public virtual bool UsernameExist(string un)
         {
@@ -126,7 +126,22 @@ namespace Data
         public virtual Domain.BGLocation GetLocationByName(string n){
             return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.LocationName==n).FirstOrDefault());
         }
-
         #endregion ProfileAPI
+        #region MeetingAPI
+        public bool CreateMeeting(Domain.Meeting meeting)
+        {
+            try
+            {
+                DbInstance.Instance.Meeting.Add(Mapper.Map(meeting));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        #endregion MeetingAPI
     }
 }

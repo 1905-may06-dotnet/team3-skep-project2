@@ -16,6 +16,7 @@ namespace Domain
         void AddGames(int BGGID, string User);
         void UpdatePhoneNumber(string newNumber, string User);
         BGLocation GetLocationByName(string locationName);
+        bool CreateMeeting(Meeting meeting);
         //void AddUser(string un, string pw, string fn, String phoneN);
         //DMAppUser GetUserByUserName(string un);
     }
