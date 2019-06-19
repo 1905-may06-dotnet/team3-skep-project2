@@ -68,18 +68,18 @@ namespace webapi.Controllers
                 return BadRequest();
         }
 
-        //public ActionResult UpdateLocation([FromBody] int location, Guid g, [FromBody] string confirmUser)
-        //{
-        //    //get user from guid
+        public ActionResult UpdateLocation([FromBody] string location, Guid g, [FromBody] string confirmUser)
+        {
+            //get user from guid
 
-        //    if (db.UsernameExist(confirmUser))
-        //    {
-                
-        //        db.UpdateLoction(location, confirmUser);
-        //        return Accepted(g);
-        //    }
-        //    return BadRequest();
-        //}
+            if (db.UsernameExist(confirmUser))
+            {
+                var l=db.GetLocation(location);
+                db.UpdateLoction(l, confirmUser);
+                return Accepted(g);
+            }
+            return BadRequest();
+        }
 
 
 

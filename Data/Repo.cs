@@ -119,20 +119,17 @@ namespace Data
             }
         }
 
-        //public virtual Domain.BGLocation GetLocation(string locationName)
-        //{
-        //    return Mapper.Map(DbInstance.Instance.BGLocation.Where(x=> x.LocationName.Contains(locationName)).FirstOrDefault());
+        public virtual Domain.BGLocation GetLocation(string locationName)
+        {
+            return Mapper.Map(DbInstance.Instance.BGLocation.Where(x => x.LocationName.Contains(locationName)).FirstOrDefault());
 
-        //}
+        }
         public virtual void AddGames(int BGGID, string User)
         {
             throw new NotImplementedException();
         }
 
-        public Domain.BGLocation GetLocation(string locationName)
-        {
-            throw new NotImplementedException();
-        }
+
         #endregion ProfileAPI
     }
 }
