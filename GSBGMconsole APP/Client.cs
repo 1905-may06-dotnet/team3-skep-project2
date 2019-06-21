@@ -39,7 +39,7 @@ namespace GSBGMconsole_APP
                     }
                 }
                 while (!r.UsernameExist(un)||!r.PasswordMatched(un,pw));
-                LoginUser = r.GetUserByUsername(un);
+                LoginUser = r.GetUserByUserName(un);
             }
             else if (selectNum == 2)
             {
@@ -87,7 +87,7 @@ namespace GSBGMconsole_APP
                 Data.Models.BGUser newUser = new Data.Models.BGUser(un, hashed, g, em, pn, dob, apn, aen);
                 //r.AddUser(newUser);
                 Console.WriteLine("new user added successfully!");
-                LoginUser = r.GetUserByUsername(un);
+                LoginUser = r.GetUserByUserName(un);
             }
             //UserActivity(LoginUser.Username);
 
@@ -98,7 +98,7 @@ namespace GSBGMconsole_APP
         {
             Data.Repo r = new Data.Repo();
             Data.Models.BGUser LoginUser = new Data.Models.BGUser();
-            LoginUser = r.GetUserByUsername(un);
+            LoginUser = r.GetUserByUserName(un);
             Console.WriteLine($"welcome {LoginUser.Username}");
             Console.WriteLine("(1).Friends");
             Console.WriteLine("(2).Add a Friend");
