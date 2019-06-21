@@ -1,7 +1,7 @@
-div(id="login")
+div(id="SignUp")
   label Username
     input('[(ngModel)]'="user.Username", placeholder="User Name")/
   label Password
     input('[(ngModel)]'="user.Password", placeholder="Password", type="password")/
-  button('(click)'="Login()") Login
-  a(href='/SignUp') SignUp
+  label Email
+    input('[(ngModel)]'="user.Email", placeholder="Email",type="Email")/
