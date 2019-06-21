@@ -10,14 +10,14 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  buildConfiguration: 'Release'
-  pathToProject: 'web'
-  pathToSolution: ''
-
 steps:
-- task: Docker@2
+- task: UseNode@1
   inputs:
-    repository: 'skepdocker.azurecr.io'
-    command: 'buildAndPush'
-    Dockerfile: '**/DockerfileBOB'
+    version: '10.x'
+
+- script: front/my-app/npm ci
+  displayName: Install NPM deps
+
+
+- script: front/my-app/npm run build:ci
+  displayName: Angular build production
