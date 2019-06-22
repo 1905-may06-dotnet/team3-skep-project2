@@ -18,6 +18,7 @@ namespace Domain
         BGLocation GetLocationByName(string locationName);
         bool CreateMeeting(Meeting meeting);
         bool CreateInvitation(Domain.MeetingInvitation invitation);
+        BGLocation GetLocationById(int locationName);
         //void AddUser(string un, string pw, string fn, String phoneN);
         //DMAppUser GetUserByUserName(string un);
     }

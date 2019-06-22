@@ -35,7 +35,12 @@ namespace Data
 
         public virtual void AddUser(Domain.BGUser user)
         {
-            DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
+            //DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
+            //DbInstance.Instance.SaveChanges();
+        }
+        public void AddUser(Models.BGUser user)
+        {
+            DbInstance.Instance.BGUser.Add(user);
             DbInstance.Instance.SaveChanges();
         }
         public virtual Data.Models.BGUser GetUserByUserName(string un)
@@ -48,23 +53,20 @@ namespace Data
         }
         public virtual void AddFriend(string un1, string un2)
         {
-            //Data.Models.Friend friend1 = new Data.Models.Friend(GetUserByUserName(un1).UID, GetUserByUserName(un2).UID);
-            //Data.Models.Friend friend2 = new Data.Models.Friend(GetUserByUserName(un2).UID, GetUserByUserName(un1).UID);
-            //DbInstance.Instance.Friend.Add(friend1);
-            //DbInstance.Instance.SaveChanges();
-            //DbInstance.Instance.Friend.Add(friend2);
-            //DbInstance.Instance.SaveChanges();
-            Data.Models.Friend friend = new Models.Friend();
-            DbInstance.Instance.Friend.Add(friend);
+            Models.Friend newFriend1 = new Models.Friend();
+            newFriend1.Uid1 = GetUserByUserName(un1).Uid;
+            newFriend1.Uid2 = GetUserByUserName(un2).Uid;
+            DbInstance.Instance.Friend.Add(newFriend1);
             DbInstance.Instance.SaveChanges();
-            int fid = DbInstance.Instance.Friend.Max<Models.Friend>(x=>x.FID);
-            GetUserByUserName(un1).HasFriends.Add(GetFriendByFID(fid));
-            GetUserByUserName(un2).IsFriendTo.Add(GetFriendByFID(fid));
+            Models.Friend newFriend2 = new Models.Friend();
+            newFriend2.Uid1 = GetUserByUserName(un2).Uid;
+            newFriend2.Uid2 = GetUserByUserName(un1).Uid;
+            DbInstance.Instance.Friend.Add(newFriend2);
             DbInstance.Instance.SaveChanges();
         }
         public virtual Models.Friend GetFriendByFID(int fid)
         {
-            return DbInstance.Instance.Friend.Where<Models.Friend>(r => r.FID == fid).FirstOrDefault();
+            return DbInstance.Instance.Friend.Where<Models.Friend>(r => r.Fid == fid).FirstOrDefault();
         }
         #region ProfileAPI
         public virtual void UpdateUserName(string newName, string oldName)
@@ -123,8 +125,8 @@ namespace Data
             throw new NotImplementedException();
         }
 
-        public virtual Domain.BGLocation GetLocationByName(string n){
-            return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.LocationName==n).FirstOrDefault());
+        public virtual Domain.BGLocation GetLocationById(int n){
+            return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.Lid==n).FirstOrDefault());
         }
         #endregion ProfileAPI
         #region MeetingAPI
@@ -153,10 +155,15 @@ namespace Data
             }
         }
         //find Meeting info what do i need to find a single meeting 
-        public virtual Data.Models.Meeting GetMeeting() {
+        //public virtual Data.Models.Meeting GetMeeting() {
 
 
 
+        //}
+
+        public Domain.BGLocation GetLocationByName(string locationName)
+        {
+            throw new NotImplementedException();
         }
 
 

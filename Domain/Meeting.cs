@@ -8,10 +8,20 @@ namespace Domain
     {
         
         public int MID { get; set; }
+        public int Lid { get; set; }
+        public int Gid { get; set; }
+        public int HostUid { get; set; }
         public DateTime MeetingTime { get; set; }
-        public List<UserMeeting> UserMeetings { get; set; }
-        public List<MeetingInvitation> MeetingInvitation { get; set; }
-        public List<Rating> RatingList { get; set; }
+
+        public List<BGUser> MeetingMenbers { get; set; }
+        public List<MeetingInvitation> MeetingInvitations { get; set; }
+        public List<Rating> Ratings { get; set; }
+        public Meeting()
+        {
+            MeetingInvitations = new List<MeetingInvitation>();
+            Ratings = new List<Rating>();
+            MeetingMenbers = new List<BGUser>();
+        }
 
     }
 }

@@ -25,8 +25,8 @@ namespace webapi.Controllers
 
             Meeting meeting = new Meeting();
 
-            var didItWork = db.CreateMeeting()
-            if ()
+            //var didItWork = db.CreateMeeting()
+            //if ()
         }
 
         // PUT: api/Meeting/5

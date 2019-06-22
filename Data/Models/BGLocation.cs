@@ -1,22 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Data.Models
 {
-    public class BGLocation
+    public partial class BGLocation
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int LID { get; set; }
+        public BGLocation()
+        {
+            //what we acatually need
+            BGUser = new List<BGUser>();
+            Meeting = new List<Meeting>();
+            MeetingRequest = new List<MeetingRequest>();
+            //needed to create database relationship
+            BGUser = new HashSet<BGUser>();
+            Meeting = new HashSet<Meeting>();
+            MeetingRequest = new HashSet<MeetingRequest>();
+        }
+
+        public int Lid { get; set; }
         public string LocationName { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public List<BGUser> UserList { get; set; }
-        public List<Meeting> MeetingList { get; set; }
-        public List<MeetingRequest> MeetingRequestList { get; set; }
+
+
+        //what we acatually need
+        public  List<BGUser> UserList { get; set; }
+        public  List<Meeting> MeetingList { get; set; }
+        public  List<MeetingRequest> MeetingRequestList { get; set; }
+        //needed to create database relationship
+        public virtual ICollection<BGUser> BGUser { get; set; }
+        public virtual ICollection<Meeting> Meeting { get; set; }
+        public virtual ICollection<MeetingRequest> MeetingRequest { get; set; }
     }
 }

@@ -19,7 +19,11 @@ namespace Test
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
                mock.Setup(x => x.UpdateUserName("newMan","test"));//forgot to add setup to UpdateUserName
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdateUserName("newMan", g,  "test");
+               var user = new BGUser();
+               user.New = "newMan";
+               user.Token = g;
+               user.Username = "test";
+               var response = profileController.UpdateUserName(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(AcceptedResult));
           }
@@ -29,8 +33,11 @@ namespace Test
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
                mock.Setup(x => x.UpdateUserName("newMan", "fail"));
+               var user = new BGUser();
+               user.New = "test";
+               user.Token = g;
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdateUserName("test", g,  "fail");
+               var response = profileController.UpdateUserName(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(BadRequestResult));
           }
@@ -39,8 +46,12 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               var user = new BGUser();
+               user.New = "testing";
+               user.Token = g;
+               user.Username = "test";
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdateEmail("testing", g,  "test");
+               var response = profileController.UpdateEmail(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(AcceptedResult));
           }
@@ -49,8 +60,11 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               var user = new BGUser();
+               user.New = "testing";
+               user.Token = g;
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdateEmail("testing", g,  "testing");
+               var response = profileController.UpdateEmail(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(BadRequestResult));
           }
@@ -59,8 +73,12 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               var user = new BGUser();
+               user.New = "testing";
+               user.Token = g;
+               user.Username = "test";
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdatePhone("testing", g,  "test");
+               var response = profileController.UpdatePhone(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(AcceptedResult));
           }
@@ -69,8 +87,12 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               var user = new BGUser();
+               user.New = "testing";
+               user.Token = g;
+               user.Username = "testing";
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdatePhone("testing", g,  "testing");
+               var response = profileController.UpdatePhone(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(BadRequestResult));
           }
@@ -80,8 +102,12 @@ namespace Test
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
                mock.Setup(x => x.UpdatePassword("test","test"));
+               var user = new BGUser();
+               user.New = "test";
+               user.Token = g;
+               user.Username = "test";
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdatePassword("test", g,  "test");
+               var response = profileController.UpdatePassword(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(AcceptedResult));
           }
@@ -91,8 +117,12 @@ namespace Test
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
                mock.Setup(x => x.UpdatePassword("test", "test"));
+               var user = new BGUser();
+               user.New = "testing";
+               user.Token = g;
+               user.Username = "testing";
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdatePassword("testing", g,  "testing");
+               var response = profileController.UpdatePassword(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(BadRequestResult));
           }
@@ -101,8 +131,12 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               var user = new BGUser();
+               user.New = "testing";
+               user.Token = g;
+               user.Username = "test";
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdatePassword("testing", g,  "test");
+               var response = profileController.UpdatePassword(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(AcceptedResult));
           }
@@ -111,8 +145,12 @@ namespace Test
                var mock = new Mock<Data.Repo>();
                Guid g = Guid.NewGuid();
                mock.Setup(x => x.UsernameExist("test")).Returns(true);
+               var user = new BGUser();
+               user.New = "testing";
+               user.Token = g;
+               user.Username = "testing";
                ProfileController profileController = new ProfileController(mock.Object);
-               var response = profileController.UpdatePassword("testing", g,  "testing");
+               var response = profileController.UpdatePassword(user);
                Assert.IsNotNull(response);
                Assert.IsInstanceOfType(response, typeof(BadRequestResult));
           }
