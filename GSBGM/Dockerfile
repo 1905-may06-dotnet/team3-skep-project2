@@ -7,7 +7,7 @@ RUN npm run build:ci
 
 FROM nginx:stable-alpine
 
-COPY --from=base /app/dist/my-app /usr/share/nginx/html
+COPY --from=base /GSBGM/dist/my-app /usr/share/nginx/html
 COPY ./setup.sh ./
 RUN apk add certbot
 ENV DomainName=none
