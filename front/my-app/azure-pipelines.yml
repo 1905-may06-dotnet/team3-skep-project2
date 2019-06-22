@@ -16,9 +16,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: UseNode@1
+- task: Docker@2
   inputs:
-    version: '10.x'
+    command: 'build'
+    Dockerfile: './Dockerfile'
 
 
