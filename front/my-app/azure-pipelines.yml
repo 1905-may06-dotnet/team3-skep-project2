@@ -5,7 +5,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- master
+  batch: true
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - front
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -15,9 +21,4 @@ steps:
   inputs:
     version: '10.x'
 
-- script: front/my-app/npm ci
-  displayName: Install NPM deps
 
-
-- script: front/my-app/npm run build:ci
-  displayName: Angular build production
