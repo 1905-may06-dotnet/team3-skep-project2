@@ -20,13 +20,17 @@ namespace webapi.Controllers
 
         // POST: api/Meeting
         [HttpPost]
-        public void AddMeeting([FromBody] string value,[FromBody] DateTime dateTime,[FromBody] int gameID,[FromBody] int locaton)
+        public ActionResult AddMeeting([FromBody] Domain.Meeting meeting)
         {
-
-            Meeting meeting = new Meeting();
-
-            //var didItWork = db.CreateMeeting()
-            //if ()
+            try
+            {
+                db.CreateMeeting(meeting);
+                return Created("uri", meeting.HostUid);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         // PUT: api/Meeting/5

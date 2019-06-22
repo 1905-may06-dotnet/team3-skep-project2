@@ -154,12 +154,7 @@ namespace Data
                 return false;
             }
         }
-        //find Meeting info what do i need to find a single meeting 
-        //public virtual Data.Models.Meeting GetMeeting() {
-
-
-
-        //}
+        
 
         public Domain.BGLocation GetLocationByName(string locationName)
         {
