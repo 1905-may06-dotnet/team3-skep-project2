@@ -5,9 +5,10 @@ COPY ./ .
 RUN npm ci
 RUN npm run build:ci
 
+#CMD ["ash"]
 FROM nginx:stable-alpine
 
-COPY --from=base /GSBGM/dist/my-app /usr/share/nginx/html
+COPY --from=base /app/dist /usr/share/nginx/html
 COPY ./setup.sh ./
 RUN apk add certbot
 ENV DomainName=none
@@ -18,5 +19,3 @@ STOPSIGNAL SIGTERM
 
 CMD ["sh", "./setup.sh", DomainName]
 #CMD ["nginx", "-g", "daemon off;"]
-
-#CMD ["ash"]
