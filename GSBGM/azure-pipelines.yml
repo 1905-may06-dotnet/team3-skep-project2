@@ -10,21 +10,15 @@ trigger:
     include:
       - master
   paths:
-    exclude:
-      - front
+    include:
       - GSBGM
 
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  buildConfiguration: 'Release'
-  pathToProject: 'web'
-  pathToSolution: ''
-
 steps:
 - task: Docker@2
   inputs:
     repository: 'skepdocker.azurecr.io'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    command: 'build'
+    Dockerfile: 'GSBGM/Dockerfile'

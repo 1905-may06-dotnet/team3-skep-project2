@@ -11,7 +11,7 @@ trigger:
       - master
   paths:
     include:
-      - front
+      - GSBGM
 
 pool:
   vmImage: 'ubuntu-latest'
