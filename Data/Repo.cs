@@ -128,7 +128,7 @@ namespace Data
         }
         #endregion ProfileAPI
         #region MeetingAPI
-        public bool CreateMeeting(Domain.Meeting meeting)
+        public virtual bool CreateMeeting(Domain.Meeting meeting)
         {
             try
             {
@@ -140,6 +140,25 @@ namespace Data
                 return false;
             }
         }
+        public virtual bool CreateInvitation(Domain.MeetingInvitation invitation)
+        {
+            try
+            {
+                DbInstance.Instance.MeetingInvitation.Add(Mapper.Map(invitation));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //find Meeting info what do i need to find a single meeting 
+        public virtual Data.Models.Meeting GetMeeting() {
+
+
+
+        }
+
 
 
         #endregion MeetingAPI
