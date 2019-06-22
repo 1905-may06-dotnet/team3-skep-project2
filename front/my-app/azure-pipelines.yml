@@ -21,4 +21,4 @@ steps:
   inputs:
     repository: 'skepdocker.azurecr.io'
     command: 'build'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: 'front/**/Dockerfile'
