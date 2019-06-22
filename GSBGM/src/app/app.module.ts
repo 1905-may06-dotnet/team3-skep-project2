@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignUpComponent } from './signup/sign-up.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
