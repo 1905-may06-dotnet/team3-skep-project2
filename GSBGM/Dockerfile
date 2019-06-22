@@ -3,7 +3,7 @@ FROM node:lts-alpine AS base
 WORKDIR /app
 COPY ./ .
 RUN npm ci
-RUN npm npm run build:ci
+RUN npm run build:ci
 
 FROM nginx:stable-alpine
 
