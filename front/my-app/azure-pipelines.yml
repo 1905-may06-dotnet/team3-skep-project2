@@ -16,9 +16,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+steps:
 - task: Docker@2
   inputs:
+    repository: 'skepdocker.azurecr.io'
     command: 'build'
-    Dockerfile: '*/Dockerfile'
-
-
+    Dockerfile: '**/Dockerfile'
