@@ -4,7 +4,7 @@ import {User} from '../User';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.pug',
-  styleUrls: ['./sign-up.component.styl']
+  styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
   user: User

@@ -1,7 +1,58 @@
-div(id="SignUp")
-  label Username
-    input('[(ngModel)]'="user.Username", placeholder="User Name")/
-  label Password
-    input('[(ngModel)]'="user.Password", placeholder="Password", type="password")/
-  label Email
-    input('[(ngModel)]'="user.Email", placeholder="Email",type="Email")/
+.limiter
+.container-login100
+  .login100-more(style="background-image: url('images/bg-01.jpg');")
+  .wrap-login100.p-l-50.p-r-50.p-t-72.p-b-50
+    form.login100-form.validate-form
+      span.login100-form-title.p-b-59
+        | Sign Up
+      .wrap-input100.validate-input(data-validate='Name is required')
+        span.label-input100 Full Name
+        input.input100(type='text', name='name', placeholder='Name...')
+        span.focus-input100
+      .wrap-input100.validate-input(data-validate='Valid email is required: ex@abc.xyz')
+        span.label-input100 Email
+        input.input100(type='text', name='email', placeholder='Email addess...')
+        span.focus-input100
+      .wrap-input100.validate-input(data-validate='Username is required')
+        span.label-input100 Username
+        input.input100(type='text', name='username', placeholder='Username...')
+        span.focus-input100
+      .wrap-input100.validate-input(data-validate='Password is required')
+        span.label-input100 Password
+        input.input100(type='text', name='pass', placeholder='*************')
+        span.focus-input100
+      .wrap-input100.validate-input(data-validate='Repeat Password is required')
+        span.label-input100 Repeat Password
+        input.input100(type='text', name='repeat-pass', placeholder='*************')
+        span.focus-input100
+      .flex-m.w-full.p-b-33
+        .contact100-form-checkbox
+          input#ckb1.input-checkbox100(type='checkbox', name='remember-me')
+          label.label-checkbox100(for='ckb1')
+            span.txt1
+              | I agree to the
+              a.txt2.hov1(href='#')
+                | Terms of User
+      .container-login100-form-btn
+        .wrap-login100-form-btn
+          .login100-form-bgbtn
+          button.login100-form-btn
+            | Sign Up
+        a.dis-block.txt3.hov1.p-r-30.p-t-10.p-b-10.p-l-30(href='#')
+          | Sign in
+          i.fa.fa-long-arrow-right.m-l-5
+
+
+//- div(id="signup")
+//-   label username
+//-     input('[(ngmodel)]'="user.username", placeholder="user name")/
+//-   label password
+//-     input('[(ngmodel)]'="user.password", placeholder="password", type="password")/
+//-   label email
+//-     input('[(ngmodel)]'="user.email", placeholder="email",type="email")/
+//-   label allow email notification
+//-     input(type="checkbox", '[(ngmodel)]'="user.allowen")/
+//-   label date of birth
+//-     ngb-datepicker (type="text", ngbdatepicker #d="ngbdatepicker")
+
+ 
