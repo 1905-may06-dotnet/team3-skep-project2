@@ -20,63 +20,63 @@ namespace webapi.Controllers
         }
 
         [HttpPut]
-        public ActionResult UpdateUserName([FromBody] string userID,Guid g, [FromBody] string confirmUser)
+        public ActionResult UpdateUserName([FromBody] BGUser user)
         {
-            if (db.UsernameExist(confirmUser))
+            if (db.UsernameExist(user.Username))
             {
-                db.UpdateUserName(userID, confirmUser);
+                db.UpdateUserName(user.New, user.Username);
                 //need to update Guild
                 
-                return Accepted(g);
+                return Accepted(user.Token);
             }
                 return BadRequest();            
         }
         [HttpPut]
-        public ActionResult UpdateEmail([FromBody] string Email, Guid g, [FromBody] string confirmUser)
+        public ActionResult UpdateEmail([FromBody] BGUser user)
         {
             //get user from guid
-            if (db.UsernameExist(confirmUser))
+            if (db.UsernameExist(user.Username))
             {
-                db.UpdateEmail(Email, confirmUser);
-                return Accepted(g);
+                db.UpdateEmail(user.New, user.Username);
+                return Accepted(user.Token);
             }
                 return BadRequest();
             
 
         }
-        public ActionResult UpdatePhone([FromBody] string Phone, Guid g, [FromBody] string confirmUser)
+        public ActionResult UpdatePhone([FromBody] BGUser user)
         {
             //get user from guid
-            if (db.UsernameExist(confirmUser)) { 
-                db.UpdatePhoneNumber(Phone, confirmUser);
-                return Accepted(g);
+            if (db.UsernameExist(user.Username)) { 
+                db.UpdatePhoneNumber(user.New, user.Username);
+                return Accepted(user.Token);
        
                 
             }
             return BadRequest();
 
         }
-        public ActionResult UpdatePassword([FromBody] string Password, Guid g,[FromBody] string confirmUser)
+        public ActionResult UpdatePassword([FromBody] BGUser user)
         {
             //get user from guid
 
-            if (db.UsernameExist(confirmUser))
+            if (db.UsernameExist(user.Username))
             {
-                db.UpdatePassword(Password, confirmUser);
-                return Accepted(g);
+                db.UpdatePassword(user.New, user.Username);
+                return Accepted(user.Token);
             }
                 return BadRequest();
         }
 
-        public ActionResult UpdateLocation([FromBody] string location, Guid g, [FromBody] string confirmUser)
+        public ActionResult UpdateLocation([FromBody] BGUser user)
         {
             //get user from guid
 
-            if (db.UsernameExist(confirmUser))
+            if (db.UsernameExist(user.Username))
             {
-                var BGLocation = db.GetLocationByName(location);
-                db.UpdateLoction(BGLocation, confirmUser);
-                return Accepted(g);
+                var BGLocation = db.GetLocationById(user.UID);
+                db.UpdateLoction(BGLocation, user.Username);
+                return Accepted(user.Token);
             }
             return BadRequest();
         }

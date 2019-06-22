@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Data.Models
 {
-    public class UserCollection
+    public partial class UserCollection
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UCID { get; set; }
+        public int Ucid { get; set; }
+        public int Uid { get; set; }
+        public int Gid { get; set; }
+
+        public virtual BoardGame G { get; set; }
+        public virtual BGUser U { get; set; }
     }
 }

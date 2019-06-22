@@ -1,24 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Data.Models
 {
-    public class BoardGame
+    public partial class BoardGame
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int GID { get; set; }
-        [ForeignKey("genre")]
-        public Genres Genre { get; set; }
-        public string BGName { get; set; }
+        public BoardGame()
+        {
+            //what we acatually need
+            Meetings = new List<Meeting>();
+            MeetingRequestList = new List<MeetingRequest>();
+            UserCollections = new List<UserCollection>();
+            //needed to create database relationship
+            Meeting = new HashSet<Meeting>();
+            MeetingRequest = new HashSet<MeetingRequest>();
+            UserCollection = new HashSet<UserCollection>();
+        }
+
+        public int Gid { get; set; }
+        public string Bgname { get; set; }
+        public string Mechanics { get; set; }
         public int MaxPlayerCount { get; set; }
         public int MinPlayerCount { get; set; }
-        public List<UserCollection> UserCollections { get; set; }
-        public List<MeetingRequest> MeetingRequestList { get; set; }
+        public int? BggId { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public double? Bggrating { get; set; }
+        public int? PlayTime { get; set; }
+        //what we acatually need
         public List<Meeting> Meetings { get; set; }
-
+        public  List<MeetingRequest> MeetingRequestList { get; set; }
+        public  List<UserCollection> UserCollections { get; set; }
+        //needed to create database relationship
+        public virtual ICollection<Meeting> Meeting { get; set; }
+        public virtual ICollection<MeetingRequest> MeetingRequest { get; set; }
+        public virtual ICollection<UserCollection> UserCollection { get; set; }
     }
 }

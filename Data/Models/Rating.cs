@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Data.Models
 {
-    public class Rating
+    public partial class Rating
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RID { get; set; }
-        public int UserRating { get; set; }
+        public int Rid { get; set; }
+        public int RatingUid { get; set; }
+        public int SurveyTakerUid { get; set; }
+        public int Mid { get; set; }
+        public int RatingScore { get; set; }
+
+        public virtual Meeting M { get; set; }
+        public virtual BGUser RatingU { get; set; }
+        public virtual BGUser SurveyTakerU { get; set; }
     }
 }

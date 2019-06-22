@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+
 namespace Data.Models
 {
-    public class MeetingRequest
+    public partial class MeetingRequest
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int MRID { get; set; }
-        public DateTime MeetingTime { get; set; }
+        public int Mrid { get; set; }
+        public int Lid { get; set; }
+        public int Gid { get; set; }
+        public int InitiatorUid { get; set; }
+        public int ReceiverUid { get; set; }
+        public DateTime DateAndTime { get; set; }
+
+        public virtual BoardGame G { get; set; }
+        public virtual BGUser InitiatorU { get; set; }
+        public virtual BGLocation L { get; set; }
+        public virtual BGUser ReceiverU { get; set; }
     }
 }
