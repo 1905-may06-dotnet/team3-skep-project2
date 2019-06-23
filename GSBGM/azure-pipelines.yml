@@ -23,6 +23,7 @@ steps:
     docker login -u $(dockerId) -p "$(dockerPassword)"
 - task: Docker@2
   inputs:
+    arguments: -t kevincloinger/skep
     repository: "kevincloinger/skep"
     tags: "kevincloinger/skep"
     command: 'build'
