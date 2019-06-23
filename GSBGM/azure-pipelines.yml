@@ -27,3 +27,7 @@ steps:
     command: 'buildAndPush'
     Dockerfile: 'GSBGM/Dockerfile'
     tags: "NGDeploy"
+- task: Docker@2
+  inputs:
+    repository: 'kevincloinger'
+    command: 'push'
