@@ -21,7 +21,7 @@ variables:
 
 steps:
 - script: |
-    docker login -u $(dockerId) -p $(dockerPassword)
+    docker login -u $(dockerId) -p "$(dockerPassword)"
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
