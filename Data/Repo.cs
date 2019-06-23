@@ -35,17 +35,23 @@ namespace Data
 
         public virtual void AddUser(Domain.BGUser user)
         {
-            //DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
-            //DbInstance.Instance.SaveChanges();
+            DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
+            DbInstance.Instance.SaveChanges();
         }
         public void AddUser(Models.BGUser user)
         {
             DbInstance.Instance.BGUser.Add(user);
             DbInstance.Instance.SaveChanges();
         }
-        public virtual Data.Models.BGUser GetUserByUserName(string un)
+        public Domain.BGUser GetDomainUserByUserName(string un)
         {
-            return DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
+            var user= DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
+            return Data.Mapper.Map(user);
+        }
+        public Data.Models.BGUser GetUserByUserName(string un)
+        {
+            var user = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
+            return user;
         }
         public virtual Data.Models.BGUser GetUserFriendList(string un)
         {
@@ -53,16 +59,16 @@ namespace Data
         }
         public virtual void AddFriend(string un1, string un2)
         {
-            Models.Friend newFriend1 = new Models.Friend();
-            newFriend1.Uid1 = GetUserByUserName(un1).Uid;
-            newFriend1.Uid2 = GetUserByUserName(un2).Uid;
-            DbInstance.Instance.Friend.Add(newFriend1);
-            DbInstance.Instance.SaveChanges();
-            Models.Friend newFriend2 = new Models.Friend();
-            newFriend2.Uid1 = GetUserByUserName(un2).Uid;
-            newFriend2.Uid2 = GetUserByUserName(un1).Uid;
-            DbInstance.Instance.Friend.Add(newFriend2);
-            DbInstance.Instance.SaveChanges();
+            //Models.Friend newFriend1 = new Models.Friend();
+            //newFriend1.Uid1 = GetUserByUserName(un1).Uid;
+            //newFriend1.Uid2 = GetUserByUserName(un2).Uid;
+            //DbInstance.Instance.Friend.Add(newFriend1);
+            //DbInstance.Instance.SaveChanges();
+            //Models.Friend newFriend2 = new Models.Friend();
+            //newFriend2.Uid1 = GetUserByUserName(un2).Uid;
+            //newFriend2.Uid2 = GetUserByUserName(un1).Uid;
+            //DbInstance.Instance.Friend.Add(newFriend2);
+            //DbInstance.Instance.SaveChanges();
         }
         public virtual Models.Friend GetFriendByFID(int fid)
         {

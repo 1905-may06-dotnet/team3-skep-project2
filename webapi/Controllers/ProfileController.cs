@@ -41,8 +41,6 @@ namespace webapi.Controllers
                 return Accepted(user.Token);
             }
                 return BadRequest();
-            
-
         }
         public ActionResult UpdatePhone([FromBody] BGUser user)
         {
