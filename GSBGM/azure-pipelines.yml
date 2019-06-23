@@ -18,12 +18,12 @@ pool:
 variables:
   dockerId: kevin.cloinger@gmail.com
   imageName: NGSkep
+  env:
+    pswd: $(dockerPassword)
 
 steps:
 - script: |
     docker login -u $(dockerId) -p $(pswd) 
-  env:
-    pswd: $(dockerPassword)
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
