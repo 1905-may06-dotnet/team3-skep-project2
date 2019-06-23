@@ -2,7 +2,6 @@ import { Component, OnInit, Input} from '@angular/core';
 import { AppComponent } from '../app.component'
 import {User} from '../user';
 import {LoginService} from '../login.service';
-<<<<<<< HEAD
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -13,9 +12,6 @@ const httpOptions ={
   })
 };
 
-=======
-import { FormsModule } from '@angular/forms';
->>>>>>> 6d8c0dc7c1cc54a880c93c74ffbcebbe720030d8
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
