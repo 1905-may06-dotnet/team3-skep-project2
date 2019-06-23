@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import {User} from '../user';
 import {LoginService} from '../login.service';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
