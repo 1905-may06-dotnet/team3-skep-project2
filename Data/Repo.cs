@@ -38,17 +38,17 @@ namespace Data
             DbInstance.Instance.BGUser.Add(Data.Mapper.Map(user));
             DbInstance.Instance.SaveChanges();
         }
-        public void AddUser(Models.BGUser user)
+        public virtual void AddUser(Models.BGUser user)
         {
             DbInstance.Instance.BGUser.Add(user);
             DbInstance.Instance.SaveChanges();
         }
-        public Domain.BGUser GetDomainUserByUserName(string un)
+        public virtual Domain.BGUser GetDomainUserByUserName(string un)
         {
             var user= DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
             return Data.Mapper.Map(user);
         }
-        public Data.Models.BGUser GetUserByUserName(string un)
+        public virtual Data.Models.BGUser GetUserByUserName(string un)
         {
             var user = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Username == un).FirstOrDefault();
             return user;

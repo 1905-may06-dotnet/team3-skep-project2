@@ -21,7 +21,8 @@ namespace Test
             var mock = new Mock<Data.Repo>();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             LoginController loginController = new LoginController(mock.Object);
-            var response = loginController.LookUpUser("test");
+            Domain.BGUser bGUser = new BGUser("fail", " ");
+            var response = loginController.LookUpUser(bGUser);
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(AcceptedResult));
         }
@@ -32,7 +33,8 @@ namespace Test
             var mock = new Mock<Data.Repo>();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             LoginController loginController = new LoginController(mock.Object);
-            var response = loginController.LookUpUser("fail");
+            var testValue = new BGUser("test", "pass");
+            var response = loginController.LookUpUser(testValue);
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(ConflictResult));
         }
@@ -80,7 +82,7 @@ namespace Test
         {
             var mock = new Mock<Data.Repo>();
             Guid g = Guid.NewGuid();
-            var testValue = new BGUser("test", "word","doesnotexsit",g);
+            var testValue = new BGUser("test", "word","doesnotexsit",g, DateTime.Now);
             mock.Setup(x => x.AddUser(testValue)).Throws(new Exception());
             LoginController loginController = new LoginController(mock.Object);
             var response = loginController.CreateAccount(testValue);
@@ -92,7 +94,7 @@ namespace Test
         {
             var mock = new Mock<Data.Repo>();
             Guid g = Guid.NewGuid();
-            var testValue = new BGUser("test", "word", "doesnotexsit", g);
+            var testValue = new BGUser("test", "word", "doesnotexsit", g, DateTime.Now);
             mock.Setup(x => x.AddUser(testValue));
             LoginController loginController = new LoginController(mock.Object);
             var response = loginController.CreateAccount(testValue);
