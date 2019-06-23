@@ -18,8 +18,7 @@ pool:
 variables:
   dockerId: kevin.cloinger@gmail.com
   imageName: NGSkep
-  env:
-    pswd: $(dockerPassword)
+  pswd: $(dockerPassword)
 
 steps:
 - script: |
