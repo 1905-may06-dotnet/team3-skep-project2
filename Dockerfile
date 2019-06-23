@@ -52,7 +52,7 @@ EXPOSE 80
 EXPOSE 443
 
 COPY --from=buildWeb webapi/out ./
-ENV ASPNETCORE_URLS="https://+:443;http://+:80"
+ENV ASPNETCORE_URLS="http://+:80"
 #ENV ASPNETCORE_Kestrel__Certificates__Default__Password=""
 #ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/aspnetapp.pfx
 
