@@ -27,6 +27,5 @@ steps:
     Dockerfile: 'GSBGM/Dockerfile'
     Tags: |
       kevincloinger/skep
-      NGDeploy
 - script: |
     docker push kevincloinger/skep:NGDeploy
