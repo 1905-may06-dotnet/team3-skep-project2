@@ -18,13 +18,15 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  buildConfiguration: 'Release'
-  pathToProject: 'web'
-  pathToSolution: ''
+  - group: docker
 
 steps:
+- script: |
+    docker login -u $(dockerId) -p "$(dockerPassword)"
 - task: Docker@2
   inputs:
-    repository: 'skepdocker.azurecr.io'
-    command: 'buildAndPush'
+    arguments: -t kevincloinger/skep:CSharp
+    command: 'build'
     Dockerfile: '**/Dockerfile'
+- script: |
+    docker push kevincloinger/skep
