@@ -21,5 +21,10 @@ variables:
 steps:
 - script: |
     docker login -u $(dockerId) -p "$(dockerPassword)"
-    docker build -t kevincloinger/skep:NGDeploy -f ./GSBGM/Dockerfile
+- task: Docker@2
+  inputs:
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+    tags: 'kevincloinger/skep'
+- script: |
     docker push kevincloinger/skep:NGDeploy
