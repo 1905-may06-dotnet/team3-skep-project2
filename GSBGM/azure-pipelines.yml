@@ -20,7 +20,7 @@ variables:
   imageName: NGSkep
 
 steps:
-- bash: echo $(bob)
+- bash: echo "$(bob)"
 - script: |
     docker login -u $(dockerId) -p "$(dockerPassword)"
 - task: Docker@2
