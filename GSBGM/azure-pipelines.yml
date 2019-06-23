@@ -27,7 +27,4 @@ steps:
     command: 'buildAndPush'
     Dockerfile: 'GSBGM/Dockerfile'
     tags: "NGDeploy"
-- task: Docker@2
-  inputs:
-    repository: 'kevincloinger/skep'
-    command: 'push'
+- script: docker push kevincloinger/skep:NGDeploy
