@@ -32,7 +32,17 @@ namespace webapi.Controllers
                 return BadRequest();
             }
         }
-
+        [HttpPost]
+        public ActionResult SearchMeetingByLocation()
+        {
+            //working on this one -Patrick
+            return NotFound();
+        }
+        [HttpPost]
+        public ActionResult SearchMeetingByGame()
+        {
+            return NotFound();
+        }
         // PUT: api/Meeting/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)

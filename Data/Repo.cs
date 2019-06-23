@@ -156,11 +156,17 @@ namespace Data
         }
         
 
-        public Domain.BGLocation GetLocationByName(string locationName)
+        public Models.BGLocation GetLocationByName(string locationName)
         {
-            throw new NotImplementedException();
+            return DbInstance.Instance.BGLocation.Where<Models.BGLocation>(x => x.LocationName == locationName).FirstOrDefault();
         }
 
+        public IEnumerable<Models.Meeting> GetMeetingsByLocation(Domain.BGLocation search)
+        {
+            var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(x => x.Lid == search.LID);
+            return list;
+        }
+        
 
 
         #endregion MeetingAPI
