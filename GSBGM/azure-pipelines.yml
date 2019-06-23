@@ -23,9 +23,9 @@ steps:
     docker login -u $(dockerId) -p "$(dockerPassword)"
 - task: Docker@2
   inputs:
+    repository: kevincloinger/skep
+    tags: kevincloinger/skep
     command: 'build'
     Dockerfile: 'GSBGM/Dockerfile'
-    Tags: |
-      kevincloinger/skep
 - script: |
     docker push kevincloinger/skep:NGDeploy
