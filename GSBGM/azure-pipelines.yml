@@ -22,3 +22,4 @@ steps:
     repository: 'skepdocker.azurecr.io'
     command: 'build'
     Dockerfile: 'GSBGM/Dockerfile'
+    tags: "NGDeploy"
