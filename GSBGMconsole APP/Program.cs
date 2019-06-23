@@ -18,8 +18,9 @@ namespace GSBGMconsole_APP
             Client c = new Client();
             c.RunAPP();
             //c.UserActivity("evanh");
-
+            
             //Data.Repo r = new Data.Repo();
+            //Console.WriteLine( r.UsernameExist("test1") ); 
             //int count = r.GetUserByUserName("evanh").HasFriends.Count;
             //Console.WriteLine(count);
             //r.GetUserByUserName("evanh").HasFriends.Add(r.GetFriendByFID(2));

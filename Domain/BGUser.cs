@@ -10,12 +10,15 @@ namespace Domain
             this.Username = U;
             this.Password = Pass;
         }
-        public BGUser(string U,string Pass,string Em, Guid salt)
+        public BGUser(string U,string Pass,string Em, Guid salt, DateTime dob)
         {
+            this.UID = 0;
             this.Username = U;
             this.Email = Em;
             this.Password = Pass;
             this.Salt = salt;
+            this.DateOfBirth = dob;
+            this.Location = new BGLocation();
         }
         public BGUser() { }
         public int UID { get; set; }
