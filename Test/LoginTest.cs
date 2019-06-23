@@ -21,7 +21,8 @@ namespace Test
             var mock = new Mock<Data.Repo>();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             LoginController loginController = new LoginController(mock.Object);
-            var response = loginController.LookUpUser("test");
+            Domain.BGUser bGUser = new BGUser("fail", " ");
+            var response = loginController.LookUpUser(bGUser);
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(AcceptedResult));
         }
@@ -32,7 +33,8 @@ namespace Test
             var mock = new Mock<Data.Repo>();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             LoginController loginController = new LoginController(mock.Object);
-            var response = loginController.LookUpUser("fail");
+            var testValue = new BGUser("test", "pass");
+            var response = loginController.LookUpUser(testValue);
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(ConflictResult));
         }
@@ -66,11 +68,12 @@ namespace Test
         public void LoginAccepted()
         {
             //to use Mock you need to set up method as a virtual to override the method.
+            var testValue = new BGUser("test", "word");
             var mock = new Mock<Data.Repo>();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             mock.Setup(x => x.PasswordMatched("test", "word")).Returns(true);
+            mock.Setup(x => x.GetDomainUserByUserName("test")).Returns(testValue); ;//need to mock GetDomainUserByUserName now...
             LoginController loginController = new LoginController(mock.Object);
-            var testValue = new BGUser("test", "word");
             var response = loginController.UserLogin(testValue);
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(AcceptedResult));
@@ -80,7 +83,7 @@ namespace Test
         {
             var mock = new Mock<Data.Repo>();
             Guid g = Guid.NewGuid();
-            var testValue = new BGUser("test", "word","doesnotexsit",g);
+            var testValue = new BGUser("test", "word","doesnotexsit",g, DateTime.Now);
             mock.Setup(x => x.AddUser(testValue)).Throws(new Exception());
             LoginController loginController = new LoginController(mock.Object);
             var response = loginController.CreateAccount(testValue);
@@ -90,10 +93,11 @@ namespace Test
         [TestMethod]
         public void CreateAccountTest()
         {
-            var mock = new Mock<Data.Repo>();
             Guid g = Guid.NewGuid();
-            var testValue = new BGUser("test", "word", "doesnotexsit", g);
+            var testValue = new BGUser("test", "word", "doesnotexsit", g, DateTime.Now);
+            var mock = new Mock<Data.Repo>();
             mock.Setup(x => x.AddUser(testValue));
+            mock.Setup(x => x.GetDomainUserByUserName("test")).Returns(testValue);
             LoginController loginController = new LoginController(mock.Object);
             var response = loginController.CreateAccount(testValue);
             Assert.IsNotNull(response);
