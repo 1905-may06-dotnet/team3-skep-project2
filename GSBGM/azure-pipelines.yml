@@ -24,7 +24,7 @@ steps:
 - task: Docker@2
   inputs:
     command: 'build'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: 'GSBGM/Dockerfile'
     tags: 'kevincloinger/skep'
 - script: |
     docker push kevincloinger/skep:NGDeploy
