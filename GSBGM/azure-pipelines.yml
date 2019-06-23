@@ -23,3 +23,11 @@ steps:
     command: 'build'
     Dockerfile: 'GSBGM/Dockerfile'
     tags: "NGDeploy"
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(f76f9b2a-8aaa-49c1-b980-cd3c8191f17a)'
+    appType: 'webAppContainer'
+    WebAppName: 'GSBGM'
+    DockerNamespace: 'skepdocker.azurecr.io'
+    DockerImageTag: 'NGDeploy'
