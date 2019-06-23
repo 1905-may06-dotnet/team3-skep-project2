@@ -26,5 +26,5 @@ steps:
     repository: $(dockerId)/skep
     command: 'buildAndPush'
     Dockerfile: 'GSBGM/Dockerfile'
-    tags: "NGDeploy"
+    tags: kevincloinger/skep:NGDeploy
 - script: docker push kevincloinger/skep:NGDeploy
