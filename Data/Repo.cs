@@ -158,15 +158,27 @@ namespace Data
 
         public Models.BGLocation GetLocationByName(string locationName)
         {
-            return DbInstance.Instance.BGLocation.Where<Models.BGLocation>(x => x.LocationName == locationName).FirstOrDefault();
+            return DbInstance.Instance.BGLocation.Where<Data.Models.BGLocation>(l => l.LocationName == locationName).FirstOrDefault();
+            
         }
 
-        public IEnumerable<Models.Meeting> GetMeetingsByLocation(Domain.BGLocation search)
+        public IEnumerable<Domain.Meeting> GetMeetingsByLocation(Domain.BGLocation search)
         {
-            var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(x => x.Lid == search.LID);
+            
+            var list = Mapper.Map(DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => l.Lid == search.LID));
             return list;
         }
-        
+
+        Domain.BGLocation IRepo.GetLocationByName(string locationName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Domain.BGLocation GetLocationById(string locationName)
+        {
+            throw new NotImplementedException();
+        }
+
 
 
         #endregion MeetingAPI
