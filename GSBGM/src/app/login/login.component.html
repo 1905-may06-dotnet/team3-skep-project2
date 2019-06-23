@@ -1,11 +1,13 @@
 <h2>Login</h2>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label><b>Username</b>
+      <input [(ngModel)]="user.Username" placeholder="Enter Username" required/>
+    </label>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>       
+    <label><b>Password</b>
+      <input [(ngModel)]="user.Password" placeholder="Enter Password" required/>       
+    </label>
     <button type="submit">Login</button>
     <a routerLink='/signUp'> SignUp</a>
   </div>
