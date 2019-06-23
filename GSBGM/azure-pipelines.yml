@@ -29,5 +29,5 @@ steps:
     tags: "NGDeploy"
 - task: Docker@2
   inputs:
-    repository: 'kevincloinger'
+    repository: 'kevincloinger/skep'
     command: 'push'
