@@ -16,8 +16,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 variables:
-  dockerId: kevin.cloinger@gmail.com
-  imageName: NGSkep
+  - group: docker
 
 steps:
 - bash: echo "$(bob)"
