@@ -24,6 +24,7 @@ steps:
     docker login -u $(dockerId) -p "$(dockerPassword)"
 - task: Docker@2
   inputs:
+    repository: $(dockerId)
     command: 'buildAndPush'
     Dockerfile: 'GSBGM/Dockerfile'
     tags: "NGDeploy"
