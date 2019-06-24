@@ -19,9 +19,13 @@ const httpOptions ={
 
 
 export class SignUpComponent implements OnInit {
-  public loginURL = "http://gsbgma.azurewebsites.net/api/login/validate";
+  public UsernameValidationURL = "http://gsbgma.azurewebsites.net/api/login/validate";
+  public CreateAccountURL = "http://gsbgma.azurewebsites.net/api/login/create";
   user: User;
   UserExist: boolean = false;
+  LoggedIn: boolean = false;
+  notLoggedIn: boolean = true;
+  public LoggedInUID:string;
   constructor(
     private LoginService:LoginService,
     public http: HttpClient
@@ -31,7 +35,7 @@ export class SignUpComponent implements OnInit {
   ValidateUser():void{
     var User = JSON.stringify({"Username":this.user.Username});  
     //console.log(this.user.Username);
-    this.LoginService.LoginUserHTTP(this.loginURL,User)
+    this.LoginService.LoginUserHTTP(this.UsernameValidationURL,User)
     .subscribe((HttpResponse) => {
        console.log(HttpResponse.status);
        if(HttpResponse.status!=202)
@@ -44,6 +48,30 @@ export class SignUpComponent implements OnInit {
     )
   }
 
+
+  CreateAccount(): void {
+    //construct JSON object
+    var User = JSON.stringify({
+      "Username":this.user.Username,
+      "Password":this.user.Password,
+      "DateOfBirth":this.user.DateOfBirth,
+      "Email":this.user.Email,
+      "AllowEN":this.user.AllowEN
+    });
+    console.log(User);
+   this.LoginService.LoginUserHTTP(this.CreateAccountURL,User)
+   .subscribe((HttpResponse) => {
+      console.log(HttpResponse);
+      if(HttpResponse.status==201)
+      {
+        this.LoggedIn = true;
+        this.notLoggedIn=false;         
+        localStorage.setItem("uid", HttpResponse.body.toString())
+        this.LoggedInUID=HttpResponse.body.toString();
+      }
+   }
+   )
+  }
 
   ngOnInit() {
     this.user = new User();

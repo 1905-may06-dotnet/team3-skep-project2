@@ -1,5 +1,5 @@
 
-  <div >
+  <div *ngIf="notLoggedIn">
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
@@ -10,24 +10,28 @@
     </label>
     
     <label><b>Password</b>
-      <input type="password" placeholder="Enter Password" name="password" required>
+      <input [(ngModel)]="user.Password" type="password" placeholder="Enter Password" required>
     </label>
     
     <label for="DateOfBirth"><b>Date of Birth</b>
-      <input type="date" name="bday">
+      <input [(ngModel)]="user.DateOfBirth" type="date">
     </label>
 
     <label for="email"><b>Email</b>
-      <input type="email" placeholder="XXXX@XXX.XXX" name="email" required>
+      <input [(ngModel)]="user.Email" type="email" placeholder="XXXX@XXX.XXX" required>
     </label>
 
     <label>
-      <input type="checkbox" checked="checked" name="AllowEN" style="margin-bottom:15px"> Allow Email Notification
+      <input [(ngModel)]="user.AllowEN" type="checkbox" checked="checked" style="margin-bottom:15px"> Allow Email Notification
+      <!-- <p style="color:red;">allowen={{user.AllowEN}}</p> -->
     </label>
 
     <div>
-      <button type="button" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn">Sign Up</button>
+      <button>Cancel</button>
+      <button (click)="CreateAccount()">Sign Up</button>
     </div>
   </div>
 
+  <div *ngIf="LoggedIn">
+    <p>UserID {{LoggedInUID}} Logged In!</p>
+  </div>
