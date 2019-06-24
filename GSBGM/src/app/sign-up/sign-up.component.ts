@@ -44,8 +44,7 @@ export class SignUpComponent implements OnInit {
     this.LoginService.LoginUserHTTP(this.UsernameValidationURL,User)
     .subscribe((HttpResponse) => {
        console.log(HttpResponse.status);
-       if(HttpResponse.status!=202)
-       {
+       if (HttpResponse.status !== 202) {
         this.UserExist = true;
         console.log(this.UserExist)
        }
