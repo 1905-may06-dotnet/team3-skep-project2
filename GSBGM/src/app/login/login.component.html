@@ -1,5 +1,6 @@
   <div *ngIf="LoggedIn==false" class="container">
     <h2>Login</h2>
+    <p *ngIf="incorrectInfor" style="color:red;">Incorrect username or password</p>
     <label><b>Username</b>
       <input [(ngModel)]="user.Username" placeholder="Enter Username" required/>
     </label>

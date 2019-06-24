@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   user: User;
   public LoggedInUID:string;
   LoggedIn: boolean;
-
+  incorrectInfor: boolean=false;
   constructor(
     private LoginService:LoginService,
     public http: HttpClient,
@@ -58,7 +58,10 @@ export class LoginComponent implements OnInit {
           this.LoggedIn = true;         
           localStorage.setItem("uid", HttpResponse.body.toString())
           this.LoggedInUID=HttpResponse.body.toString();
+          this.incorrectInfor=false;
         }
+        else 
+        {this.incorrectInfor=true;}
      }
      )
     }
