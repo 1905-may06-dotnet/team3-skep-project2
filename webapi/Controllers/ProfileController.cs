@@ -19,7 +19,7 @@ namespace webapi.Controllers
             this.db = db;
         }
 
-        [HttpPut]
+        [HttpPut("UpdateUserName")]
         public ActionResult UpdateUserName([FromBody] BGUser user)
         {
             if (db.UsernameExist(user.Username))
@@ -31,7 +31,7 @@ namespace webapi.Controllers
             }
                 return BadRequest();            
         }
-        [HttpPut]
+        [HttpPut("UpdateEmail")]
         public ActionResult UpdateEmail([FromBody] BGUser user)
         {
             //get user from guid
@@ -42,6 +42,7 @@ namespace webapi.Controllers
             }
                 return BadRequest();
         }
+        [HttpPut("UpdatePhone")]
         public ActionResult UpdatePhone([FromBody] BGUser user)
         {
             //get user from guid
@@ -54,6 +55,7 @@ namespace webapi.Controllers
             return BadRequest();
 
         }
+        [HttpPut("UpdatePassword")]
         public ActionResult UpdatePassword([FromBody] BGUser user)
         {
             //get user from guid
@@ -65,7 +67,7 @@ namespace webapi.Controllers
             }
                 return BadRequest();
         }
-
+        [HttpPut("UpdateLocation")]
         public ActionResult UpdateLocation([FromBody] BGUser user)
         {
             //get user from guid
