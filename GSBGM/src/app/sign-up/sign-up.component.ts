@@ -23,13 +23,19 @@ export class SignUpComponent implements OnInit {
   public CreateAccountURL = "login/create";
   user: User;
   UserExist: boolean = false;
-  LoggedIn: boolean = false;
+  LoggedIn: boolean;
   notLoggedIn: boolean = true;
   public LoggedInUID:string;
   constructor(
     private LoginService:LoginService,
     public http: HttpClient
-  ) { }
+  ) { 
+    if(localStorage.getItem("uid")!=null){
+      this.LoggedIn = true;
+    }else{
+      this.LoggedIn = false;
+    }
+  }
 
 
   ValidateUser():void{

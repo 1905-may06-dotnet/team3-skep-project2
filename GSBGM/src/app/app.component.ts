@@ -7,9 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class AppComponent {
   title = 'GSBGM';
-  LoggedIn: boolean = false;
- 
-  logout() {
-     this.LoggedIn = false;
-  }
+  LoggedIn:boolean;
+  locLog:string= localStorage.getItem("uid");
+
 }

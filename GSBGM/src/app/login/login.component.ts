@@ -25,13 +25,26 @@ export class LoginComponent implements OnInit {
   public loginURL:string = "login/UserLogin";
   user: User;
   public LoggedInUID:string;
+  LoggedIn: boolean;
 
   constructor(
     private LoginService:LoginService,
     public http: HttpClient,
     private appcomponent: AppComponent,
-    ) { }
-    LoggedIn: boolean = false;
+    ) {
+      this.CheckUser();
+     }
+    CheckUser():void{
+      if(localStorage.getItem("uid")!=null){
+        this.LoggedIn = true;
+      }else{
+        this.LoggedIn = false;
+      }
+    }
+    LogOutUser():void{
+      localStorage.removeItem("uid");
+      this.CheckUser();
+    }
     LoginUser(): void {
       //construct JSON object
       var User = JSON.stringify(this.user);

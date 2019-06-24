@@ -7,8 +7,11 @@
       <input [(ngModel)]="user.Password" type="password" placeholder="Enter Password not Password123" required/>       
     </label>
     <button (click)="LoginUser()">Login</button>
+    <a routerLink='/signUp'>SignUp</a>
   </div>
 <div *ngIf="LoggedIn">
-    <p>UserID {{LoggedInUID}} Logged In!</p>
+    <p>UserID {{LoggedInUID}} Logged In!
+      <button id="logout" (click)="LogOutUser()">Logout</button>
+    </p>
 </div>
 
