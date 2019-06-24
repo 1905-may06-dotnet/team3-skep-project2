@@ -13,8 +13,8 @@ export class LoginService {
   constructor(
     public http: HttpClient,
   ) { }
-  LoginUserHTTP(loginURL:string,User:any): Observable<HttpResponse<string>> {
-    return this.http.post(this.baseUrl+loginURL, User, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response'})
+  LoginUserHTTP(URL:string,User:any): Observable<HttpResponse<string>> {
+    return this.http.post(this.baseUrl+URL, User, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response'})
   .pipe(
     catchError(this.handleError('LoginUser',User))
   );

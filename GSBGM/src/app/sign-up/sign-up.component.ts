@@ -19,8 +19,8 @@ const httpOptions ={
 
 
 export class SignUpComponent implements OnInit {
-  public UsernameValidationURL = "http://gsbgma.azurewebsites.net/api/login/validate";
-  public CreateAccountURL = "http://gsbgma.azurewebsites.net/api/login/create";
+  public UsernameValidationURL = "login/validate";
+  public CreateAccountURL = "login/create";
   user: User;
   UserExist: boolean = false;
   LoggedIn: boolean = false;
