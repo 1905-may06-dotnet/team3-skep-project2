@@ -12,14 +12,12 @@ namespace Domain
         void UpdatePassword(string newPassword, string User);
         void UpdateEmail(string newEmail, string User);
         void UpdateLoction(BGLocation newLocation, string User);
-        void AddGames(int BGGID, string User);
+        void AddGames(BoardGame game);
         void UpdatePhoneNumber(string newNumber, string User);
-        BGLocation GetLocationByName(string locationName);
         bool CreateMeeting(Meeting meeting);
         //bool CreateInvitation(Domain.MeetingInvitation invitation);
         BGLocation GetLocationById(int locationName);
-        IEnumerable<Domain.Meeting> GetMeetingsByLocation(BGLocation search);
-        //void AddUser(string un, string pw, string fn, String phoneN);
-        //DMAppUser GetUserByUserName(string un);
+        List<Domain.Meeting> GetMeetingsByLocation(BGLocation search);
+        List<Domain.Meeting> GetMeetingsByBG(BoardGame search);
     }
 }

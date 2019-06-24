@@ -120,9 +120,10 @@ namespace Data
                 DbInstance.Instance.SaveChanges();
             }
         }
-        public virtual void AddGames(int BGGID, string User)
+        public virtual void AddGames(Domain.BoardGame game)
         {
-            throw new NotImplementedException();
+            DbInstance.Instance.BoardGame.Add(Mapper.Map(game));
+            DbInstance.Instance.SaveChanges();
         }
 
         public virtual Domain.BGLocation GetLocationById(int n){
@@ -154,30 +155,33 @@ namespace Data
                 return false;
             }
         }
-        
-
         public Models.BGLocation GetLocationByName(string locationName)
         {
             return DbInstance.Instance.BGLocation.Where<Data.Models.BGLocation>(l => l.LocationName == locationName).FirstOrDefault();
             
         }
 
-        public IEnumerable<Domain.Meeting> GetMeetingsByLocation(Domain.BGLocation search)
+        public virtual List<Domain.Meeting> GetMeetingsByLocation(Domain.BGLocation search)
         {
-            
-            var list = Mapper.Map(DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => l.Lid == search.LID));
-            return list;
+            var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Lid == search.LID).ToList();
+            var MappedList = new List<Domain.Meeting>();
+            foreach (var i in list)
+            {
+                MappedList.Add(Mapper.Map(i));
+            }
+            return MappedList;
         }
-
-        Domain.BGLocation IRepo.GetLocationByName(string locationName)
+        public List<Domain.Meeting> GetMeetingsByBG(Domain.BoardGame search)
         {
-            throw new NotImplementedException();
+            var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Gid == search.BggId).ToList();
+            var MappedList = new List<Domain.Meeting>();
+            foreach (var i in list)
+            {
+                MappedList.Add(Mapper.Map(i));
+            }
+            return MappedList;
         }
-
-        public Domain.BGLocation GetLocationById(string locationName)
-        {
-            throw new NotImplementedException();
-        }
+        
 
 
 
