@@ -1,15 +1,12 @@
-<h2>Login</h2>
-
   <div *ngIf="LoggedIn==false" class="container">
+    <h2>Login</h2>
     <label><b>Username</b>
       <input [(ngModel)]="user.Username" placeholder="Enter Username" required/>
     </label>
-
     <label><b>Password</b>
-      <input [(ngModel)]="user.Password" type="password" placeholder="Enter Password" required/>       
+      <input [(ngModel)]="user.Password" type="password" placeholder="Enter Password not Password123" required/>       
     </label>
     <button (click)="LoginUser()">Login</button>
-    <a routerLink='/signUp'> SignUp</a>
   </div>
 <div *ngIf="LoggedIn">
     <p>UserID {{LoggedInUID}} Logged In!</p>

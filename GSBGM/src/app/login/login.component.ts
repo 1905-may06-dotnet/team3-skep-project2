@@ -22,7 +22,7 @@ const httpOptions ={
 })
 
 export class LoginComponent implements OnInit {
-  public loginURL = "http://gsbgma.azurewebsites.net/api/login/UserLogin";
+  public loginURL:string = "login/UserLogin";
   user: User;
   public LoggedInUID:string;
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     LoggedIn: boolean = false;
     LoginUser(): void {
       //construct JSON object
-      var User = JSON.stringify({"Username":this.user.Username,"Password":this.user.Password});
+      var User = JSON.stringify(this.user);
       console.log(User);
     
      this.LoginService.LoginUserHTTP(this.loginURL,User)
@@ -52,6 +52,5 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = new User();
-    //this.user.Username = "bob";
   }
 }

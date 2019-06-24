@@ -9,12 +9,12 @@ import { Observer, Observable, fromEventPattern, of } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-
+  baseUrl:string="http://gsbgma.azurewebsites.net/api/";
   constructor(
     public http: HttpClient,
   ) { }
-  LoginUserHTTP(loginURL,User): Observable<HttpResponse<string>> {
-    return this.http.post(loginURL, User, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response'})
+  LoginUserHTTP(loginURL:string,User:any): Observable<HttpResponse<string>> {
+    return this.http.post(this.baseUrl+loginURL, User, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response'})
   .pipe(
     catchError(this.handleError('LoginUser',User))
   );
