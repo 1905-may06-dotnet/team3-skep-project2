@@ -9,6 +9,8 @@ namespace Domain
         bool UsernameExist(string un);
         bool PasswordMatched(string un, string pw);
         void AddUser(BGUser r);
+        List<Domain.BGLocation> GetAllLocations();
+        List<Domain.BoardGame> GetALLBoardGames();
         void UpdateUserName(string newName, string oldName);
         void UpdatePassword(string newPassword, string User);
         void UpdateEmail(string newEmail, string User);

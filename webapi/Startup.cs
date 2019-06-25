@@ -13,6 +13,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Domain;
 using Data;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 57bed7b39a395abe3f7b4b2634716effa3f61024
 namespace webapi
 {
     public class Startup
@@ -29,6 +33,9 @@ namespace webapi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IRepo, Repo>();
+<<<<<<< HEAD
+        }
+=======
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -51,6 +58,7 @@ namespace webapi
 
                 });
             }
+>>>>>>> 57bed7b39a395abe3f7b4b2634716effa3f61024
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
