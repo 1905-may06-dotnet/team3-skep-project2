@@ -26,7 +26,7 @@ namespace webapi.Controllers
             try
             {
                 db.CreateMeeting(meeting);
-                return Created("uri",meeting.HostUid);
+                return Created("uri",meeting);
             }
             catch
             {

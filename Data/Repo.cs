@@ -169,6 +169,7 @@ namespace Data
             try
             {
                 DbInstance.Instance.Meeting.Add(Mapper.Map(meeting));
+                DbInstance.Instance.SaveChanges();
                 return true;
             }
             catch
