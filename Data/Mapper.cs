@@ -43,10 +43,8 @@ namespace Data
             bguser.Email = user.Email;
             bguser.Password = user.Password;
             bguser.Salt = user.Salt;
-            if (user.PhoneNumber != null)
-            { bguser.PhoneNumber = user.PhoneNumber; }
-            if (user.Lid != null)
-            { bguser.Lid = (int)user.Lid; }
+            bguser.PhoneNumber = user.PhoneNumber; 
+            bguser.Lid = (int)user.Lid; 
             return bguser;
             //PhoneNumber = user.PhoneNumber,
             //Lid=(int)user.Lid
@@ -74,10 +72,8 @@ namespace Data
             bguser.Email = user.Email;
             bguser.Password = user.Password;
             bguser.Salt = user.Salt;
-            if (user.PhoneNumber != null)
-            { bguser.PhoneNumber = user.PhoneNumber; }
-            if (user.Lid != null)
-            { bguser.Lid = (int)user.Lid; }
+            bguser.PhoneNumber = user.PhoneNumber; 
+            bguser.Lid = (int)user.Lid; 
             return bguser;
             //PreferedLocation = Map(user.Location),
             //UserCollections = user.UserCollections.Select(x => Map(x)).ToList(),
