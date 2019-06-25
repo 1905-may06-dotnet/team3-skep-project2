@@ -1,5 +1,18 @@
-<section>
-  <input [(ngModel)]=user.Username />
-  
-</section>
+<div>
+  <label>Username
+    <input [(ngModel)]="username" placeholder="Enter Username" />
+    <button (click)="UpdateUserName()">Update</button>
+  </label>
+  <br>
+  <label>Email
+    <input [(ngModel)]="email" placeholder="Enter Email" />
+    <button (click)="UpdateEmail()"></button>
+  </label>
+  <br>
+  <label>Phone Number
+    <input [(ngModel)]="phone" placeholder="Enter Phone"  />
+    <button (click)="UpdatePhone()"></button>
+  </label>
+  <br>
+</div>
 

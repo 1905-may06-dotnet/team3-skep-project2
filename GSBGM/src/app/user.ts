@@ -6,4 +6,6 @@ export class User {
     Email: string;
     DateOfBirth: string;
     AllowEN: boolean;
+    New: string;
+    Id: number;
 }

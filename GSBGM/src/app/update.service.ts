@@ -3,24 +3,20 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observer, Observable, fromEventPattern, of } from 'rxjs';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
-  baseUrl:string="http://gsbgma.azurewebsites.net/api/";
+export class UpdateService {
+  baseUrl:string="http://gsbgma.azurewebsites.net/api/Profile/";
   constructor(
     public http: HttpClient,
   ) { }
-  LoginUserHTTP(URL:string,User:any): Observable<HttpResponse<string>> {
-    return this.http.post(this.baseUrl+URL, User, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response'})
+  UpdateUserHTTP(URL:string,User:any): Observable<HttpResponse<string>> {
+    return this.http.put(this.baseUrl+URL, User, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response'})
   .pipe(
-    catchError(this.handleError('LoginUser',User))
+    catchError(this.handleError('UdateUser',User))
   );
-    
   }
-
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -33,7 +29,6 @@ export class LoginService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  
   }
-
-
 }

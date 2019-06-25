@@ -70,8 +70,9 @@ export class SignUpComponent implements OnInit {
       if(HttpResponse.status==201)
       {
         this.LoggedIn = true;
-        this.notLoggedIn=false;         
-        localStorage.setItem("uid", HttpResponse.body.toString())
+        this.notLoggedIn=false;
+        localStorage.setItem("username", this.user.Username);    
+        localStorage.setItem("uid", HttpResponse.body.toString());
         this.LoggedInUID=HttpResponse.body.toString();
       }
    }

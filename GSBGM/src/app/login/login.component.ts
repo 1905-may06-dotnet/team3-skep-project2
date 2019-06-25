@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private LoginService:LoginService,
     public http: HttpClient,
-    private appcomponent: AppComponent,
+
     ) {
       this.CheckUser();
      }
@@ -55,8 +55,9 @@ export class LoginComponent implements OnInit {
         console.log(HttpResponse);
         if(HttpResponse.status==202)
         {
-          this.LoggedIn = true;         
-          localStorage.setItem("uid", HttpResponse.body.toString())
+          this.LoggedIn = true;
+          localStorage.setItem("username",this.user.Username);       
+          localStorage.setItem("uid", HttpResponse.body.toString());
           this.LoggedInUID=HttpResponse.body.toString();
         }
      }
