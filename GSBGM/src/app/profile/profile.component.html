@@ -1,9 +1,4 @@
 <div>
-  <label>Username
-    <input [(ngModel)]="username" placeholder="Enter Username" />
-    <button (click)="UpdateUserName()">Update</button>
-  </label>
-  <br>
   <label>Email
     <input [(ngModel)]="email" placeholder="Enter Email" />
     <button (click)="UpdateEmail()">Update</button>
@@ -14,5 +9,11 @@
     <button (click)="UpdatePhone()">Update</button>
   </label>
   <br>
+  <label>Allow Text
+      <input [(ngModel)]="user.AllowPN" type="checkbox" style="margin-bottom:15px" (click)="UpdateAllowPN()">
+  </label>
+  <label>Allow Email
+      <input [(ngModel)]="user.AllowEN" type="checkbox" style="margin-bottom:15px" (click)="UpdateAllowEN()">
+  </label>
 </div>
 

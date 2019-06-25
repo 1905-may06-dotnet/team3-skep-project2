@@ -21,27 +21,13 @@ export class ProfileComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.user = new User();
-    this.user.Username = localStorage.getItem("username");
-  }
-  UpdateUserName():void{
-    this.user.New = this.username;
-    this.user.Username = localStorage.getItem("username");
-    var User = JSON.stringify(this.user);
-    console.log(User)
-    this.UpdateService.UpdateUserHTTP("UpdateUserName",User)
-     .subscribe((HttpResponse) => {
-        console.log(HttpResponse);
-        if(HttpResponse.status==202){
-          localStorage.setItem("username", this.username)
-        }
-     })
   }
   UpdateEmail():void{
     this.user.New = this.email;
     this.user.Username = localStorage.getItem("username");
     var User = JSON.stringify(this.user);
     console.log(User)
-    this.UpdateService.UpdateUserHTTP("UpdateUserEmail",User)
+    this.UpdateService.UpdateUserHTTP("UpdateEmail",User)
      .subscribe((HttpResponse) => {
         console.log(HttpResponse);
         if(HttpResponse.status==202){
@@ -54,7 +40,31 @@ export class ProfileComponent implements OnInit {
     this.user.Username = localStorage.getItem("username");
     var User = JSON.stringify(this.user);
     console.log(User)
-    this.UpdateService.UpdateUserHTTP("UpdateUserPhone",User)
+    this.UpdateService.UpdateUserHTTP("UpdatePhone",User)
+     .subscribe((HttpResponse) => {
+        console.log(HttpResponse);
+        if(HttpResponse.status==202){
+          console.log("good")
+        }
+     })
+  }
+  UpdateAllowPN():void{
+    this.user.Username = localStorage.getItem("username");
+    var User = JSON.stringify(this.user);
+    console.log(User)
+    this.UpdateService.UpdateUserHTTP("UpdateAllowPN",User)
+     .subscribe((HttpResponse) => {
+        console.log(HttpResponse);
+        if(HttpResponse.status==202){
+          console.log("good")
+        }
+     })
+  }
+  UpdateAllowEN():void{
+    this.user.Username = localStorage.getItem("username");
+    var User = JSON.stringify(this.user);
+    console.log(User)
+    this.UpdateService.UpdateUserHTTP("UpdateAllowEN",User)
      .subscribe((HttpResponse) => {
         console.log(HttpResponse);
         if(HttpResponse.status==202){
