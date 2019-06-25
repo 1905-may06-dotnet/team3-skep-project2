@@ -6,6 +6,7 @@ namespace Domain
 {
     public class Meeting
     {
+        
         public int MID { get; set; }
         public int Lid { get; set; }
         public int Gid { get; set; }
@@ -20,6 +21,13 @@ namespace Domain
             MeetingInvitations = new List<MeetingInvitation>();
             Ratings = new List<Rating>();
             MeetingMenbers = new List<BGUser>();
+        }
+        public Meeting(int hId,int locationID,DateTime time,int gId)
+        {
+            this.Lid = locationID;
+            this.MeetingTime = time;
+            this.HostUid = hId;
+            this.Gid = gId;
         }
 
     }

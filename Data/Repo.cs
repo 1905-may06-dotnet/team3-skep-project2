@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace Data
 {
-    public class Repo:IRepo
+    public class Repo : IRepo
     {
         public virtual bool UsernameExist(string un)
         {
@@ -150,15 +150,71 @@ namespace Data
                 DbInstance.Instance.SaveChanges();
             }
         }
-        public virtual void AddGames(int BGGID, string User)
+        public virtual void AddGames(Domain.BoardGame game)
         {
-            throw new NotImplementedException();
+            DbInstance.Instance.BoardGame.Add(Mapper.Map(game));
+            DbInstance.Instance.SaveChanges();
         }
 
         public virtual Domain.BGLocation GetLocationById(int n){
             return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.Lid==n).FirstOrDefault());
         }
-
         #endregion ProfileAPI
+        #region MeetingAPI
+        public virtual bool CreateMeeting(Domain.Meeting meeting)
+        {
+            try
+            {
+                DbInstance.Instance.Meeting.Add(Mapper.Map(meeting));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public virtual bool CreateInvitation(Domain.MeetingInvitation invitation)
+        {
+            try
+            {
+                DbInstance.Instance.MeetingInvitation.Add(Mapper.Map(invitation));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public Models.BGLocation GetLocationByName(string locationName)
+        {
+            return DbInstance.Instance.BGLocation.Where<Data.Models.BGLocation>(l => l.LocationName == locationName).FirstOrDefault();
+            
+        }
+
+        public virtual List<Domain.Meeting> GetMeetingsByLocation(Domain.BGLocation search)
+        {
+            var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Lid == search.LID).ToList();
+            var MappedList = new List<Domain.Meeting>();
+            foreach (var i in list)
+            {
+                MappedList.Add(Mapper.Map(i));
+            }
+            return MappedList;
+        }
+        public List<Domain.Meeting> GetMeetingsByBG(Domain.BoardGame search)
+        {
+            var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Gid == search.BggId).ToList();
+            var MappedList = new List<Domain.Meeting>();
+            foreach (var i in list)
+            {
+                MappedList.Add(Mapper.Map(i));
+            }
+            return MappedList;
+        }
+        
+
+
+
+        #endregion MeetingAPI
     }
 }
