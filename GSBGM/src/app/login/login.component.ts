@@ -1,5 +1,4 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { AppComponent } from '../app.component'
 import {User} from '../user';
 import {LoginService} from '../login.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
@@ -30,7 +29,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private LoginService:LoginService,
     public http: HttpClient,
-
     ) {
       this.CheckUser();
      }
