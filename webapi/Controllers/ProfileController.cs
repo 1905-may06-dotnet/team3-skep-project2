@@ -22,7 +22,7 @@ namespace webapi.Controllers
         [HttpPut("UpdateEmail")]
         public ActionResult UpdateEmail([FromBody] BGUser user)
         {
-            //get user from guid
+            user.Email = user.New;
             if (db.UsernameExist(user.Username))
             {
                 db.UpdateEmail(user);
@@ -33,7 +33,7 @@ namespace webapi.Controllers
         [HttpPut("UpdatePhone")]
         public ActionResult UpdatePhone([FromBody] BGUser user)
         {
-            //get user from guid
+            user.PhoneNumber = user.New;
             if (db.UsernameExist(user.Username)) { 
                 db.UpdatePhoneNumber(user);
                 return Accepted();              
@@ -44,7 +44,7 @@ namespace webapi.Controllers
         [HttpPut("UpdateLocation")]
         public ActionResult UpdateLocation([FromBody] BGUser user)
         {
-            //get user from guid
+            user.Lid = Int32.Parse(user.New);
             if (db.UsernameExist(user.Username))
             {
                 db.UpdateLoction(user);
@@ -66,7 +66,6 @@ namespace webapi.Controllers
         [HttpPut("UpdateAllowPN")]
         public ActionResult UpdateAllowPN([FromBody] BGUser user)
         {
-            //get user from guid
             if (db.UsernameExist(user.Username))
             {
                 db.UpdateAllowPN(user);
