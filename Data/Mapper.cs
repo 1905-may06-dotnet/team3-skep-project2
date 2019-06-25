@@ -148,8 +148,8 @@ namespace Data
             Lid=meeting.Lid,
             Gid= meeting.Gid,
             HostUid = meeting.HostUid,
-            MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
-            MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
+            //MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
+            //MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
             Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
         };
 
@@ -160,8 +160,8 @@ namespace Data
             Lid = meeting.Lid,
             Gid = meeting.Gid,
             HostUid = meeting.HostUid,
-            MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
-            MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
+            //meetingmenbers = meeting.meetingmenbers.select(x => map(x)).tolist(),
+            //meetinginvitations = meeting.meetinginvitations.select(x => map(x)).tolist(),
             Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
         };
 

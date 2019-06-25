@@ -22,7 +22,6 @@ namespace Domain
         BGUser GetDomainUserByUserName(string un);
         //void AddUser(string un, string pw, string fn, String phoneN);
         //DMAppUser GetUserByUserName(string un);
-        List<Domain.Meeting> GetMeetingsByLocation(BGLocation search);
-        List<Domain.Meeting> GetMeetingsByBG(BoardGame search);
+        List<Domain.Meeting> GetMeetings(Meeting meeting);
     }
 }

@@ -22,6 +22,16 @@ namespace Data
             bool Exist = DbInstance.Instance.BoardGame.Any(r => r.Bgname == bgn);
             return Exist;
         }
+        public bool BoardGameExistByID(int gid)
+        {
+            bool Exist = DbInstance.Instance.BoardGame.Any(r => r.Gid == gid);
+            return Exist;
+        }
+        public bool LocationExist(int lid)
+        {
+            bool Exist = DbInstance.Instance.BGLocation.Any(r => r.Lid == lid);
+            return Exist;
+        }
         public List<Domain.BGLocation> GetAllLocations()
         {
             List<Domain.BGLocation> locationList = new List<Domain.BGLocation>();
@@ -195,30 +205,57 @@ namespace Data
             
         }
 
-        public virtual List<Domain.Meeting> GetMeetingsByLocation(Domain.BGLocation search)
+        public virtual List<Domain.Meeting> GetMeetings(Domain.Meeting meeting)
         {
-            var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Lid == search.LID).ToList();
-            var MappedList = new List<Domain.Meeting>();
-            foreach (var i in list)
+            if (LocationExist(meeting.Lid))
             {
-                MappedList.Add(Mapper.Map(i));
+                if (BoardGameExistByID(meeting.Gid))
+                {
+                    var slist = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Lid == meeting.Lid ).Where<Data.Models.Meeting>(l => (int)l.Gid == meeting.Gid).ToList();
+                    var sMappedList = new List<Domain.Meeting>();
+                    foreach (var i in slist)
+                    {
+                        sMappedList.Add(Mapper.Map(i));
+                    }
+                    return sMappedList;
+                }
+                else
+                {
+                    var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Lid == meeting.Lid).ToList();
+                    var MappedList = new List<Domain.Meeting>();
+                    foreach (var i in list)
+                    {
+                        MappedList.Add(Mapper.Map(i));
+                    }
+                    return MappedList;
+                }
             }
-            return MappedList;
-        }
-        public List<Domain.Meeting> GetMeetingsByBG(Domain.BoardGame search)
-        {
-            var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Gid == search.BggId).ToList();
-            var MappedList = new List<Domain.Meeting>();
-            foreach (var i in list)
+            else
             {
-                MappedList.Add(Mapper.Map(i));
-            }
-            return MappedList;
+                if (BoardGameExistByID(meeting.Gid))
+                {
+                    var list = DbInstance.Instance.Meeting.Where<Data.Models.Meeting>(l => (int)l.Gid == meeting.Gid).ToList();
+                    var MappedList = new List<Domain.Meeting>();
+                    foreach (var i in list)
+                    {
+                        MappedList.Add(Mapper.Map(i));
+                    }
+                    return MappedList;
+                }
+                else
+                {
+                    List<Domain.Meeting> meetingList = new List<Domain.Meeting>();
+                    foreach (var m in DbInstance.Instance.Meeting.ToList())
+                    { meetingList.Add(Mapper.Map(m)); }
+                    return meetingList;
+                }
+            }        
         }
-        
 
 
 
-        #endregion MeetingAPI
-    }
+
+
+            #endregion MeetingAPI
+        }
 }

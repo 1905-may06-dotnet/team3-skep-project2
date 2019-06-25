@@ -13,14 +13,14 @@ namespace Domain
         public int HostUid { get; set; }
         public DateTime MeetingTime { get; set; }
 
-        public List<BGUser> MeetingMenbers { get; set; }
-        public List<MeetingInvitation> MeetingInvitations { get; set; }
+        //public List<BGUser> MeetingMenbers { get; set; }
+        //public List<MeetingInvitation> MeetingInvitations { get; set; }
         public List<Rating> Ratings { get; set; }
         public Meeting()
         {
-            MeetingInvitations = new List<MeetingInvitation>();
+            //MeetingInvitations = new List<MeetingInvitation>();
             Ratings = new List<Rating>();
-            MeetingMenbers = new List<BGUser>();
+            //MeetingMenbers = new List<BGUser>();
         }
         public Meeting(int hId,int locationID,DateTime time,int gId)
         {
