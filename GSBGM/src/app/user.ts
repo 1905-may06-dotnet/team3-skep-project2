@@ -7,6 +7,6 @@ export class User {
     DateOfBirth: string;
     AllowEN: boolean;
     AllowPN: boolean;
-    New: string;
+    Phone: string;
     Id: number;
 }

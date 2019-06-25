@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
     this.user = new User();
   }
   UpdateEmail():void{
-    this.user.New = this.email;
     this.user.Username = localStorage.getItem("username");
     var User = JSON.stringify(this.user);
     console.log(User)
@@ -36,7 +35,6 @@ export class ProfileComponent implements OnInit {
      })
   }
   UpdatePhone():void{
-    this.user.New = this.phone;
     this.user.Username = localStorage.getItem("username");
     var User = JSON.stringify(this.user);
     console.log(User)
