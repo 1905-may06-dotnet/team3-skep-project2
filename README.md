@@ -20,7 +20,7 @@ and allows both email and site notifications.
 ### Technology to be used on this project
 * Mailgun api
 * Twilio api
-* Azure keyvault, Pipelines, DevOps, and App service
+* Pipelines, DevOps, and App service
 * Docker
 * SQL Server
 * C# asp.net MVC Core with MS Test
