@@ -6,9 +6,28 @@ namespace Domain
 {
     public class BGUser
     {
+        public BGUser(string U,string Pass){
+            this.Username = U;
+            this.Password = Pass;
+        }
+        public BGUser(string U,string Pass,string Em, Guid salt, DateTime dob)
+        {
+            this.UID = 0;
+            this.Username = U;
+            this.Email = Em;
+            this.Password = Pass;
+            this.Salt = salt;
+            this.DateOfBirth = dob;
+            this.Location = new BGLocation();
+        }
+        public BGUser() { }
         public int UID { get; set; }
         public string Username { get; set; }
+        public string New{get;set;}
+        //MAP ME Please
+        public Guid Token{get;set;}
         public string Password { get; set; }
+        public Guid Salt {get;set;}
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -26,24 +45,11 @@ namespace Domain
         public List<MeetingInvitation> MeetingInvitationsAsReceiver { get; set; }
         public List<MeetingRequest> MeetingRequestsAsSender { get; set; }
         public List<MeetingRequest> MeetingRequestsAsReceiver { get; set; }
-        public BGUser()
-        {
-            UserCollections = new List<BoardGame>();
-            HasFriends = new List<Friend>();
-            FriendInvitationsAsSender = new List<FriendInvitation>();
-            FriendInvitationsAsReceiver = new List<FriendInvitation>();
-            MeetingsJoined = new List<Meeting>();
-            MeetingsHost = new List<Meeting>();
-            MeetingInvitationsAsSender = new List<MeetingInvitation>();
-            MeetingInvitationsAsReceiver = new List<MeetingInvitation>();
-            MeetingRequestsAsSender = new List<MeetingRequest>();
-            MeetingRequestsAsReceiver = new List<MeetingRequest>();
-            Ratings = new List<Rating>();
-        }
-        public BGUser(string un, string pw, string em, string pn, DateTime dob, bool apn, bool aen)
+        public BGUser(string un, string pw, Guid salt, string em, string pn, DateTime dob, bool apn, bool aen)
         {
                 Username = un;
                 Password = pw;
+                Salt = salt;
                 Email = em;
                 PhoneNumber = pn;
                 DateOfBirth = dob;

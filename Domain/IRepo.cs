@@ -11,5 +11,15 @@ namespace Domain
         void AddUser(BGUser r);
         List<Domain.BGLocation> GetAllLocations();
         List<Domain.BoardGame> GetALLBoardGames();
+        void UpdateUserName(string newName, string oldName);
+        void UpdatePassword(string newPassword, string User);
+        void UpdateEmail(string newEmail, string User);
+        void UpdateLoction(BGLocation newLocation, string User);
+        void AddGames(int BGGID, string User);
+        void UpdatePhoneNumber(string newNumber, string User);
+        BGLocation GetLocationById(int locationName);
+        BGUser GetDomainUserByUserName(string un);
+        //void AddUser(string un, string pw, string fn, String phoneN);
+        //DMAppUser GetUserByUserName(string un);
     }
 }
