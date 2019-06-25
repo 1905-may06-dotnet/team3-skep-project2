@@ -29,4 +29,4 @@ steps:
     command: 'build'
     Dockerfile: 'GSBGM/Dockerfile'
 - script: |
-    docker push kevincloinger/skep
+    docker push kevincloinger/skep:NG
