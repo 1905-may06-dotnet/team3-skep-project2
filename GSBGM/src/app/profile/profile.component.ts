@@ -11,10 +11,10 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 })
 export class ProfileComponent implements OnInit {
   user:User;
-  username:string;
-  email:string;
-  phone: string;
-  password: string;
+  EmailU: boolean = true;
+  PhoneU: boolean = true;
+  AllowPNU: boolean = true;
+  AllowENU: boolean = true;
   constructor(
     private UpdateService:UpdateService,
     public http: HttpClient,
@@ -30,7 +30,10 @@ export class ProfileComponent implements OnInit {
      .subscribe((HttpResponse) => {
         console.log(HttpResponse);
         if(HttpResponse.status==202){
+          this.EmailU = true;
           console.log("good")
+        } else {
+          this.EmailU = false;
         }
      })
   }
@@ -42,7 +45,10 @@ export class ProfileComponent implements OnInit {
      .subscribe((HttpResponse) => {
         console.log(HttpResponse);
         if(HttpResponse.status==202){
+          this.PhoneU = true;
           console.log("good")
+        } else {
+          this.PhoneU = false;
         }
      })
   }
@@ -55,6 +61,9 @@ export class ProfileComponent implements OnInit {
         console.log(HttpResponse);
         if(HttpResponse.status==202){
           console.log("good")
+          this.AllowPNU = true;
+        } else {
+          this.AllowPNU = false;
         }
      })
   }
@@ -67,6 +76,9 @@ export class ProfileComponent implements OnInit {
         console.log(HttpResponse);
         if(HttpResponse.status==202){
           console.log("good")
+          this.AllowENU = true;
+        } else {
+          this.AllowENU = false;
         }
      })
   }
