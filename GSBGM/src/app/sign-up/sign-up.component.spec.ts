@@ -10,7 +10,7 @@ describe('SignUpComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule,FormsModule], 
+      imports: [HttpClientTestingModule, FormsModule], 
       providers: [LoginService],
       declarations: [ SignUpComponent ]
     })
@@ -26,4 +26,5 @@ describe('SignUpComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });
