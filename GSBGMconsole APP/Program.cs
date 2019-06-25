@@ -11,14 +11,17 @@ namespace GSBGMconsole_APP
 {
     class Program
     {
+        static string s = "";
         static void Main(string[] args)
         {
-            using (HttpClient client = new HttpClient())
+            //UpdateGameList newUpdate = new UpdateGameList();
+            //newUpdate.GetAllGames();
+            Data.Repo r = new Data.Repo();
+            foreach (var i in r.GetALLBoardGames())
             {
-
+                Console.WriteLine(i.BGName);
             }
-            //BGGController bgg = new BGGController();
-            //Console.WriteLine(bgg.GetAllGames());
+
 
 
             //Client c = new Client();
@@ -35,32 +38,36 @@ namespace GSBGMconsole_APP
 
             //===================================================fetch json and convert json to objects==========
             //Task t = new Task(DownloadPageAsync);
-            //    t.Start();
-            //   Console.WriteLine("Downloading page...");
-            //   Console.ReadLine();
+            //t.Start();
+            //Console.WriteLine("Downloading page...");
+            //Console.WriteLine(s);
+            //Console.ReadLine();
+
+
             //===================================================fetch json and convert json to objects==========
 
         }
         ////===================================================fetch json and convert json to objects==========
         //static async void DownloadPageAsync()
+        //{
+        //    // ... Endpoint
+        //    string page = "https://bgg-json.azurewebsites.net/collection/teamskep?grouped=true";
+        //    // ... Use HttpClient.
+        //    using (HttpClient client = new HttpClient())
+        //    using (HttpResponseMessage response = await client.GetAsync(page))
+        //    using (HttpContent content = response.Content)
         //    {
-        //        // ... Endpoint
-        //        string page = "https://bgg-json.azurewebsites.net/collection/teamskep?grouped=true";
-        //        // ... Use HttpClient.
-        //        using (HttpClient client = new HttpClient())
-        //        using (HttpResponseMessage response = await client.GetAsync(page))
-        //        using (HttpContent content = response.Content)
-        //        {
-        //            // ... Read the string.
-        //            string result = await content.ReadAsStringAsync();
+        //        // ... Read the string.
+        //        string result = await content.ReadAsStringAsync();
         //        List<BGGBoardGame> bgglist = new List<BGGBoardGame>();
-        //        bgglist=JsonConvert.DeserializeObject<List<BGGBoardGame>>(result);
+        //        bgglist = JsonConvert.DeserializeObject<List<BGGBoardGame>>(result);
         //        foreach (var i in bgglist)
         //        {
-        //            Console.WriteLine(i.gameId); 
+        //            Console.WriteLine(i.gameId);
         //        }
-        //        }
+        //        s = result;
         //    }
+        //}
         ////===================================================fetch json and convert json to objects==========
 
     }

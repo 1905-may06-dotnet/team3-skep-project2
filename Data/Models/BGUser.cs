@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
@@ -84,16 +85,27 @@ namespace Data.Models
         public virtual ICollection<MeetingMenber> MeetingMenber { get; set; }
 
         //list that we actually need to use
+        [NotMapped]
         public List<BoardGame> UserCollections { get; set; }
+        [NotMapped]
         public List<Friend> HasFriends { get; set; }
+        [NotMapped]
         public List<FriendInvitation> FriendInvitationsAsSender { get; set; }
+        [NotMapped]
         public List<FriendInvitation> FriendInvitationsAsReceiver { get; set; }
+        [NotMapped]
         public List<Meeting> MeetingsJoined { get; set; }
+        [NotMapped]
         public List<Meeting> MeetingsHost { get; set; }
+        [NotMapped]
         public List<MeetingInvitation> MeetingInvitationsAsSender { get; set; }
+        [NotMapped]
         public List<MeetingInvitation> MeetingInvitationsAsReceiver { get; set; }
+        [NotMapped]
         public List<MeetingRequest> MeetingRequestsAsSender { get; set; }
+        [NotMapped]
         public List<MeetingRequest> MeetingRequestsAsReceiver { get; set; }
+        [NotMapped]
         public List<Rating> Ratings { get; set; }
     }
 }

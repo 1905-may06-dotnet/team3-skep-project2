@@ -9,7 +9,7 @@ namespace Domain
         bool UsernameExist(string un);
         bool PasswordMatched(string un, string pw);
         void AddUser(BGUser r);
-        //void AddUser(string un, string pw, string fn, String phoneN);
-        //DMAppUser GetUserByUserName(string un);
+        List<Domain.BGLocation> GetAllLocations();
+        List<Domain.BoardGame> GetALLBoardGames();
     }
 }

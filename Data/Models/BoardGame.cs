@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
@@ -27,8 +28,11 @@ namespace Data.Models
         public double? Bggrating { get; set; }
         public int? PlayTime { get; set; }
         //what we acatually need
+        [NotMapped]
         public List<Meeting> Meetings { get; set; }
+        [NotMapped]
         public  List<MeetingRequest> MeetingRequestList { get; set; }
+        [NotMapped]
         public  List<UserCollection> UserCollections { get; set; }
         //needed to create database relationship
         public virtual ICollection<Meeting> Meeting { get; set; }
