@@ -42,7 +42,8 @@ namespace Data
             Username=user.Username,
             Password=user.Password,
             Salt=user.Salt,
-            //PhoneNumber = user.PhoneNumber,
+            PhoneNumber = user.PhoneNumber,
+            Lid=(int)user.Lid
             //Location = Map(user.PreferedLocation),
             //UserCollections = user.UserCollections.Select(x => Map(x)).ToList(),
             //Ratings = user.Ratings.Select(x => Map(x)).ToList(),
@@ -66,7 +67,8 @@ namespace Data
             Email = user.Email,
             Password = user.Password,
             Salt = user.Salt,
-            //PhoneNumber = user.PhoneNumber,
+            PhoneNumber = user.PhoneNumber,
+            Lid = user.Lid
             //PreferedLocation = Map(user.Location),
             //UserCollections = user.UserCollections.Select(x => Map(x)).ToList(),
             //Ratings = user.Ratings.Select(x => Map(x)).ToList(),

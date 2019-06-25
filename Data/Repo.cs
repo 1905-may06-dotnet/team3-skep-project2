@@ -99,60 +99,63 @@ namespace Data
             return DbInstance.Instance.Friend.Where<Models.Friend>(r => r.Fid == fid).FirstOrDefault();
         }
         #region ProfileAPI
-        public virtual void UpdateUserName(string newName, string oldName)
+        public virtual void UpdateEmail(Domain.BGUser user)
         {
-            if (GetUserByUserName(oldName) != null)
+            if (GetUserByUserName(user.Username) != null)
             {
-                var user=GetUserByUserName(oldName);
-                user.Username = newName;
-                DbInstance.Instance.BGUser.Update(user);
-             }
-        }
-
-        public virtual void UpdatePassword(string newPassword, string User)
-        {
-            if (GetUserByUserName(User) != null)
-            {
-                var user = GetUserByUserName(User);
-                user.Password = newPassword;
-                DbInstance.Instance.BGUser.Update(user);
-                DbInstance.Instance.SaveChanges();
-            }
-        }
-        public virtual void UpdateEmail(string newEmail, string User)
-        {
-            if (GetUserByUserName(User) != null)
-            {
-                var user = GetUserByUserName(User);
-                user.Email = newEmail;
-                DbInstance.Instance.BGUser.Update(user);
+                var updateUser = GetUserByUserName(user.Username);
+                updateUser.Email = user.Email;
+                DbInstance.Instance.BGUser.Update(updateUser);
                 DbInstance.Instance.SaveChanges();
             }
         }
 
-        public virtual void UpdateLoction(Domain.BGLocation newLocation, string User)
+        public virtual void UpdateLoction(Domain.BGUser user)
         {
-            if (GetUserByUserName(User) != null)
+            if (GetUserByUserName(user.Username) != null)
             {
-                var user = GetUserByUserName(User);
-                DbInstance.Instance.Attach(Mapper.Map(newLocation));
-                DbInstance.Instance.BGUser.Update(user);
+                var updateUser = GetUserByUserName(user.Username);
+                updateUser.Lid = user.Lid;
+                DbInstance.Instance.BGUser.Update(updateUser);
                 DbInstance.Instance.SaveChanges();
             }
         }
-        public virtual void UpdatePhoneNumber(string newNumber, string User)
+        public virtual void UpdatePhoneNumber(Domain.BGUser user)
         {
-            if (GetUserByUserName(User) != null)
+            if (GetUserByUserName(user.Username) != null)
             {
-                var user = GetUserByUserName(User);
-                user.PhoneNumber = newNumber;
-                DbInstance.Instance.BGUser.Update(user);
+                var updateUser = GetUserByUserName(user.Username);
+                updateUser.PhoneNumber = user.PhoneNumber;
+                DbInstance.Instance.BGUser.Update(updateUser);
                 DbInstance.Instance.SaveChanges();
             }
         }
-        public virtual void AddGames(Domain.BoardGame game)
+        public virtual void UpdateAllowEN(Domain.BGUser user)
         {
-            DbInstance.Instance.BoardGame.Add(Mapper.Map(game));
+            if (GetUserByUserName(user.Username) != null)
+            {
+                var updateUser = GetUserByUserName(user.Username);
+                updateUser.AllowEN = user.AllowEN;
+                DbInstance.Instance.BGUser.Update(updateUser);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+        public virtual void UpdateAllowPN(Domain.BGUser user)
+        {
+            if (GetUserByUserName(user.Username) != null)
+            {
+                var updateUser = GetUserByUserName(user.Username);
+                updateUser.AllowPN = user.AllowPN;
+                DbInstance.Instance.BGUser.Update(updateUser);
+                DbInstance.Instance.SaveChanges();
+            }
+        }
+        public virtual void AddGames(Domain.UserCollection item)
+        {
+            Models.UserCollection newItem = new Models.UserCollection();
+            newItem.Uid = item.Uid;
+            newItem.Gid = item.Gid;
+            DbInstance.Instance.UserCollection.Add(newItem);
             DbInstance.Instance.SaveChanges();
         }
 

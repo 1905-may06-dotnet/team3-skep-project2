@@ -33,6 +33,7 @@ namespace Domain
         public DateTime DateOfBirth { get; set; }
         public bool AllowPN { get; set; }
         public bool AllowEN { get; set; }
+        public int Lid { get; set; }
         public BGLocation Location { get; set; }
         public List<BoardGame> UserCollections { get; set; }
         public List<Rating> Ratings { get; set; }

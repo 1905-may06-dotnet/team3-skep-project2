@@ -10,12 +10,12 @@ namespace Domain
         void AddUser(BGUser r);
         List<Domain.BGLocation> GetAllLocations();
         List<Domain.BoardGame> GetALLBoardGames();
-        void UpdateUserName(string newName, string oldName);
-        void UpdatePassword(string newPassword, string User);
-        void UpdateEmail(string newEmail, string User);
-        void UpdateLoction(BGLocation newLocation, string User);
-        void AddGames(BoardGame game);
-        void UpdatePhoneNumber(string newNumber, string User);
+        void UpdateEmail(BGUser user);
+        void UpdateLoction(BGUser user);
+        void UpdateAllowEN(BGUser user);
+        void UpdateAllowPN(BGUser user);
+        void AddGames(UserCollection item);
+        void UpdatePhoneNumber(BGUser user);
         bool CreateMeeting(Meeting meeting);
         //bool CreateInvitation(Domain.MeetingInvitation invitation);
         BGLocation GetLocationById(int locationName);
