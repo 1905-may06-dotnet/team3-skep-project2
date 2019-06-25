@@ -23,5 +23,6 @@ namespace Domain
         //void AddUser(string un, string pw, string fn, String phoneN);
         //DMAppUser GetUserByUserName(string un);
         List<Domain.Meeting> GetMeetings(Meeting meeting);
+        void CreateMeetingRequest(MeetingRequest mr);
     }
 }

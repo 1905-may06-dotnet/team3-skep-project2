@@ -33,17 +33,33 @@ namespace webapi.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost("CreateMeetingRequest")]
+        public ActionResult AddMeetingRequest([FromBody] Domain.MeetingRequest meetingRequest)
+        {
+            try
+            {
+                db.CreateMeetingRequest(meetingRequest);
+                return Created(meetingRequest.MeetingTime.ToString(), meetingRequest.InitiatorUid);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
 
         [HttpPost("SearchMeeting")]
         public ActionResult SearchMeeting([FromBody] Domain.Meeting meeting)
         {
             try
             {
-                return Ok(db.GetMeetings(meeting));
+                if (db.GetMeetings(meeting).Count() > 0)
+                { return Ok(db.GetMeetings(meeting)); }
+                else { return NotFound(); }
             }
             catch
             {
-                return NotFound();
+                return BadRequest();
             }
         }
 

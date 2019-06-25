@@ -252,10 +252,12 @@ namespace Data
             }        
         }
 
-
-
-
-
-            #endregion MeetingAPI
+        public void CreateMeetingRequest(Domain.MeetingRequest mr)
+        {
+            DbInstance.Instance.MeetingRequest.Add(Mapper.Map(mr));
+            DbInstance.Instance.SaveChanges();
         }
+
+        #endregion MeetingAPI
+    }
 }
