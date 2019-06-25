@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, NgModule} from '@angular/core';
-import { AppComponent } from '../app.component'
 import {User} from '../user';
 import {LoginService} from '../login.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';

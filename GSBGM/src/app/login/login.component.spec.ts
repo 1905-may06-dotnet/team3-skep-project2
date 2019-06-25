@@ -31,12 +31,9 @@ describe('LoginComponent', () => {
   });
   it('check branch CheckUser()',()=>{
     localStorage.setItem("uid", "test");
-    
-    
   });
   it('check branch CheckUser()2',()=>{
     localStorage.clear();
-
   });
 
 });
