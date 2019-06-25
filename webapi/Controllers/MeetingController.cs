@@ -26,7 +26,20 @@ namespace webapi.Controllers
             try
             {
                 db.CreateMeeting(meeting);
-                return Created("uri",meeting);
+                return Created(meeting.MeetingTime.ToString(),meeting.HostUid);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        [HttpPost("CreateMeetingRequest")]
+        public ActionResult AddMeetingRequest([FromBody] Domain.MeetingRequest meetingRequest)
+        {
+            try
+            {
+                db.CreateMeetingRequest(meetingRequest);
+                return Created(meetingRequest.MeetingTime.ToString(), meetingRequest.InitiatorUid);
             }
             catch
             {
@@ -34,31 +47,21 @@ namespace webapi.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult SearchMeetingByLocation()
+
+        [HttpPost("SearchMeeting")]
+        public ActionResult SearchMeeting([FromBody] Domain.Meeting meeting)
         {
-            //working on this one -Patrick
-            return NotFound();
+            try
+            {
+                if (db.GetMeetings(meeting).Count() > 0)
+                { return Ok(db.GetMeetings(meeting)); }
+                else { return NotFound(); }
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
-        [HttpPost]
-        public ActionResult SearchMeetingByGame()
-        {
-            return NotFound();
-        }
-
-        // PUT: api/Meeting/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-
-        }
     }
 }
