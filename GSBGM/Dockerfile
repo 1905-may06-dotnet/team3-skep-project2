@@ -7,7 +7,7 @@ RUN npm run build:ci
 
 FROM nginx:stable-alpine
 
-COPY --from=base /app/dist /usr/share/nginx/html
+COPY --from=base /app/dist/GSBGM /usr/share/nginx/html
 EXPOSE 80
 EXPOSE 443
 
