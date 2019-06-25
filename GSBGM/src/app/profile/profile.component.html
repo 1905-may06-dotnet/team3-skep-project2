@@ -2,22 +2,24 @@
   <label>Email
     <input [(ngModel)]="user.Email" placeholder="Enter Email" />
     <button (click)="UpdateEmail()">Update</button>
-    <p *ngIf="EmailU" style="color:red;">Failed</p>
+    <p *ngIf="EmailU==false" style="color:red;">Failed</p>
   </label>
   <br>
   <label>Phone Number
-    <input [(ngModel)]="user.Phone" placeholder="Enter Phone"  />
+    <input [(ngModel)]="user.PhoneNumber" placeholder="Enter Phone"  />
     <button (click)="UpdatePhone()">Update</button>
-    <p *ngIf="PhoneU" style="color:red;">Failed</p>
+    <p *ngIf="PhoneU==false" style="color:red;">Failed</p>
   </label>
   <br>
-  <label>Allow Text
-      <input [(ngModel)]="user.AllowPN" type="checkbox" style="margin-bottom:15px" (click)="UpdateAllowPN()">
-      <p *ngIf="AllowPNU" style="color:red;">Failed</p>
-  </label>
   <label>Allow Email
-      <input [(ngModel)]="user.AllowEN" type="checkbox" style="margin-bottom:15px" (click)="UpdateAllowEN()">
-      <p *ngIf="AllowENU" style="color:red;">Failed</p>
+    <input [(ngModel)]="user.AllowEN" type="checkbox" style="margin-bottom:15px" >
+    <button (click)="UpdateAllowEN()">Update</button>
+    <p *ngIf="AllowENU==false" style="color:red;">Failed</p>
+  </label>
+  <label>Allow Text
+    <input [(ngModel)]="user.AllowPN" type="checkbox" style="margin-bottom:15px" >
+    <button (click)="UpdateAllowPN()">Update</button>
+    <p *ngIf="AllowPNU==false" style="color:red;">Failed</p>
   </label>
 </div>
 

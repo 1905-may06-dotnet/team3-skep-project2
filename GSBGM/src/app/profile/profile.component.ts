@@ -52,21 +52,6 @@ export class ProfileComponent implements OnInit {
         }
      })
   }
-  UpdateAllowPN():void{
-    this.user.Username = localStorage.getItem("username");
-    var User = JSON.stringify(this.user);
-    console.log(User)
-    this.UpdateService.UpdateUserHTTP("UpdateAllowPN",User)
-     .subscribe((HttpResponse) => {
-        console.log(HttpResponse);
-        if(HttpResponse.status==202){
-          console.log("good")
-          this.AllowPNU = true;
-        } else {
-          this.AllowPNU = false;
-        }
-     })
-  }
   UpdateAllowEN():void{
     this.user.Username = localStorage.getItem("username");
     var User = JSON.stringify(this.user);
@@ -74,6 +59,7 @@ export class ProfileComponent implements OnInit {
     this.UpdateService.UpdateUserHTTP("UpdateAllowEN",User)
      .subscribe((HttpResponse) => {
         console.log(HttpResponse);
+        console.log(this.user.AllowEN)
         if(HttpResponse.status==202){
           console.log("good")
           this.AllowENU = true;
