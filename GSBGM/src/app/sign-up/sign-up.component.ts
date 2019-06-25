@@ -1,10 +1,11 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, NgModule} from '@angular/core';
 import { AppComponent } from '../app.component'
 import {User} from '../user';
 import {LoginService} from '../login.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm,FormsModule } from '@angular/forms';
+
 const httpOptions ={
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -16,7 +17,9 @@ const httpOptions ={
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-
+@NgModule({
+  imports:[FormsModule,NgForm]
+})
 
 export class SignUpComponent implements OnInit {
   public UsernameValidationURL = "login/validate";

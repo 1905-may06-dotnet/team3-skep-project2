@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProfileComponent } from './profile/profile.component';
 
+import { FormsModule } from '@angular/forms';
 const routes: Routes = [
   { path: '', redirectTo: '/signUp', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -13,7 +14,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes),FormsModule ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
