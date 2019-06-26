@@ -82,6 +82,21 @@ namespace webapi.Controllers
             catch
             { return BadRequest();}           
         }
+        [HttpPost("GetUserInfo")]
+        public IActionResult GetUserInfo([FromBody] BGUser user)
+        {
+            try
+            {
+                BGUser searchUser = new BGUser();
+                searchUser = db.GetDomainUserByUserName(user.Username);
+                searchUser.BGCollectionList = db.GetUserBGCollectionList(searchUser.UID);
+                return Ok(searchUser);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
         [HttpGet("GetBGCollection")]
         public ActionResult GetBGCollection([FromBody] BGUser user)
         {

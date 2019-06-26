@@ -1,17 +1,18 @@
-  
-  <div *ngIf="LoggedIn==false" class="container my-2">
-    <label class="mr-3 my-2"><b>Username</b>
+ <div *ngIf="LoggedIn==false" class="container my-2">
+    <label class="mr-3 my-2">
+      <span *ngIf="IdentityCheck==false" style="color:red;">Incorrect Username or Password</span>       
+      <b>Username</b>
       <input [(ngModel)]="user.Username" placeholder="" class="ml-1 my-2" required/>
     </label>
     <label class="mr-3 my-2"><b>Password</b>
-      <input [(ngModel)]="user.Password" type="password" placeholder="" class="ml-1 my-2" required/>       
+      <input [(ngModel)]="user.Password" type="password" placeholder="" class="ml-1 my-2" required/>
     </label>
     <button type="button" class="btn btn-dark mx-2 my-2" (click)="LoginUser()">Login</button>
     <button type="button" class="btn btn-dark my-2" routerLink='/signUp'>SignUp</button>
   </div>
 
   <div *ngIf="LoggedIn">
-    <p>UserID {{LoggedInUID}} Logged In!
+    <p>UserID {{LoggedInUser}} Logged In!
       <button id="logout" (click)="LogOutUser()">Logout</button>
     </p>
   </div>
