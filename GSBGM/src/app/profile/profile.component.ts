@@ -138,7 +138,7 @@ export class ProfileComponent implements OnInit {
   AddGame():void{
     console.log("start");
     console.log(this.UserInfo.uid)
-    this.newItem.Uid = 38;//this.UserInfo.uid;
+    this.newItem.Uid = this.UserInfo.uid;
     this.newItem.Gid=this.user.newGid;
     var item = JSON.stringify(this.newItem);
     console.log(item)
