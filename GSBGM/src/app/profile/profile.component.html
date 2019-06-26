@@ -1,76 +1,77 @@
-<div>
-    <h3>{{UserInfo.username}}'s Profile</h3>
-    <table>
-        <tr>
-          <th>Date Of Birth:</th>
-          <td>{{UserInfo.dateOfBirth| date:"MM/dd/yy" }}</td> 
-        </tr>
-        <tr>
-          <th>Phone Number:</th>
-          <td>{{UserInfo.phoneNumber}}</td> 
-          <td>
-            <input [(ngModel)]="user.PhoneNumber" placeholder="Enter Phone"  />
-            <button (click)="UpdatePhone()">Update</button>
-            <span *ngIf="PhoneU" style="color:red;">Updated!</span>
-          </td>
-        </tr>
-        <tr>
-          <th>Email:</th>
-          <td>{{UserInfo.email}}</td> 
-            <td>
-              <input [(ngModel)]="user.Email" placeholder="Enter Email" />
-              <button (click)="UpdateEmail()">Update</button>
-              <span *ngIf="EmailU" style="color:red;">Updated!</span>
-            </td>
-        </tr>
-        <tr>
-          <th>Allow Email Notification:</th>
-          <td>{{UserInfo.allowEN}}</td> 
-          <td>
-            <label>Allow Notification
-              <input [(ngModel)]="user.AllowEN" type="checkbox" style="margin-bottom:15px" >
-              <button (click)="UpdateAllowEN()">Update</button>
-              <span *ngIf="AllowENU" style="color:red;">Updated!</span>
-            </label>
-          </td>
-        </tr>
-        <tr>
-            <th>Prefered Location ID</th>
-            <td>{{UserInfo.lid}}</td>
-            <td>
-                <select [(ngModel)]="user.Lid">
-                    <option value="" disabled selected>change prefeted location</option>
-                    <option *ngFor="let Location of LocationList" value={{Location.lid}}>Location ID:{{Location.lid}} Location name:{{Location.locationName}}</option>
-                </select>
-                <button (click)="UpdateLocation()">Update</button>
-                <span *ngIf="LocationU" style="color:red;">Updated!</span>
-            </td> 
-        </tr>
-        <tr><br></tr>
-        <tr>
-            <th>Board Games ownwed:</th>
-            <td colspan="2">{{UserInfo.bgCollectionList}}</td>
-        </tr>
-        <tr><br></tr>
-        <tr>
-            <th>Search and Add a Game</th>
-            <td></td>
-            <td colspan="2">                
-              <select [(ngModel)]="user.newGid"> 
-                 <option *ngFor="let BoardGame of BoardGameList" value={{BoardGame.gid}}>Game ID: {{BoardGame.gid}} Game name: {{BoardGame.bgName}}</option>
-            </select>
-            <button (click)="AddGame()">AddGame</button>
-            <span *ngIf="AddGameU" style="color:red;">Game Added!</span>
-          </td>
-        </tr>
-    </table>
+<div id="profile-container" class="container">
+  <h3>{{UserInfo.username}}'s Profile</h3><br>
+  <table>
+    <tr>
+      <th>Date Of Birth:</th>
+      <td>{{UserInfo.dateOfBirth| date:"MM/dd/yy" }}</td> 
+    </tr>
+    <tr>
+      <th>Phone Number:</th>
+      <td>{{UserInfo.phoneNumber}}</td> 
+      <td>
+        <input [(ngModel)]="user.PhoneNumber" placeholder="Enter Phone"  />
+        <button (click)="UpdatePhone()">Update</button>
+        <span *ngIf="PhoneU" style="color:red;">Updated!</span>
+      </td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td>{{UserInfo.email}}</td> 
+      <td>
+        <input [(ngModel)]="user.Email" placeholder="Enter Email" />
+        <button (click)="UpdateEmail()">Update</button>
+        <span *ngIf="EmailU" style="color:red;">Updated!</span>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <th>Allow Email Notification:</th>
+      <td>{{UserInfo.allowEN}}</td> 
+      <td>
+        <label>Allow Notification
+          <input [(ngModel)]="user.AllowEN" type="checkbox" style="margin-bottom:15px" >
+          <button (click)="UpdateAllowEN()">Update</button>
+          <span *ngIf="AllowENU" style="color:red;">Updated!</span>
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <th>Prefered Location ID</th>
+      <td>{{UserInfo.lid}}</td>
+      <td>
+        <select [(ngModel)]="user.Lid">
+          <option value="" disabled selected>change prefeted location</option>
+          <option *ngFor="let Location of LocationList" value={{Location.lid}}>Location ID:{{Location.lid}} Location name:{{Location.locationName}}</option>
+        </select>
+        <button (click)="UpdateLocation()">Update</button>
+        <span *ngIf="LocationU" style="color:red;">Updated!</span>
+      </td> 
+    </tr>
+    <tr><br></tr>
+    <tr>
+      <th>Board Games ownwed:</th>
+      <td colspan="2">{{UserInfo.bgCollectionList}}</td>
+    </tr>
+    <tr><br></tr>
+    <tr>
+      <th>Search and Add a Game</th>
+      <td></td>
+      <td colspan="2">                
+        <select [(ngModel)]="user.newGid"> 
+         <option *ngFor="let BoardGame of BoardGameList" value={{BoardGame.gid}}>Game ID: {{BoardGame.gid}} Game name: {{BoardGame.bgName}}</option>
+       </select>
+       <button (click)="AddGame()">AddGame</button>
+       <span *ngIf="AddGameU" style="color:red;">Game Added!</span>
+     </td>
+   </tr>
+ </table>
     <!-- <div>    
       <select [(ngModel)]="newItem.Gid"> 
         <option *ngFor="let BoardGame of BoardGameList">Game name:{{BoardGame.bgName}}</option>
       </div> -->
+      <br>
+      <!-- <li *ngFor="let BoardGame of BoardGameList">{{BoardGame.bgName}}</li> -->
+      <p>*Pleaser refresh your pages to see changes. Changes may take up to 1 minute to take effect.*</p>
 
-    <!-- <li *ngFor="let BoardGame of BoardGameList">{{BoardGame.bgName}}</li> -->
-  <p>*Pleaser refresh your pages to see changes. Changes may take up to 1 minute to take effect.*</p>
-
-</div>
+    </div>
 

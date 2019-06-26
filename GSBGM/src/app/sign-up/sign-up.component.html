@@ -35,15 +35,16 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-12">
-          <label>Email Notification
-          <input [(ngModel)]="user.AllowEN" type="checkbox" checked="checked" >
-          </label>
+        <div class="col-sm-6">
+          <label>Email Notification</label>
+        </div>
+        <div class="col-sm-3">
+          <input class="mr-4" [(ngModel)]="user.AllowEN" type="checkbox" checked="checked">
           <!-- <p style="color:red;">allowen={{user.AllowEN}}</p> -->
         </div>
       </div>
 
-
+      <br>
       <div>
         <button>Cancel</button>
         <button (click)="CreateAccount()">Sign Up</button>
@@ -53,7 +54,7 @@
     </div>
 
     <div *ngIf="LoggedIn">
-      <p>UserID {{LoggedInUID}} Logged In!</p>
+        <p>UserID {{LoggedInUID}} Logged In!</p>
     </div>
     
   </div>
