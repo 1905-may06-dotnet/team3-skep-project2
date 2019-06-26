@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   user: User;
   public LoggedInUser;
   LoggedIn: boolean;
+  IdentityCheck:boolean;
 
   constructor(
     private UpdateService:UpdateService,
@@ -64,9 +65,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("uid", HttpResponse.body.toString());
         this.LoggedInUser=HttpResponse.body.toString();
         this.GetUserInfo();
+        this.IdentityCheck=true;
       }
+      else{this.IdentityCheck=false;}
     }
     )
+    console.log(this.IdentityCheck);
   }
   GetUserInfo():void{
     this.user.Username = localStorage.getItem("username");
