@@ -8,6 +8,7 @@ namespace Data
 {
     public static class Mapper
     {
+        static Repo r = new Repo();
         public static Data.Models.BGLocation Map(Domain.BGLocation dmLocations) => new Data.Models.BGLocation
         {
             Lid = dmLocations.LID,
@@ -43,8 +44,8 @@ namespace Data
             bguser.Email = user.Email;
             bguser.Password = user.Password;
             bguser.Salt = user.Salt;
-            bguser.PhoneNumber = user.PhoneNumber; 
-            bguser.Lid = (int)user.Lid; 
+            bguser.PhoneNumber = user.PhoneNumber;
+            bguser.Lid = (int)user.Lid;
             return bguser;
             //PhoneNumber = user.PhoneNumber,
             //Lid=(int)user.Lid

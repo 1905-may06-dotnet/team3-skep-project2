@@ -24,5 +24,8 @@ namespace Domain
         //DMAppUser GetUserByUserName(string un);
         List<Domain.Meeting> GetMeetings(Meeting meeting);
         void CreateMeetingRequest(MeetingRequest mr);
+        BGUser GetUserByUid(int uid);
+        BoardGame GetBoardGameByUid(int gid);
+        string GetUserBGCollectionList(int uid);
     }
 }

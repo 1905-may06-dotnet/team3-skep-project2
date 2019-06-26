@@ -29,7 +29,8 @@ namespace Domain
         public string Password { get; set; }
         public Guid Salt {get;set;}
         public string Email { get; set; }
-        public string PhoneNumber = "";
+        public string PhoneNumber = "00000000";
+        public string BGCollectionList = "";
         public DateTime DateOfBirth { get; set; }
         public bool AllowPN { get; set; }
         public bool AllowEN { get; set; }
