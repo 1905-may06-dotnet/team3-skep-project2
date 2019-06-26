@@ -106,7 +106,7 @@ namespace Test
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateAllowEN(user);
             Assert.IsNotNull(response);
-            Assert.IsInstanceOfType(response, typeof(BadRequestResult));
+            Assert.IsInstanceOfType(response, typeof(AcceptedResult));
         }
 
 
@@ -134,7 +134,7 @@ namespace Test
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateAllowPN(user);
             Assert.IsNotNull(response);
-            Assert.IsInstanceOfType(response, typeof(BadRequestResult));
+            Assert.IsInstanceOfType(response, typeof(AcceptedResult));
         }
 
 
