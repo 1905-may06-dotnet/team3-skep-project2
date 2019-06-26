@@ -280,7 +280,7 @@ namespace Data
             }        
         }
 
-        public void CreateMeetingRequest(Domain.MeetingRequest mr)
+        public virtual void CreateMeetingRequest(Domain.MeetingRequest mr)
         {
             DbInstance.Instance.MeetingRequest.Add(Mapper.Map(mr));
             DbInstance.Instance.SaveChanges();

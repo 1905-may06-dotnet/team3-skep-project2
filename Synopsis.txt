@@ -11,15 +11,16 @@ and allows both email and site notifications.
 *Users can edit their profile.
 *User can create and maintain a list of board games.
 *Meeting can be created by users and allow other 
-users to search and join the Meeting.
 *Users without certain game can search for other users that have 
 the game and request other users create a meeting.
 *users can receive notification on email and through web app.
 *implament mail gun api for email notification.
-*User can create and maintain a friends list.
-*Users can send and receive a friend request.
+
 
 ###phase 2 features
+*users to search and join the Meeting.
+*User can create and maintain a friends list.
+*Users can send and receive a friend request.
 *allow users to rate group members of past meetings.
 *Show user's ratings in search result. 
 *allow users to receive text message notification.
