@@ -9,7 +9,7 @@ import { Observer, Observable, fromEventPattern, of } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  baseUrl:string="http://gsbgma.azurewebsites.net/api/";
+  baseUrl:string="https://gsbgma.azurewebsites.net/api/";
   constructor(
     public http: HttpClient,
   ) { }

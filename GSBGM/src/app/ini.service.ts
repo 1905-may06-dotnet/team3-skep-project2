@@ -9,7 +9,7 @@ import { Observer, Observable, fromEventPattern, of } from 'rxjs';
 
 export class IniService {
   
-  baseUrl:string="http://gsbgma.azurewebsites.net/api/Ini/";
+  baseUrl:string="https://gsbgma.azurewebsites.net/api/Ini/";
   
   constructor(public http: HttpClient) { }
   

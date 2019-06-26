@@ -7,7 +7,7 @@ import { Observer, Observable, fromEventPattern, of } from 'rxjs';
   providedIn: 'root'
 })
 export class UpdateService {
-  baseUrl:string="http://gsbgma.azurewebsites.net/api/Profile/";
+  baseUrl:string="https://gsbgma.azurewebsites.net/api/Profile/";
   constructor(
     public http: HttpClient,
   ) { }
