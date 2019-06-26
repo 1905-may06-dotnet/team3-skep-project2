@@ -63,7 +63,8 @@ export class LoginComponent implements OnInit {
         this.LoggedIn = true;
         localStorage.setItem("username",this.user.Username);       
         localStorage.setItem("uid", HttpResponse.body.toString());
-        this.LoggedInUser=HttpResponse.body.toString();
+
+        this.LoggedInUser=localStorage.getItem("username");
         this.GetUserInfo();
         this.IdentityCheck=true;
       }
