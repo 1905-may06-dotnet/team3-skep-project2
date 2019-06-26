@@ -32,7 +32,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private LoginService:LoginService,
     public http: HttpClient
-  ) { 
+    ) { 
     if(localStorage.getItem("uid")!=null){
       this.LoggedIn = true;
     }else{
@@ -46,12 +46,12 @@ export class SignUpComponent implements OnInit {
     //console.log(this.user.Username);
     this.LoginService.LoginUserHTTP(this.UsernameValidationURL,User)
     .subscribe((HttpResponse) => {
-       console.log(HttpResponse.status);
-       if (HttpResponse.status !== 202) {
+      console.log(HttpResponse.status);
+      if (HttpResponse.status !== 202) {
         this.UserExist = true;
         console.log(this.UserExist)
-       }
-       else{this.UserExist = false;}
+      }
+      else{this.UserExist = false;}
     }
     )
   }
@@ -67,8 +67,8 @@ export class SignUpComponent implements OnInit {
       "AllowEN":this.user.AllowEN
     });
     console.log(User);
-   this.LoginService.LoginUserHTTP(this.CreateAccountURL,User)
-   .subscribe((HttpResponse) => {
+    this.LoginService.LoginUserHTTP(this.CreateAccountURL,User)
+    .subscribe((HttpResponse) => {
       console.log(HttpResponse);
       if(HttpResponse.status==201)
       {
@@ -78,8 +78,8 @@ export class SignUpComponent implements OnInit {
         localStorage.setItem("uid", HttpResponse.body.toString());
         this.LoggedInUID=HttpResponse.body.toString();
       }
-   }
-   )
+    }
+    )
   }
 
   ngOnInit() {
