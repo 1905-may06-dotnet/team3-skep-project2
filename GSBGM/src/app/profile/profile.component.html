@@ -7,7 +7,7 @@
         </tr>
         <tr>
           <th>Phone Number:</th>
-          <td>[(ngModel)]="UserInfo.phoneNumber"</td> 
+          <td>{{UserInfo.phoneNumber}}</td> 
           <td>
             <input [(ngModel)]="user.PhoneNumber" placeholder="Enter Phone"  />
             <button (click)="UpdatePhone()">Update</button>
