@@ -32,47 +32,61 @@ namespace Data
             MeetingRequestList = locations.MeetingRequest.Select(x => Map(x)).ToList()
         };
 
-        public static Domain.BGUser Map(Data.Models.BGUser user) => new Domain.BGUser
+        public static Domain.BGUser Map(Data.Models.BGUser user)
         {
-            UID = user.Uid,
-            AllowEN = user.AllowEN,
-            AllowPN = user.AllowPN,
-            DateOfBirth = user.DoB,
-            Email = user.Email,
-            PhoneNumber = user.PhoneNumber,
-            Location = Map(user.PreferedLocation),
-            UserCollections = user.UserCollections.Select(x => Map(x)).ToList(),
-            Ratings = user.Ratings.Select(x => Map(x)).ToList(),
-            FriendInvitationsAsSender = user.FriendInvitationsAsSender.Select(x => Map(x)).ToList(),
-            FriendInvitationsAsReceiver = user.FriendInvitationsAsReceiver.Select(x => Map(x)).ToList(),
-            MeetingsJoined = user.MeetingsJoined.Select(x => Map(x)).ToList(),
-            MeetingsHost = user.MeetingsHost.Select(x => Map(x)).ToList(),
-            MeetingInvitationsAsSender = user.MeetingInvitationsAsSender.Select(x => Map(x)).ToList(),
-            MeetingInvitationsAsReceiver = user.MeetingInvitationsAsReceiver.Select(x => Map(x)).ToList(),
-            MeetingRequestsAsReceiver = user.MeetingRequestsAsReceiver.Select(x => Map(x)).ToList(),
-            MeetingRequestsAsSender = user.MeetingRequestsAsSender.Select(x => Map(x)).ToList()
-        };
+            Domain.BGUser bguser = new Domain.BGUser();
+            bguser.UID = user.Uid;
+            bguser.AllowEN = user.AllowEN;
+            bguser.AllowPN = user.AllowPN;
+            bguser.DateOfBirth = user.DoB;
+            bguser.Username = user.Username;
+            bguser.Email = user.Email;
+            bguser.Password = user.Password;
+            bguser.Salt = user.Salt;
+            bguser.PhoneNumber = user.PhoneNumber; 
+            bguser.Lid = (int)user.Lid; 
+            return bguser;
+            //PhoneNumber = user.PhoneNumber,
+            //Lid=(int)user.Lid
+            //Location = Map(user.PreferedLocation),
+            //UserCollections = user.UserCollections.Select(x => Map(x)).ToList(),
+            //Ratings = user.Ratings.Select(x => Map(x)).ToList(),
+            //FriendInvitationsAsSender = user.FriendInvitationsAsSender.Select(x => Map(x)).ToList(),
+            //FriendInvitationsAsReceiver = user.FriendInvitationsAsReceiver.Select(x => Map(x)).ToList(),
+            //MeetingsJoined = user.MeetingsJoined.Select(x => Map(x)).ToList(),
+            //MeetingsHost = user.MeetingsHost.Select(x => Map(x)).ToList(),
+            //MeetingInvitationsAsSender = user.MeetingInvitationsAsSender.Select(x => Map(x)).ToList(),
+            //MeetingInvitationsAsReceiver = user.MeetingInvitationsAsReceiver.Select(x => Map(x)).ToList(),
+            //MeetingRequestsAsReceiver = user.MeetingRequestsAsReceiver.Select(x => Map(x)).ToList(),
+            //MeetingRequestsAsSender = user.MeetingRequestsAsSender.Select(x => Map(x)).ToList()
+        }
 
-        public static Data.Models.BGUser Map(Domain.BGUser user) => new Data.Models.BGUser
+        public static Data.Models.BGUser Map(Domain.BGUser user) 
         {
-            Uid = user.UID,
-            AllowEN = user.AllowEN,
-            AllowPN = user.AllowPN,
-            DoB = user.DateOfBirth,
-            Email = user.Email,
-            PhoneNumber = user.PhoneNumber,
-            PreferedLocation = Map(user.Location),
-            UserCollections = user.UserCollections.Select(x => Map(x)).ToList(),
-            Ratings = user.Ratings.Select(x => Map(x)).ToList(),
-            FriendInvitationsAsSender = user.FriendInvitationsAsSender.Select(x => Map(x)).ToList(),
-            FriendInvitationsAsReceiver = user.FriendInvitationsAsReceiver.Select(x => Map(x)).ToList(),
-            MeetingsJoined = user.MeetingsJoined.Select(x => Map(x)).ToList(),
-            MeetingsHost = user.MeetingsHost.Select(x => Map(x)).ToList(),
-            MeetingInvitationsAsSender = user.MeetingInvitationsAsSender.Select(x => Map(x)).ToList(),
-            MeetingInvitationsAsReceiver = user.MeetingInvitationsAsReceiver.Select(x => Map(x)).ToList(),
-            MeetingRequestsAsReceiver = user.MeetingRequestsAsReceiver.Select(x => Map(x)).ToList(),
-            MeetingRequestsAsSender = user.MeetingRequestsAsSender.Select(x => Map(x)).ToList()
-        };
+            Data.Models.BGUser bguser = new Models.BGUser();
+            bguser.Uid = user.UID;
+            bguser.AllowEN = user.AllowEN;
+            bguser.AllowPN = user.AllowPN;
+            bguser.DoB = user.DateOfBirth;
+            bguser.Username = user.Username;
+            bguser.Email = user.Email;
+            bguser.Password = user.Password;
+            bguser.Salt = user.Salt;
+            bguser.PhoneNumber = user.PhoneNumber; 
+            bguser.Lid = (int)user.Lid; 
+            return bguser;
+            //PreferedLocation = Map(user.Location),
+            //UserCollections = user.UserCollections.Select(x => Map(x)).ToList(),
+            //Ratings = user.Ratings.Select(x => Map(x)).ToList(),
+            //FriendInvitationsAsSender = user.FriendInvitationsAsSender.Select(x => Map(x)).ToList(),
+            //FriendInvitationsAsReceiver = user.FriendInvitationsAsReceiver.Select(x => Map(x)).ToList(),
+            //MeetingsJoined = user.MeetingsJoined.Select(x => Map(x)).ToList(),
+            //MeetingsHost = user.MeetingsHost.Select(x => Map(x)).ToList(),
+            //MeetingInvitationsAsSender = user.MeetingInvitationsAsSender.Select(x => Map(x)).ToList(),
+            //MeetingInvitationsAsReceiver = user.MeetingInvitationsAsReceiver.Select(x => Map(x)).ToList(),
+            //MeetingRequestsAsReceiver = user.MeetingRequestsAsReceiver.Select(x => Map(x)).ToList(),
+            //MeetingRequestsAsSender = user.MeetingRequestsAsSender.Select(x => Map(x)).ToList()
+        }
 
         public static Domain.BoardGame Map(Data.Models.BoardGame board) => new Domain.BoardGame
         {
@@ -85,9 +99,9 @@ namespace Data
             ThumbnailUrl = board.ThumbnailUrl,
             Bggrating = (int)board.Bggrating,
             PlayTime = (int)board.PlayTime,
-            UserCollections = board.UserCollections.Select(x => Map(x)).ToList(),
-            MeetingRequestList = board.MeetingRequestList.Select(x => Map(x)).ToList(),
-            Meetings = board.Meetings.Select(x => Map(x)).ToList()
+            //UserCollections = board.UserCollections.Select(x => Map(x)).ToList(),
+            //MeetingRequestList = board.MeetingRequestList.Select(x => Map(x)).ToList(),
+            //Meetings = board.Meetings.Select(x => Map(x)).ToList()
         };
 
         public static Data.Models.BoardGame Map(Domain.BoardGame board) => new Data.Models.BoardGame
@@ -101,9 +115,9 @@ namespace Data
             ThumbnailUrl = board.ThumbnailUrl,
             Bggrating = (int)board.Bggrating,
             PlayTime = (int)board.PlayTime,
-            UserCollections = board.UserCollections.Select(x => Map(x)).ToList(),
-            MeetingRequestList = board.MeetingRequestList.Select(x => Map(x)).ToList(),
-            Meetings = board.Meetings.Select(x => Map(x)).ToList()
+            //UserCollections = board.UserCollections.Select(x => Map(x)).ToList(),
+            //MeetingRequestList = board.MeetingRequestList.Select(x => Map(x)).ToList(),
+            //Meetings = board.Meetings.Select(x => Map(x)).ToList()
         };
 
         public static Domain.Friend Map(Data.Models.Friend friend) => new Domain.Friend
@@ -140,8 +154,8 @@ namespace Data
             Lid=meeting.Lid,
             Gid= meeting.Gid,
             HostUid = meeting.HostUid,
-            MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
-            MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
+            //MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
+            //MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
             Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
         };
 
@@ -152,8 +166,8 @@ namespace Data
             Lid = meeting.Lid,
             Gid = meeting.Gid,
             HostUid = meeting.HostUid,
-            MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
-            MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
+            //meetingmenbers = meeting.meetingmenbers.select(x => map(x)).tolist(),
+            //meetinginvitations = meeting.meetinginvitations.select(x => map(x)).tolist(),
             Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
         };
 

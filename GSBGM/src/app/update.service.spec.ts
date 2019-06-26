@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { LoginService } from './login.service';
-import { LoginComponent } from './login/login.component';
-describe('LoginService', () => {
+import { UpdateService } from './update.service';
+
+describe('UpdateService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientTestingModule], 
-    providers: [LoginService],
+    imports:[HttpClientTestingModule],
+    providers:[UpdateService],
   }));
 
   it('should be created', () => {
-    const service: LoginService = TestBed.get(LoginService);
+    const service: UpdateService = TestBed.get(UpdateService);
     expect(service).toBeTruthy();
   });
 });

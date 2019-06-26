@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
@@ -8,9 +9,9 @@ namespace Data.Models
         public Meeting()
         {
             //actually needed
-            MeetingInvitations = new List<MeetingInvitation>();
+            //MeetingInvitations = new List<MeetingInvitation>();
             Ratings = new List<Rating>();
-            MeetingMenbers = new List<BGUser>();
+            //MeetingMenbers = new List<BGUser>();
             //for creating database relationship
             MeetingInvitation = new HashSet<MeetingInvitation>();
             Rating = new HashSet<Rating>();
@@ -26,8 +27,11 @@ namespace Data.Models
         public virtual BoardGame G { get; set; }
         public virtual BGUser HostU { get; set; }
         public virtual BGLocation L { get; set; }
-        public List<BGUser> MeetingMenbers { get; set; }
-        public List<MeetingInvitation> MeetingInvitations { get; set; }
+        //[NotMapped]
+        //public List<BGUser> MeetingMenbers { get; set; }
+        //[NotMapped]
+        //public List<MeetingInvitation> MeetingInvitations { get; set; }
+        [NotMapped]
         public List<Rating> Ratings { get; set; }
         public virtual ICollection<MeetingInvitation> MeetingInvitation { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }

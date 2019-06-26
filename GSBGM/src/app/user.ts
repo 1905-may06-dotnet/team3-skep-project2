@@ -6,4 +6,7 @@ export class User {
     Email: string;
     DateOfBirth: string;
     AllowEN: boolean;
+    AllowPN: boolean;
+    PhoneNumber: string;
+    Id: number;
 }

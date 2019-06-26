@@ -10,12 +10,15 @@ namespace Domain
             this.Username = U;
             this.Password = Pass;
         }
-        public BGUser(string U,string Pass,string Em, Guid salt)
+        public BGUser(string U,string Pass,string Em, Guid salt, DateTime dob)
         {
+            this.UID = 0;
             this.Username = U;
             this.Email = Em;
             this.Password = Pass;
             this.Salt = salt;
+            this.DateOfBirth = dob;
+            this.Location = new BGLocation();
         }
         public BGUser() { }
         public int UID { get; set; }
@@ -26,10 +29,11 @@ namespace Domain
         public string Password { get; set; }
         public Guid Salt {get;set;}
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber = "";
         public DateTime DateOfBirth { get; set; }
         public bool AllowPN { get; set; }
         public bool AllowEN { get; set; }
+        public int Lid = 1;
         public BGLocation Location { get; set; }
         public List<BoardGame> UserCollections { get; set; }
         public List<Rating> Ratings { get; set; }

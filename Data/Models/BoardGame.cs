@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
@@ -8,9 +9,9 @@ namespace Data.Models
         public BoardGame()
         {
             //what we acatually need
-            Meetings = new List<Meeting>();
-            MeetingRequestList = new List<MeetingRequest>();
-            UserCollections = new List<UserCollection>();
+            //Meetings = new List<Meeting>();
+            //MeetingRequestList = new List<MeetingRequest>();
+            //UserCollections = new List<UserCollection>();
             //needed to create database relationship
             Meeting = new HashSet<Meeting>();
             MeetingRequest = new HashSet<MeetingRequest>();
@@ -27,9 +28,12 @@ namespace Data.Models
         public double? Bggrating { get; set; }
         public int? PlayTime { get; set; }
         //what we acatually need
-        public List<Meeting> Meetings { get; set; }
-        public  List<MeetingRequest> MeetingRequestList { get; set; }
-        public  List<UserCollection> UserCollections { get; set; }
+        //[NotMapped]
+        //public List<Meeting> Meetings { get; set; }
+        //[NotMapped]
+        //public  List<MeetingRequest> MeetingRequestList { get; set; }
+        //[NotMapped]
+        //public  List<UserCollection> UserCollections { get; set; }
         //needed to create database relationship
         public virtual ICollection<Meeting> Meeting { get; set; }
         public virtual ICollection<MeetingRequest> MeetingRequest { get; set; }

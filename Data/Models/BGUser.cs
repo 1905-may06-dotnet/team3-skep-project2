@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
@@ -23,18 +23,18 @@ namespace Data.Models
             UserCollection = new HashSet<UserCollection>();
             MeetingMenber = new HashSet<MeetingMenber>();
 
-            UserCollections = new List<BoardGame>();
-            UserCollections = new List<BoardGame>();
-            HasFriends = new List<Friend>();
-            FriendInvitationsAsSender = new List<FriendInvitation>();
-            FriendInvitationsAsReceiver = new List<FriendInvitation>();
-            MeetingsJoined = new List<Meeting>();
-            MeetingsHost = new List<Meeting>();
-            MeetingInvitationsAsSender = new List<MeetingInvitation>();
-            MeetingInvitationsAsReceiver = new List<MeetingInvitation>();
-            MeetingRequestsAsSender = new List<MeetingRequest>();
-            MeetingRequestsAsReceiver = new List<MeetingRequest>();
-            Ratings = new List<Rating>();
+            //UserCollections = new List<BoardGame>();
+            //UserCollections = new List<BoardGame>();
+            //HasFriends = new List<Friend>();
+            //FriendInvitationsAsSender = new List<FriendInvitation>();
+            //FriendInvitationsAsReceiver = new List<FriendInvitation>();
+            //MeetingsJoined = new List<Meeting>();
+            //MeetingsHost = new List<Meeting>();
+            //MeetingInvitationsAsSender = new List<MeetingInvitation>();
+            //MeetingInvitationsAsReceiver = new List<MeetingInvitation>();
+            //MeetingRequestsAsSender = new List<MeetingRequest>();
+            //MeetingRequestsAsReceiver = new List<MeetingRequest>();
+            //Ratings = new List<Rating>();
         }
 
         public int Uid { get; set; }
@@ -57,17 +57,17 @@ namespace Data.Models
             DoB = dob;
             AllowPN = apn;
             AllowEN = aen;
-            UserCollections = new List<BoardGame>();
-            HasFriends = new List<Friend>();
-            FriendInvitationsAsSender = new List<FriendInvitation>();
-            FriendInvitationsAsReceiver = new List<FriendInvitation>();
-            MeetingsJoined = new List<Meeting>();
-            MeetingsHost = new List<Meeting>();
-            MeetingInvitationsAsSender = new List<MeetingInvitation>();
-            MeetingInvitationsAsReceiver = new List<MeetingInvitation>();
-            MeetingRequestsAsSender = new List<MeetingRequest>();
-            MeetingRequestsAsReceiver = new List<MeetingRequest>();
-            Ratings = new List<Rating>();
+            //UserCollections = new List<BoardGame>();
+            //HasFriends = new List<Friend>();
+            //FriendInvitationsAsSender = new List<FriendInvitation>();
+            //FriendInvitationsAsReceiver = new List<FriendInvitation>();
+            //MeetingsJoined = new List<Meeting>();
+            //MeetingsHost = new List<Meeting>();
+            //MeetingInvitationsAsSender = new List<MeetingInvitation>();
+            //MeetingInvitationsAsReceiver = new List<MeetingInvitation>();
+            //MeetingRequestsAsSender = new List<MeetingRequest>();
+            //MeetingRequestsAsReceiver = new List<MeetingRequest>();
+            //Ratings = new List<Rating>();
     }
         //list that needed for creating data base relationships
         public virtual BGLocation PreferedLocation { get; set; }
@@ -86,16 +86,27 @@ namespace Data.Models
         public virtual ICollection<MeetingMenber> MeetingMenber { get; set; }
 
         //list that we actually need to use
-        public List<BoardGame> UserCollections { get; set; }
-        public List<Friend> HasFriends { get; set; }
-        public List<FriendInvitation> FriendInvitationsAsSender { get; set; }
-        public List<FriendInvitation> FriendInvitationsAsReceiver { get; set; }
-        public List<Meeting> MeetingsJoined { get; set; }
-        public List<Meeting> MeetingsHost { get; set; }
-        public List<MeetingInvitation> MeetingInvitationsAsSender { get; set; }
-        public List<MeetingInvitation> MeetingInvitationsAsReceiver { get; set; }
-        public List<MeetingRequest> MeetingRequestsAsSender { get; set; }
-        public List<MeetingRequest> MeetingRequestsAsReceiver { get; set; }
-        public List<Rating> Ratings { get; set; }
+        //[NotMapped]
+        //public List<BoardGame> UserCollections { get; set; }
+        //[NotMapped]
+        //public List<Friend> HasFriends { get; set; }
+        //[NotMapped]
+        //public List<FriendInvitation> FriendInvitationsAsSender { get; set; }
+        //[NotMapped]
+        //public List<FriendInvitation> FriendInvitationsAsReceiver { get; set; }
+        //[NotMapped]
+        //public List<Meeting> MeetingsJoined { get; set; }
+        //[NotMapped]
+        //public List<Meeting> MeetingsHost { get; set; }
+        //[NotMapped]
+        //public List<MeetingInvitation> MeetingInvitationsAsSender { get; set; }
+        //[NotMapped]
+        //public List<MeetingInvitation> MeetingInvitationsAsReceiver { get; set; }
+        //[NotMapped]
+        //public List<MeetingRequest> MeetingRequestsAsSender { get; set; }
+        //[NotMapped]
+        //public List<MeetingRequest> MeetingRequestsAsReceiver { get; set; }
+        //[NotMapped]
+        //public List<Rating> Ratings { get; set; }
     }
 }

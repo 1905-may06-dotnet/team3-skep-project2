@@ -11,7 +11,7 @@ using System.Text;
 namespace webapi.Controllers
 {
 
-    [Route("login/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -22,16 +22,17 @@ namespace webapi.Controllers
         }
 
         //login 
-        [HttpPost]
-        public ActionResult LookUpUser([FromBody] string userID)
+        [HttpPost("validate")]
+        public ActionResult LookUpUser([FromBody] BGUser u)
         {
-            if (db.UsernameExist(userID))
+            if (!db.UsernameExist(u.Username))
             {
                 return Accepted();
             }
             return Conflict();
         }
         //api doc's
+        [HttpPost("create")]
         public ActionResult CreateAccount ([FromBody]BGUser t)
         {
             try
@@ -49,10 +50,8 @@ namespace webapi.Controllers
                 t.Salt = g;
                 t.Password = hashed;
                 db.AddUser(t);
-                //Guid u = Guid.NewGuid();
-                //t.Salt = u;
-                //db.AddUser(t);
-                return Created(t.Username, g);
+                int uid = db.GetDomainUserByUserName(t.Username).UID;
+                return Created(t.Username, uid);
             }
             catch
             {
@@ -60,7 +59,7 @@ namespace webapi.Controllers
             }
 
         }
-        [HttpPost]
+        [HttpPost ("UserLogin")]
         //fix doc's
         public ActionResult UserLogin([FromBody]BGUser u)
         {
@@ -69,8 +68,9 @@ namespace webapi.Controllers
                 if (db.PasswordMatched(u.Username, u.Password))
                 {
                     /// can't work on API need store locally TempData["UserID"] = userID;
-                    Guid g = Guid.NewGuid();
-                    return Accepted(g);
+                    Guid g = Guid.NewGuid(); //what is this for?
+                    int uid = db.GetDomainUserByUserName(u.Username).UID;
+                    return Accepted(uid);
                 }
                 else
                 {
