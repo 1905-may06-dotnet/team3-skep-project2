@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
-
+  let spyService= jasmine.createSpyObj('LoginService',['LoginUserHTTP']);
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule,FormsModule], 
-      providers: [LoginService],
+      imports: [HttpClientTestingModule, FormsModule], 
+      providers: [{provide:LoginService,useValue:spyService}],
       declarations: [ SignUpComponent ]
     })
     .compileComponents();
@@ -20,10 +21,40 @@ describe('SignUpComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SignUpComponent);
     component = fixture.componentInstance;
+
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it ('should spy', () =>{
+
+    component.CreateAccountURL;
+    expect(spyService.useValue);
+    //expect(spyService).toHaveBeenCalled();
+  });
+  it ('should fail to create',()=>{
+    var expectedUser = JSON.stringify({
+      "Username": "test",
+      "Password": "word",
+      "DateOfBirth":"",
+      "Email":"mail",
+      "AllowEN":true
+    })
+    
+      
+  });
+  it('check branch CheckUser()',()=>{
+    localStorage.setItem("uid", "test");
+  });
+  it('check branch CheckUser()2',()=>{
+    localStorage.clear();
+  });
+  it('spy on side effects of void CreatAccount',()=>{
+    spyOn(console,'error');
+    component.CreateAccount();
+    expect(console.error).not.toHaveBeenCalledWith();
   });
 });
