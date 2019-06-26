@@ -151,6 +151,7 @@ export class ProfileComponent implements OnInit {
           this.AddGameU = false;
         }
      })
+     this.GetUserInfo();
 
   }
 
