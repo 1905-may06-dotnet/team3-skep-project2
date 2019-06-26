@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Data.SqlClient;
+
 
 namespace Test
 {
@@ -95,21 +95,7 @@ namespace Test
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(BadRequestResult));
         }
-        [TestMethod]
-        public void UpdateEN()
-        {
-            var mock = new Mock<Data.Repo>();
-            Guid g = Guid.NewGuid();
-            mock.Setup(x => x.UsernameExist("test")).Returns(true);
-            var user = new BGUser();
-            user.Username = "test";
-            ProfileController profileController = new ProfileController(mock.Object);
-            var response = profileController.UpdateAllowEN(user);
-            Assert.IsNotNull(response);
-            Assert.IsInstanceOfType(response, typeof(BadRequestResult));
-        }
-
-
+    
         [TestMethod]
         public void UpdateENfail()
         {
@@ -123,19 +109,7 @@ namespace Test
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(BadRequestResult));
         }
-        [TestMethod]
-        public void UpdatePN()
-        {
-            var mock = new Mock<Data.Repo>();
-            Guid g = Guid.NewGuid();
-            mock.Setup(x => x.UsernameExist("test")).Returns(true);
-            var user = new BGUser();
-            user.Username = "test";
-            ProfileController profileController = new ProfileController(mock.Object);
-            var response = profileController.UpdateAllowPN(user);
-            Assert.IsNotNull(response);
-            Assert.IsInstanceOfType(response, typeof(BadRequestResult));
-        }
+     
 
 
         [TestMethod]
