@@ -8,6 +8,7 @@ import { game, location} from './models';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'GSBGM';
   LoggedIn:boolean;
@@ -16,6 +17,7 @@ export class AppComponent {
     private IniService:IniService,
     public http: HttpClient,
   ){};
+
   GetAllGames():void{
     this.IniService.IniHTTP("GetAllGames")
     .subscribe((HttpResponse) => {
@@ -26,6 +28,7 @@ export class AppComponent {
       }
     })
   }
+
   GetAllLocations():void{
     this.IniService.IniHTTP("GetAllLocations")
     .subscribe((HttpResponse) => {
@@ -36,6 +39,7 @@ export class AppComponent {
       }
     })
   }
+  
   ngOnInit() {
     this.GetAllGames();
     this.GetAllLocations();

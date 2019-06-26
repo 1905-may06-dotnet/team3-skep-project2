@@ -70,7 +70,7 @@ namespace webapi.Controllers
             }
             return BadRequest();
         }
-        [HttpPut("AddGames")]
+        [HttpPost("AddGames")]
         public ActionResult AddGames([FromBody] UserCollection item)
         {
             //get user from guid
@@ -80,8 +80,34 @@ namespace webapi.Controllers
                 return Accepted();
             }
             catch
-            { return BadRequest();}
-            
+            { return BadRequest();}           
+        }
+        [HttpPost("GetUserInfo")]
+        public IActionResult GetUserInfo([FromBody] BGUser user)
+        {
+            try
+            {
+                BGUser searchUser = new BGUser();
+                searchUser = db.GetDomainUserByUserName(user.Username);
+                searchUser.BGCollectionList = db.GetUserBGCollectionList(searchUser.UID);
+                return Ok(searchUser);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("GetBGCollection")]
+        public ActionResult GetBGCollection([FromBody] BGUser user)
+        {
+            //get user from guid
+            try
+            {
+                user.BGCollectionList = db.GetUserBGCollectionList(user.UID);
+                return Ok(user);
+            }
+            catch
+            { return BadRequest(); }
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Data
 {
     public static class Mapper
     {
+        static Repo r = new Repo();
         public static Data.Models.BGLocation Map(Domain.BGLocation dmLocations) => new Data.Models.BGLocation
         {
             Lid = dmLocations.LID,
@@ -15,9 +16,9 @@ namespace Data
             City = dmLocations.City,
             LocationName = dmLocations.LocationName,
             State = dmLocations.State,
-            Meeting = dmLocations.MeetingList.Select(x => Map(x)).ToList(),
-            BGUser = dmLocations.UserList.Select(x => Map(x)).ToList(),
-            MeetingRequest = dmLocations.MeetingRequestList.Select(x => Map(x)).ToList()
+            //Meeting = dmLocations.MeetingList.Select(x => Map(x)).ToList(),
+            //BGUser = dmLocations.UserList.Select(x => Map(x)).ToList(),
+            //MeetingRequest = dmLocations.MeetingRequestList.Select(x => Map(x)).ToList()
         };
 
         public static Domain.BGLocation Map(Data.Models.BGLocation locations) => new Domain.BGLocation
@@ -27,9 +28,9 @@ namespace Data
             City = locations.City,
             LocationName = locations.LocationName,
             State=locations.State,
-            MeetingList= locations.Meeting.Select(x=>Map(x)).ToList(),
-            UserList = locations.BGUser.Select(x => Map(x)).ToList(),
-            MeetingRequestList = locations.MeetingRequest.Select(x => Map(x)).ToList()
+            //MeetingList= locations.Meeting.Select(x=>Map(x)).ToList(),
+            //UserList = locations.BGUser.Select(x => Map(x)).ToList(),
+            //MeetingRequestList = locations.MeetingRequest.Select(x => Map(x)).ToList()
         };
 
         public static Domain.BGUser Map(Data.Models.BGUser user)
@@ -43,8 +44,8 @@ namespace Data
             bguser.Email = user.Email;
             bguser.Password = user.Password;
             bguser.Salt = user.Salt;
-            bguser.PhoneNumber = user.PhoneNumber; 
-            bguser.Lid = (int)user.Lid; 
+            bguser.PhoneNumber = user.PhoneNumber;
+            bguser.Lid = (int)user.Lid;
             return bguser;
             //PhoneNumber = user.PhoneNumber,
             //Lid=(int)user.Lid
@@ -156,7 +157,7 @@ namespace Data
             HostUid = meeting.HostUid,
             //MeetingMenbers = meeting.MeetingMenbers.Select(x => Map(x)).ToList(),
             //MeetingInvitations = meeting.MeetingInvitations.Select(x => Map(x)).ToList(),
-            Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
+            //Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
         };
 
         public static Data.Models.Meeting Map(Domain.Meeting meeting) => new Data.Models.Meeting
@@ -168,7 +169,7 @@ namespace Data
             HostUid = meeting.HostUid,
             //meetingmenbers = meeting.meetingmenbers.select(x => map(x)).tolist(),
             //meetinginvitations = meeting.meetinginvitations.select(x => map(x)).tolist(),
-            Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
+            //Ratings = meeting.Ratings.Select(x => Map(x)).ToList()
         };
 
         public static Domain.MeetingInvitation Map(Data.Models.MeetingInvitation mi) => new Domain.MeetingInvitation

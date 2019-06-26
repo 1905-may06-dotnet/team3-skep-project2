@@ -27,6 +27,22 @@ namespace Data
             bool Exist = DbInstance.Instance.BoardGame.Any(r => r.Gid == gid);
             return Exist;
         }
+        public Domain.BGUser GetUserByUid(int uid)
+        {
+            var user = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Uid == uid).FirstOrDefault();
+            return Mapper.Map(user);
+        }
+        public Domain.BoardGame GetBoardGameByUid(int gid)
+        {
+            var bg = DbInstance.Instance.BoardGame.Where<Models.BoardGame>(r => r.Gid == gid).FirstOrDefault();
+            return Mapper.Map(bg);
+        }
+
+        public Models.BoardGame GetDBBoardGameByUid(int gid)
+        {
+            var bg = DbInstance.Instance.BoardGame.Where<Models.BoardGame>(r => r.Gid == gid).FirstOrDefault();
+            return bg;
+        }
         public bool LocationExist(int lid)
         {
             bool Exist = DbInstance.Instance.BGLocation.Any(r => r.Lid == lid);
@@ -168,7 +184,19 @@ namespace Data
             DbInstance.Instance.UserCollection.Add(newItem);
             DbInstance.Instance.SaveChanges();
         }
-
+        public string GetUserBGCollectionList(int uid)
+        {
+            string list = "";
+            var clist = DbInstance.Instance.UserCollection.Where<Models.UserCollection>(r => r.Uid == uid).ToList();
+            for(int i=0; i<clist.Count(); i++ )
+            {
+                if (i == 0)
+                { list ="1. "+ GetDBBoardGameByUid(clist[i].Gid).Bgname; }
+                else
+                { list = list + $", {i+1}. " + GetDBBoardGameByUid(clist[i].Gid).Bgname; }
+            }
+            return list;
+        }
         public virtual Domain.BGLocation GetLocationById(int n){
             return Mapper.Map(DbInstance.Instance.BGLocation.Where<Models.BGLocation>(r=>r.Lid==n).FirstOrDefault());
         }
