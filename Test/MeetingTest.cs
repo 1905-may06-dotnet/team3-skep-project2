@@ -38,7 +38,7 @@ namespace Test
             MeetingController meetingController = new MeetingController(mock.Object);
             var response = meetingController.AddMeeting(meeting);
             Assert.IsNotNull(response);
-            Assert.IsInstanceOfType(response, typeof(BadRequestResult));
+            Assert.IsInstanceOfType(response, typeof(CreatedResult));
         }
         [TestMethod]
         public void AddMeetingRequestTestFail()
@@ -52,6 +52,7 @@ namespace Test
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(BadRequestResult));
         }
+
 
     }
 }

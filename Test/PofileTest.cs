@@ -21,8 +21,7 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "testing";
-            user.Token = g;
+            user.Username = "testing";
             user.Username = "test";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateEmail(user);
@@ -36,8 +35,7 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "testing";
-            user.Token = g;
+            user.Username = "testing";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateEmail(user);
             Assert.IsNotNull(response);
@@ -50,8 +48,8 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "testing";
-            user.Token = g;
+            user.Username = "testing";
+
             user.Username = "test";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdatePhone(user);
@@ -65,8 +63,6 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "testing";
-            user.Token = g;
             user.Username = "testing";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdatePhone(user);
@@ -80,8 +76,6 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "testing";
-            user.Token = g;
             user.Username = "test";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateLocation(user);
@@ -95,8 +89,6 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "testing";
-            user.Token = g;
             user.Username = "testing";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateLocation(user);
@@ -110,7 +102,7 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "test";
+            user.Username = "test";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateAllowEN(user);
             Assert.IsNotNull(response);
@@ -125,7 +117,7 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "testing";
+            user.Username = "testing";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateAllowEN(user);
             Assert.IsNotNull(response);
@@ -138,7 +130,7 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "test";
+            user.Username = "test";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateAllowPN(user);
             Assert.IsNotNull(response);
@@ -153,7 +145,7 @@ namespace Test
             Guid g = Guid.NewGuid();
             mock.Setup(x => x.UsernameExist("test")).Returns(true);
             var user = new BGUser();
-            user.New = "testing";
+            user.Username = "testing";
             ProfileController profileController = new ProfileController(mock.Object);
             var response = profileController.UpdateAllowPN(user);
             Assert.IsNotNull(response);
