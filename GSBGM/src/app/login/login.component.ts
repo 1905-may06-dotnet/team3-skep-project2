@@ -21,6 +21,7 @@ const httpOptions ={
 })
 
 export class LoginComponent implements OnInit {
+  
   public loginURL:string = "login/UserLogin";
   user: User;
   public LoggedInUID:string;
@@ -30,37 +31,37 @@ export class LoginComponent implements OnInit {
     private LoginService:LoginService,
     public http: HttpClient,
     ) {
-      this.CheckUser();
-     }
-    CheckUser():void{
-      if(localStorage.getItem("uid")!=null){
+    this.CheckUser();
+  }
+  CheckUser():void{
+    if(localStorage.getItem("uid")!=null){
+      this.LoggedIn = true;
+    }else{
+      this.LoggedIn = false;
+    }
+  }
+  LogOutUser():void{
+    localStorage.removeItem("uid");
+    this.CheckUser();
+  }
+  LoginUser(): void {
+    //construct JSON object
+    var User = JSON.stringify(this.user);
+    console.log(User);
+    
+    this.LoginService.LoginUserHTTP(this.loginURL,User)
+    .subscribe((HttpResponse) => {
+      console.log(HttpResponse);
+      if(HttpResponse.status==202)
+      {
         this.LoggedIn = true;
-      }else{
-        this.LoggedIn = false;
+        localStorage.setItem("username",this.user.Username);       
+        localStorage.setItem("uid", HttpResponse.body.toString());
+        this.LoggedInUID=HttpResponse.body.toString();
       }
     }
-    LogOutUser():void{
-      localStorage.removeItem("uid");
-      this.CheckUser();
-    }
-    LoginUser(): void {
-      //construct JSON object
-      var User = JSON.stringify(this.user);
-      console.log(User);
-    
-     this.LoginService.LoginUserHTTP(this.loginURL,User)
-     .subscribe((HttpResponse) => {
-        console.log(HttpResponse);
-        if(HttpResponse.status==202)
-        {
-          this.LoggedIn = true;
-          localStorage.setItem("username",this.user.Username);       
-          localStorage.setItem("uid", HttpResponse.body.toString());
-          this.LoggedInUID=HttpResponse.body.toString();
-        }
-     }
-     )
-    }
+    )
+  }
 
   ngOnInit() {
     this.user = new User();
