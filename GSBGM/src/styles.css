@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+	transition: background-color .25s ease-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    font-size: .9rem;
+    font-family: Avenir Next,Avenir,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+    background-color: #3668ff;
+    background-repeat: no-repeat;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
