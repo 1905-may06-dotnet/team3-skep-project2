@@ -11,8 +11,14 @@ export class UpdateService {
   constructor(
     public http: HttpClient,
   ) { }
-  UpdateUserHTTP(URL:string,User:any): Observable<HttpResponse<string>> {
+  UpdateUserHTTPPut(URL:string,User:any): Observable<HttpResponse<string>> {
     return this.http.put(this.baseUrl+URL, User, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response'})
+  .pipe(
+    catchError(this.handleError('UdateUser',User))
+  );
+  }
+  UpdateUserHTTPPost(URL:string,User:any): Observable<HttpResponse<string>> {
+    return this.http.post(this.baseUrl+URL, User, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response'})
   .pipe(
     catchError(this.handleError('UdateUser',User))
   );

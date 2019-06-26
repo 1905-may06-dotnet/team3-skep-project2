@@ -65,7 +65,7 @@ namespace webapi.Controllers
             RestRequest request = new RestRequest();
             request.AddParameter("domain", "sandboxd3b07b7021e44d4d86a10aec3eaa29c4.mailgun.org", ParameterType.UrlSegment);
             request.Resource = "{domain}/messages";
-            request.AddParameter("from", "Excited User <mailgun@sandboxd3b07b7021e44d4d86a10aec3eaa29c4.mailgun.org>");
+            request.AddParameter("from", "GSBGM <GSBGM@gmail.com>");
             request.AddParameter("to", "team.skep4@gmail.com");
             request.AddParameter("to", "YOU@YOUR_DOMAIN_NAME");
             request.AddParameter("subject", "Hello");

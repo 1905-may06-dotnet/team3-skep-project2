@@ -191,9 +191,9 @@ namespace Data
             for(int i=0; i<clist.Count(); i++ )
             {
                 if (i == 0)
-                { list = GetDBBoardGameByUid(clist[i].Gid).Bgname; }
+                { list ="1. "+ GetDBBoardGameByUid(clist[i].Gid).Bgname; }
                 else
-                { list = list + ", " + GetDBBoardGameByUid(clist[i].Gid).Bgname; }
+                { list = list + $", {i+1}. " + GetDBBoardGameByUid(clist[i].Gid).Bgname; }
             }
             return list;
         }

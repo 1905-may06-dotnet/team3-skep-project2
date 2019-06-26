@@ -1,5 +1,4 @@
-  
-  <div *ngIf="LoggedIn==false" class="container my-2">
+ <div *ngIf="LoggedIn==false" class="container my-2">
     <label class="mr-3 my-2"><b>Username</b>
       <input [(ngModel)]="user.Username" placeholder="" class="ml-1 my-2" required/>
     </label>
@@ -11,7 +10,7 @@
   </div>
 
   <div *ngIf="LoggedIn">
-    <p>UserID {{LoggedInUID}} Logged In!
+    <p>UserID {{LoggedInUser}} Logged In!
       <button id="logout" (click)="LogOutUser()">Logout</button>
     </p>
   </div>

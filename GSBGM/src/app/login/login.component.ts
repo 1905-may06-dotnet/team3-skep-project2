@@ -1,9 +1,11 @@
 import { Component, OnInit, Input} from '@angular/core';
 import {User} from '../user';
 import {LoginService} from '../login.service';
+import { UpdateService } from '../update.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 
 const httpOptions ={
   headers: new HttpHeaders({
@@ -24,10 +26,11 @@ export class LoginComponent implements OnInit {
   
   public loginURL:string = "login/UserLogin";
   user: User;
-  public LoggedInUID:string;
+  public LoggedInUser;
   LoggedIn: boolean;
 
   constructor(
+    private UpdateService:UpdateService,
     private LoginService:LoginService,
     public http: HttpClient,
     ) {
@@ -42,6 +45,8 @@ export class LoginComponent implements OnInit {
   }
   LogOutUser():void{
     localStorage.removeItem("uid");
+    localStorage.removeItem("username");
+    localStorage.removeItem("UserInfo");
     this.CheckUser();
   }
   LoginUser(): void {
@@ -57,12 +62,22 @@ export class LoginComponent implements OnInit {
         this.LoggedIn = true;
         localStorage.setItem("username",this.user.Username);       
         localStorage.setItem("uid", HttpResponse.body.toString());
-        this.LoggedInUID=HttpResponse.body.toString();
+        this.LoggedInUser=HttpResponse.body.toString();
+        this.GetUserInfo();
       }
     }
     )
   }
-
+  GetUserInfo():void{
+    this.user.Username = localStorage.getItem("username");
+    var User = JSON.stringify(this.user);
+    this.UpdateService.UpdateUserHTTPPost("GetUserInfo",User)
+     .subscribe((HttpResponse) => {
+        if(HttpResponse.status==200){
+          localStorage.setItem("UserInfo", JSON.stringify(HttpResponse.body));
+        }
+     })
+  }
   ngOnInit() {
     this.user = new User();
   }
