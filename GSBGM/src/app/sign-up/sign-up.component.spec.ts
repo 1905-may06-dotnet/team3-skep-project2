@@ -29,7 +29,7 @@ describe('SignUpComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it ('should create', () =>{
+  it ('should spy', () =>{
 
     component.CreateAccountURL;
     expect(spyService.useValue);
@@ -51,5 +51,10 @@ describe('SignUpComponent', () => {
   });
   it('check branch CheckUser()2',()=>{
     localStorage.clear();
+  });
+  it('spy on side effects of void CreatAccount',()=>{
+    spyOn(console,'error');
+    component.CreateAccount();
+    expect(console.error).not.toHaveBeenCalledWith();
   });
 });
