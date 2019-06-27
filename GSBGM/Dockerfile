@@ -14,5 +14,5 @@ EXPOSE 443
 
 STOPSIGNAL SIGTERM
 
-CMD ["ash"]
-#CMD ["nginx", "-g", "daemon off;"]
+#CMD ["ash"]
+CMD ["nginx", "-g", "daemon off;"]
