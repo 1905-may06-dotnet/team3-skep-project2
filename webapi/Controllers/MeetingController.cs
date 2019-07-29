@@ -35,6 +35,19 @@ namespace webapi.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet("GetUserListByLocation")]
+        public ActionResult GetUserListByLocation([FromBody] int lid)
+        {
+            try
+            {           
+                return Ok();//db.GetUserByLocation(lid));
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost("CreateMeetingRequest")]
         public ActionResult AddMeetingRequest([FromBody] Domain.MeetingRequest meetingRequest)
         {
@@ -53,7 +66,7 @@ namespace webapi.Controllers
                 {
                  return BadRequest();
                 }
-            }
+        }
 
         public IRestResponse SendMessage(string r, string s, string l, string bg, string time)
         {

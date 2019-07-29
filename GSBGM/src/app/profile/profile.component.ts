@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   LocationU: boolean = false;
   AddGameU: boolean = false;
   newItem:UserCollection;
+  LocationName:string;
   LocationList:Location[]=JSON.parse(localStorage.getItem("Locations"));
   UserInfo:GetUser=JSON.parse(localStorage.getItem("UserInfo"));
   BoardGameList:BoardGame[]=JSON.parse(localStorage.getItem("Games"));
@@ -33,6 +34,7 @@ export class ProfileComponent implements OnInit {
     this.user = new User();
     this.newItem=new UserCollection
     this.GetUserInfo();
+    this.LocationName=this.Convert(this.UserInfo.lid);
   }
   UpdateEmail():void{  
     this.user.Username = localStorage.getItem("username");
@@ -116,12 +118,13 @@ export class ProfileComponent implements OnInit {
         }
      })
      this.GetUserInfo();
+     this.LocationName=this.Convert(this.UserInfo.lid);
   }
 
   GetUserInfo():void{
     this.user.Username = localStorage.getItem("username");
     var User = JSON.stringify(this.user);
-    console.log(User)
+    console.log(User);
     this.UpdateService.UpdateUserHTTPPost("GetUserInfo",User)
      .subscribe((HttpResponse) => {
         if(HttpResponse.status==200){
@@ -129,13 +132,13 @@ export class ProfileComponent implements OnInit {
         }
      })
      this.UserInfo=JSON.parse(localStorage.getItem("UserInfo"));
-     console.log("info refreshed")
+     console.log("info refreshed");
   }
 
   AddGame():void{
     console.log("start");
     console.log(this.UserInfo.uid)
-    this.newItem.Uid = 38;//this.UserInfo.uid;
+    this.newItem.Uid = this.UserInfo.uid;
     this.newItem.Gid=this.user.newGid;
     var item = JSON.stringify(this.newItem);
     console.log(item)
@@ -143,12 +146,23 @@ export class ProfileComponent implements OnInit {
      .subscribe((HttpResponse) => {
         if(HttpResponse.status==200){
           this.AddGameU = true;
-          console.log("addgame successed")
+          console.log("addgame successed");
         } else {
           this.AddGameU = false;
         }
      })
+  }
 
+  Convert(i:number):string{
+    this.LocationList.forEach(element => {
+
+      if(element.lid==i)
+      {      
+        console.log(element.locationName);
+        return element.locationName;
+      }
+    });
+    return "";
   }
 
 }

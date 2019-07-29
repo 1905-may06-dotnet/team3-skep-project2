@@ -17,17 +17,24 @@ namespace GSBGMconsole_APP
         {
             //UpdateGameList newUpdate = new UpdateGameList();
             //newUpdate.GetAllGames();
-            //Data.Repo r = new Data.Repo();
+            Data.Repo r = new Data.Repo();
             //foreach (var i in r.GetALLBoardGames())
             //{
             //    Console.WriteLine(i.BGName);
             //}
-            string a = "evan";
-            string b = "kevin";
-            string c = "liv+";
-                Console.WriteLine(SendSimpleMessage(a,b,c).Content.ToString());
-
-
+            //string a = "evan";
+            //string b = "kevin";
+            //string c = "liv+";
+            //    Console.WriteLine(SendSimpleMessage(a,b,c).Content.ToString());
+            Domain.UserCollection c = new UserCollection();
+            c.Uid = 8;
+            c.Gid = 1;
+            Console.WriteLine("result: "+r.CheckGameExistedInCollection(c));
+            //foreach (var u in r.GetUserByLocation(1))
+            //{
+            //    Console.WriteLine(u.Username);
+            //    Console.WriteLine("something");
+            //}
 
         }
         public static IRestResponse SendSimpleMessage(string a, string b, string c)

@@ -75,9 +75,14 @@ namespace webapi.Controllers
         {
             //get user from guid
             try
-            { 
-                db.AddGames(item);
-                return Accepted();
+            {
+                if (!db.CheckGameExistedInCollection(item))
+                {
+                    db.AddGames(item);
+                    return Accepted();
+                }
+                else
+                { return Conflict(); }
             }
             catch
             { return BadRequest();}           

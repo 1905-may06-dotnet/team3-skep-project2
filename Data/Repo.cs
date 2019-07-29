@@ -12,6 +12,17 @@ namespace Data
 {
     public class Repo : IRepo
     {
+        public List<Models.BGUser> GetUserByLocation(int lid)
+        {
+            //List<models.BGUser> userList = new List<models.BGUser>();
+            var dbuserlist = DbInstance.Instance.BGUser.Where<Models.BGUser>(r => r.Lid == lid).ToList();
+            //foreach (var u in dbuserlist)
+            //{
+            //    userList.Add(Mapper.Map(u));
+            //}
+            return dbuserlist;
+        }
+
         public virtual bool UsernameExist(string un)
         {
             bool Exist = DbInstance.Instance.BGUser.Any(r => r.Username == un);
@@ -184,6 +195,12 @@ namespace Data
             DbInstance.Instance.UserCollection.Add(newItem);
             DbInstance.Instance.SaveChanges();
         }
+        public bool CheckGameExistedInCollection(Domain.UserCollection item)
+        {
+            bool Exist = DbInstance.Instance.UserCollection.Where<Models.UserCollection>(l => l.Uid == item.Uid).Any(r => r.Gid == item.Gid);
+            return Exist;
+        }
+
         public string GetUserBGCollectionList(int uid)
         {
             string list = "";

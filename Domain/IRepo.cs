@@ -27,5 +27,7 @@ namespace Domain
         BGUser GetUserByUid(int uid);
         BoardGame GetBoardGameByUid(int gid);
         string GetUserBGCollectionList(int uid);
+        //List<Domain.BGUser> GetUserByLocation(int lid);
+        bool CheckGameExistedInCollection(Domain.UserCollection item);
     }
 }
